@@ -22,7 +22,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +50,15 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.3",
+    "stylelint-config-standard-scss": "^6.1.0"
   }
 }
