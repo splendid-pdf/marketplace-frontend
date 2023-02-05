@@ -1,9 +1,9 @@
-name: Lint, Test and Build
+name: Lint and Build
 on: 
   push:
-    branches: [ develop ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ develop ]
+    branches: [ master, develop ]
 jobs:
   pipeline:
     runs-on: ubuntu-latest
