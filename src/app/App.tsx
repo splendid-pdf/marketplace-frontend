@@ -8,9 +8,9 @@ import { HomePage } from '../pages/HomePage/HomePage';
 import { UserProfilePage } from '../pages/UserProfilePage/UserProfilePage';
 import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
 import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
-import { Header } from '../widgets/Header/ui/Header';
-import { NavBar } from '../widgets/NavBar/ui/NavBar';
-import { Footer } from '../widgets/Footer/ui/Footer';
+import { Header } from '../widgets/Header';
+import { NavBar } from '../widgets/NavBar';
+import { Footer } from '../widgets/Footer';
 
 const App = () => {
   const baseUrl = BASE_URL;
