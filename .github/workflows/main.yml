@@ -27,7 +27,3 @@ jobs:
       - name: linting css
         if: always()
         run: npm run lint:scss 
-      - name: deploying website
-        if: always()
-        run: npm run deploy 
-
