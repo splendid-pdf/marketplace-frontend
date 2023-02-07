@@ -10,6 +10,8 @@ import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
 import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
 
 import { NavBar } from '../widgets/NavBar';
+import { Header } from '../widgets/Header';
+import { Footer } from '../widgets/Footer';
 
 const App = () => {
   const baseUrl = BASE_URL;
@@ -19,6 +21,7 @@ const App = () => {
       <ErrorBoundary>
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
+            <Header />
             <NavBar />
             <Routes>
               <Route path={`/${baseUrl}`} element={<HomePage />} />
@@ -27,6 +30,7 @@ const App = () => {
               <Route path={`/${baseUrl}/contacts`} element={<ContactsPage />} />
               <Route path={`/${baseUrl}/*`} element={<NotFoundPage />} />
             </Routes>
+            <Footer />
           </Suspense>
         </BrowserRouter>
       </ErrorBoundary>
