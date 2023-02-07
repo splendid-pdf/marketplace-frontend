@@ -4,13 +4,13 @@ import classes from './App.module.scss';
 import ErrorBoundary from './ErrorBoundary';
 import { Spinner } from '../shared/ui/Spinner/Spinner';
 import { BASE_URL } from '../shared/constants/base_url';
-import { NavBar } from '../widgets/NavBar';
 import { HomePage } from '../pages/HomePage/HomePage';
 import { UserProfilePage } from '../pages/UserProfilePage/UserProfilePage';
 import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
 import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
 import { Header } from '../widgets/Header';
 import { Footer } from '../widgets/Footer';
+import { NavBar } from '../widgets/NavBar';
 
 const App = () => {
   const baseUrl = BASE_URL;
