@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "homepage": "https://splendid-pdf.github.io/marketplace-frontend/",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.7",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -20,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
@@ -60,7 +64,7 @@
     "eslint-plugin-react": "^7.32.2",
     "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
-    "prettier": "^2.8.3",
+    "stylelint": "^14.16.1",
     "stylelint-config-standard-scss": "^6.1.0"
   }
 }
