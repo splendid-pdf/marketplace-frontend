@@ -1,7 +1,10 @@
 import React from 'react';
 import classes from './Header.module.scss';
 import { Location } from 'features/location/Location';
-import SearchBar from '../searchBar/searchBar';
+import SearchBar from '../searchBar/SearchBar';
+
+
+
 
 export const Header: React.FC = () => {
   return (

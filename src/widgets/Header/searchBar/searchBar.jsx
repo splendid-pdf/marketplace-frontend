@@ -1,54 +1,60 @@
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import classes from './searchBar.module.scss';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const data = require('./data.json');
+import classes from './SearchBar.module.scss';
+import { fetchUsersTest } from "shared/api/fetchUsersTest";
 
 
 const SearchBar = () => {
-  const [value, setValue] = useState('')
-  const [showDropdown, setShowDropdown] = useState(false)
-  
-  const onChange = (event) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchUsersTest()
+      .then(data => setData(data));
+  }, []);
+
+  const [value, setValue] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const onChange = event => {
     setValue(event.target.value);
     if (event.target.value.length === 0) {
       setShowDropdown(false);
     } else {
       setShowDropdown(true);
     }
-  }
-  
-  const onSearch = (SearchTerm) => {
-    console.log('search', SearchTerm)
-  }
-  
+  };
+
+  const onSearch = searchTerm => {
+    console.log("search", searchTerm);
+  };
+
   return (
     <div className={classes.Container}>
       <Paper
         component="form"
-        sx={{
-          p: '2px 4px', 
-          display: 'flex', 
-          alignItems: 'center', 
-          width: 600, 
-          flexGrow: '2' 
+        style={{
+          padding: "2px 4px",
+          display: "flex",
+          alignItems: "center",
+          width: 600,
+          flexGrow: 2
         }}
       >
         <InputBase
-          sx={{ 
-            ml: 1, 
-            flex: 1 
+          style={{
+            marginLeft: 1,
+            flex: 1
           }}
           placeholder="Search product by name"
           value={value}
           onChange={onChange}
         />
-        <IconButton 
-          type="button" 
-          sx={{ p: '10px' }} 
+        <IconButton
+          type="button"
+          style={{ padding: "10px" }}
           aria-label="search"
           onClick={() => onSearch(value)}
         >
@@ -58,17 +64,21 @@ const SearchBar = () => {
       {showDropdown && (
         <div className={classes.Dropdown}>
           {data
-            .filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
-            .slice(0, 10)  // limit items in list
-            .map((item) => (
+            .filter(item =>
+              item.name.toLowerCase().includes(value.toLowerCase())
+            )
+            .slice(0, 10)
+            .map(item => (
               <div key={item.name} className={classes.DropdownRow}>
-                <a href='#' className={classes.ProductLink}>{item.name}</a>
+                <a href="#" className={classes.ProductLink}>
+                  {item.name}
+                </a>
               </div>
             ))}
         </div>
       )}
     </div>
   );
-}
-  
-export default SearchBar
+};
+
+export default SearchBar;
