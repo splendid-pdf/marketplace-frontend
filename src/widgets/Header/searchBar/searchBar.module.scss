@@ -1,0 +1,24 @@
+.Conteiner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.Dropdown {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  position: absolute;
+  box-sizing: border-box;
+  width: 600px;
+}
+
+.DropdownRow {
+  color: green;
+}
+
+.ProductLink {
+  font-size: 20px;
+  text-decoration: none;
+}
