@@ -65,6 +65,7 @@
     "eslint-plugin-react": "^7.32.2",
     "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
+    "react-hook-form": "^7.43.1",
     "stylelint": "^14.16.1",
     "stylelint-config-standard-scss": "^6.1.0"
   }
