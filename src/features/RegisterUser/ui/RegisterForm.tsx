@@ -1,13 +1,9 @@
-import { BackdropMarket } from 'shared/ui/Backdrop/BackdropMarket';
 import React from 'react';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import classes from './Register.module.scss';
-import CloseIcon from '@mui/icons-material/Close';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import { Controller, useForm } from 'react-hook-form';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Paper, Typography, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
+import { BackdropMarket } from 'shared/ui/Backdrop/BackdropMarket';
 
 interface RegisterFormProps {
   isOpen: boolean;
@@ -62,7 +58,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
               required: 'Укажите e-mail',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'invalid email address',
+                message: 'Неверный e-mail',
               },
             })}
           />
@@ -114,7 +110,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
             type="submit"
             size="large"
             variant="contained"
-            className={classes.button}
+            className={classes.buttonSubmit}
           >
             Подтвердить
           </Button>

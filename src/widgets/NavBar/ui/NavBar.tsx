@@ -7,6 +7,7 @@ import { RegisterForm } from 'features/RegisterUser';
 export const NavBar = () => {
   const baseUrl = BASE_URL;
   const [isOpen, setIsOpen] = React.useState(false);
+
   const onRegisterForm = () => {
     setIsOpen((prev) => !prev);
   };
