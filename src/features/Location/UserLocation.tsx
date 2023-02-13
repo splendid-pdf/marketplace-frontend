@@ -2,7 +2,7 @@ import React from 'react';
 import { fetchLocation } from 'shared/api/fetchLocation';
 import useGeolocation from 'shared/hooks/UseGeoLocation';
 
-export const Location = () => {
+export const UserLocation = () => {
   const [location, setLocation] = React.useState('');
   const geolocation = useGeolocation();
   const { latitude, longitude } = geolocation.coordinates;
