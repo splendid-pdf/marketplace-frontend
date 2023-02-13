@@ -74,13 +74,13 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...register('password', {
               required: 'Введите пароль',
-              maxLength: {
-                value: 14,
-                message: 'Максимальная длинна пароля 14 символов',
-              },
               minLength: {
                 value: 6,
-                message: 'Минимальная длинна пароля 6 символов',
+                message: 'Минимальная длина пароля 6 символов',
+              },
+              maxLength: {
+                value: 14,
+                message: 'Максимальная длина пароля 14 символов',
               },
               pattern: {
                 value: /^[\w~'`!@#№?$%^&*()=+<>|/\\.,:;[\]{} \x22-]{6,25}$/i,
@@ -104,13 +104,13 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                   return 'Ваши пароли не совпадают';
                 }
               },
-              maxLength: {
-                value: 14,
-                message: 'Максимальная длинна пароля 14 символов',
-              },
               minLength: {
                 value: 6,
-                message: 'Минимальная длинна пароля 6 символов',
+                message: 'Минимальная длина пароля 6 символов',
+              },
+              maxLength: {
+                value: 14,
+                message: 'Максимальная длина пароля 14 символов',
               },
               pattern: {
                 value: /^[\w~'`!@#№?$%^&*()=+<>|/\\.,:;[\]{} \x22-]{6,25}$/i,
