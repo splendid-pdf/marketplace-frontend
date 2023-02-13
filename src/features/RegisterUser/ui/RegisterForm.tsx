@@ -18,7 +18,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
     control,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       email: '',
@@ -36,7 +36,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
   //eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const onSubmit = (obj) => {
-    console.log(obj);
+    const { email, password, checkbox } = obj;
+    console.log({ email, password, checkbox });
   };
 
   return (
@@ -73,6 +74,18 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...register('password', {
               required: 'Введите пароль',
+              maxLength: {
+                value: 14,
+                message: 'Максимальная длинна пароля 14 символов',
+              },
+              minLength: {
+                value: 6,
+                message: 'Минимальная длинна пароля 6 символов',
+              },
+              pattern: {
+                value: /^[\w~'`!@#№?$%^&*()=+<>|/\\.,:;[\]{} \x22-]{6,25}$/i,
+                message: 'Пароль указан некорректно',
+              },
             })}
           />
           <TextField
@@ -91,6 +104,18 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                   return 'Ваши пароли не совпадают';
                 }
               },
+              maxLength: {
+                value: 14,
+                message: 'Максимальная длинна пароля 14 символов',
+              },
+              minLength: {
+                value: 6,
+                message: 'Минимальная длинна пароля 6 символов',
+              },
+              pattern: {
+                value: /^[\w~'`!@#№?$%^&*()=+<>|/\\.,:;[\]{} \x22-]{6,25}$/i,
+                message: 'Пароль указан некорректно',
+              },
             })}
           />
           <Controller
@@ -100,7 +125,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
               <FormControlLabel
                 className={classes.checkbox}
                 // eslint-disable-next-line react/jsx-props-no-spreading
-                control={<Checkbox {...field} checked={field.value} />}
+                control={<Checkbox {...field} checked={field.value} disabled={!isValid} />}
                 label="Запомнить"
               />
             )}
