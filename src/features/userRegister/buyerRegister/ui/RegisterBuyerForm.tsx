@@ -70,6 +70,10 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
         }
       );
       console.dir(response.data);
+      if (checkbox) {
+        setItemToLS(LS_KEY_EMAIL, email);
+        setItemToLS(LS_KEY_PASSWORD, password);
+      }
       setItemToLS(LS_KEY_ID, response.data);
       reset();
       setOpened(false);
