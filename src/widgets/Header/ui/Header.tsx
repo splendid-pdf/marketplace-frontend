@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Header.module.scss';
-import { UserLocation } from 'features/Location/UserLocation';
+import { UserLocation } from 'features/userLocation/UserLocation';
 import SearchBar from '../searchBar/searchBar';
 
 export const Header: React.FC = () => {
