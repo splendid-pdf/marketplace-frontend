@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './RegisterBuyerForm.module.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import { Paper, Typography, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
 import { BackdropMarket } from 'shared/ui/Backdrop/BackdropMarket';
+import { axiosInstance } from '../../../../shared/api/axiosInstance';
+import { setItemToLS } from '../../../../shared/utils/setItemToLS';
+import {
+  LS_KEY_EMAIL,
+  LS_KEY_ID,
+  LS_KEY_PASSWORD 
+} from '../../../../shared/constants/localStorage';
+import { API_REGISTER_BUYER_URL } from '../../../../shared/api/apiEndpoints';
+import { BASE_URL } from '../../../../shared/constants/base_url';
 
 interface RegisterBuyerFormProps {
   isOpened: boolean;
@@ -13,6 +22,8 @@ interface RegisterBuyerFormProps {
 export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [opened, setOpened] = useState(isOpened);
+
 
   const {
     watch,
@@ -20,6 +31,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset
   } = useForm({
     defaultValues: {
       email: '',
@@ -32,9 +44,39 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
 
   //eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
-  const onSubmit = (obj) => {
+  const onSubmit = async (obj) => {
     const { email, password, checkbox } = obj;
     console.log({ email, password, checkbox });
+    try {
+      // TODO: Когда будет работать сервер, все эти функции до "const response ..." 
+      // нужно будет удалить -
+      // они повторяются в конце try-блока, после успешного ответа от сервера
+      console.log(`we are in onSubmit`);
+      if (checkbox) {
+        setItemToLS(LS_KEY_EMAIL, email);
+        setItemToLS(LS_KEY_PASSWORD, password);
+      }
+      setItemToLS(LS_KEY_ID, 'userID_received_from_api');
+      reset();
+      setOpened(false);
+      navigate('marketplace-frontend?popup=login');
+      const response = await axiosInstance.post(
+        // TODO: Вставить правильный URL для регистрации, когда будет работать сервер
+        API_REGISTER_BUYER_URL,
+        JSON.stringify({ obj }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.dir(response.data);
+      setItemToLS(LS_KEY_ID, response.data);
+      reset();
+      setOpened(false);
+      navigate(`/${BASE_URL}?popup=login`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const navigateBack = () => {
@@ -42,7 +84,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
   };
 
   return (
-    <BackdropMarket isOpen={isOpened}>
+    <BackdropMarket isOpen={opened}>
       <Paper elevation={5} className={classes.root}>
         <CloseIcon className={classes.iconClose} onClick={navigateBack} />
         <Typography variant="h5" className={classes.typography}>
