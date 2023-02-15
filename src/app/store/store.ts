@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { registerBuyerReducer } from '../../features/RegisterUser/model/slices/registerBuyerSlice';
+// eslint-disable-next-line max-len
+import { registerBuyerReducer } from 'features/userRegister/buyerRegister/model/slices/registerBuyerSlice';
 
 /**
  * @description Redux store

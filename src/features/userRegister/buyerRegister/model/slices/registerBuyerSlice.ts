@@ -1,9 +1,8 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
-import { registerBuyerUrl } from '../../../../shared/constants/apiEndpoints';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ErrorMessages } from 'shared/constants/errorMessages';
+import { registerBuyerUrl } from 'shared/constants/apiEndpoints';
 import { RegisterBuyerSchema } from '../types/RegisterBuyerSchema';
-import { ErrorMessages } from '../../../../shared/constants/errorMessages';
-
 
 const initialState = {
   buyer: {
@@ -12,7 +11,7 @@ const initialState = {
     error: null,
     isLoading: false,
     role: 'buyer',
-  } as RegisterBuyerSchema
+  } as RegisterBuyerSchema,
 };
 
 interface RegisterBuyerProps {
@@ -22,10 +21,10 @@ interface RegisterBuyerProps {
 
 export const registerBuyer = createAsyncThunk(
   'buyer/registerBuyer',
-  async(registerData: RegisterBuyerProps, { rejectWithValue, dispatch }) => {
+  async (registerData: RegisterBuyerProps, { rejectWithValue, dispatch }) => {
     try {
       const res: AxiosResponse = await axios.post(registerBuyerUrl, {
-        registerData
+        registerData,
       });
       if (!res.data) {
         throw new Error(ErrorMessages.NOT_FOUND);
@@ -38,17 +37,17 @@ export const registerBuyer = createAsyncThunk(
       console.error(error);
       return rejectWithValue(ErrorMessages.BAD_REGISTRATION_REQUEST);
     }
-  }
+  },
 );
 
 export const registerBuyerSlice = createSlice({
   name: 'buyer',
-  initialState, 
+  initialState,
   reducers: {
     setRegData: (state, action) => {
       state.buyer = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setRegData } = registerBuyerSlice.actions;

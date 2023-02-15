@@ -1,19 +1,20 @@
 import React from 'react';
-import classes from './Register.module.scss';
+import classes from './RegisterBuyerForm.module.scss';
 import { Controller, useForm } from 'react-hook-form';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import { Paper, Typography, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
 import { BackdropMarket } from 'shared/ui/Backdrop/BackdropMarket';
 
-interface RegisterFormProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface RegisterBuyerFormProps {
+  isOpened: boolean;
 }
 
-export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
-  const { isOpen, onClose } = props;
+export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {
-    reset,
     watch,
     control,
     register,
@@ -29,10 +30,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
     mode: 'onSubmit',
   });
 
-  React.useEffect(() => {
-    reset();
-  }, [isOpen]);
-
   //eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const onSubmit = (obj) => {
@@ -40,10 +37,14 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
     console.log({ email, password, checkbox });
   };
 
+  const navigateBack = () => {
+    navigate(location.pathname);
+  };
+
   return (
-    <BackdropMarket isOpen={isOpen}>
+    <BackdropMarket isOpen={isOpened}>
       <Paper elevation={5} className={classes.root}>
-        <CloseIcon className={classes.iconClose} onClick={onClose} />
+        <CloseIcon className={classes.iconClose} onClick={navigateBack} />
         <Typography variant="h5" className={classes.typography}>
           Регистрация
         </Typography>
