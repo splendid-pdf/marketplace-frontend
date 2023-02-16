@@ -4,37 +4,32 @@ import { ErrorMessages } from 'shared/constants/errorMessages';
 import { API_REGISTER_BUYER_URL } from 'shared/api/apiEndpoints';
 import { RegisterBuyerSchema } from '../types/RegisterBuyerSchema';
 import { axiosInstance } from '../../../../../shared/api/axiosInstance';
+import { LS_KEY_BUYER_ID } from '../../../../../shared/constants/localStorage';
 
 // TODO: Возможно этот весь функционал нужно будет просто удалить - 
-// в стейт ничего из регистрации покупателя заносить не нужно
-const initialState = {
-  buyer: {
-    login: '',
-    password: '',
-    error: null,
-    isLoading: false,
-    role: 'buyer',
-  } as RegisterBuyerSchema,
-};
+// в стейт ничего из регистрации покупателя заносить не нужно, разве что id покупателя
 
-interface RegisterBuyerProps {
-  username: string;
-  password: string;
-}
+const initialState = {
+  id: ''
+};
 
 export const registerBuyer = createAsyncThunk(
   'buyer/registerBuyer',
-  async (registerData: RegisterBuyerProps, { rejectWithValue, dispatch }) => {
+  async (registerData: RegisterBuyerSchema, { rejectWithValue, dispatch }) => {
     try {
-      const res: AxiosResponse = await axiosInstance.post(API_REGISTER_BUYER_URL, {
-        registerData,
-      });
+      const res: AxiosResponse = await axiosInstance.post(
+        API_REGISTER_BUYER_URL, 
+        JSON.stringify({ registerData}),
+        {
+          headers: {'Content-Type': 'application/json'},
+          withCredentials: true, 
+        });
       if (!res.data) {
         throw new Error(ErrorMessages.NOT_FOUND);
       }
 
-      localStorage.setItem('buyer', JSON.stringify(res.data));
-      dispatch(setRegData(res.data));
+      localStorage.setItem(LS_KEY_BUYER_ID, JSON.stringify(res.data.id));
+      dispatch(setRegData(res.data.id));
       return res.data;
     } catch (error) {
       console.error(error);
@@ -48,7 +43,10 @@ export const registerBuyerSlice = createSlice({
   initialState,
   reducers: {
     setRegData: (state, action) => {
-      state.buyer = action.payload;
+      state = {
+        ...state,
+        id: action.payload,
+      };
     },
   },
 });

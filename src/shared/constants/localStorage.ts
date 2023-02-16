@@ -6,3 +6,7 @@ export const LS_KEY_EMAIL = 'marketplace_user_email';
 // TODO: Пароль нельзя так хранить - это временный костыль, уберем, как разберемся, как сохранять его в форме
 // если пользователь нажал на чекбокс "Запомнить"
 export const LS_KEY_PASSWORD = 'marketplace_user_password';
+
+export const LS_KEY_BUYER_AUTH_DATA = 'marketplace_buyer_authData';
+export const LS_KEY_BUYER_TOKEN = 'marketplace_buyer_token';
+export const LS_KEY_BUYER_ID = 'marketplace_buyer_id';

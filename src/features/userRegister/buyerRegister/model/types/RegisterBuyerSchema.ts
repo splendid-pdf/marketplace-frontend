@@ -2,6 +2,16 @@ export interface RegisterBuyerSchema {
   login: string;
   password: string;
   role: string;
-  isLoading?: boolean;
-  error?: string | null;
+}
+
+export interface RegisterBuyerResponseSchema {
+  id: string;
+}
+
+export interface BuyerStateSchema {
+  id?: string
+  login?: string;
+  password?: string;
+  role?: 'buyer';
+  isAuth?: boolean;
 }
