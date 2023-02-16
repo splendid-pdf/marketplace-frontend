@@ -1,9 +1,12 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ErrorMessages } from 'shared/constants/errorMessages';
-import { registerBuyerUrl } from 'shared/constants/apiEndpoints';
+import { API_REGISTER_BUYER_URL } from 'shared/api/apiEndpoints';
 import { RegisterBuyerSchema } from '../types/RegisterBuyerSchema';
+import { axiosInstance } from '../../../../../shared/api/axiosInstance';
 
+// TODO: Возможно этот весь функционал нужно будет просто удалить - 
+// в стейт ничего из регистрации покупателя заносить не нужно
 const initialState = {
   buyer: {
     login: '',
@@ -23,7 +26,7 @@ export const registerBuyer = createAsyncThunk(
   'buyer/registerBuyer',
   async (registerData: RegisterBuyerProps, { rejectWithValue, dispatch }) => {
     try {
-      const res: AxiosResponse = await axios.post(registerBuyerUrl, {
+      const res: AxiosResponse = await axiosInstance.post(API_REGISTER_BUYER_URL, {
         registerData,
       });
       if (!res.data) {

@@ -5,6 +5,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Paper, Typography, TextField, Button, Link as LinkMUI } from '@mui/material';
 import { BackdropMarket } from 'shared/ui/Backdrop/BackdropMarket';
+import { getItemFromLS } from '../../../../shared/utils/getItemFromLS';
+import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from '../../../../shared/constants/localStorage';
 
 interface AuthBuyerFormProps {
   isOpened: boolean;
@@ -20,8 +22,8 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: '',
-      password: '',
+      email: getItemFromLS(LS_KEY_EMAIL) || '',
+      password: getItemFromLS(LS_KEY_PASSWORD) || '',
     },
     mode: 'onSubmit',
   });
