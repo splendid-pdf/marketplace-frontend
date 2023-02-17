@@ -1,10 +1,14 @@
+@import 'app/styles/main.scss';
+
 .Header {
-  width: 100%;
   height: var(--header-height);
   padding: 1rem;
+  background-color: var(--secondary-color);
+}
+
+.headerWrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  background-color: var(--secondary-color);
+  justify-content: space-between;
   color: white;
 }

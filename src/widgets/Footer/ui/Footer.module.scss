@@ -1,10 +1,15 @@
+@import 'app/styles/main.scss';
+
 .Footer {
   width: 100%;
   height: var(--footer-height);
   padding: 1rem;
+  background-color: var(--secondary-color);
+}
+
+.wrapperFooter {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: var(--secondary-color);
   color: white;
 }
