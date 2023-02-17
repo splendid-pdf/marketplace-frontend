@@ -16,7 +16,10 @@ export const Card = ({ obj }) => {
           className={classes.favoriteButton}
           onClick={() => setActiveFavorite(!activeFavorite)}
         >
-          <Favorite fill={activeFavorite ? '#F15513' : 'white'} />
+          <Favorite
+            fill={activeFavorite ? '#F15513' : 'white'}
+            stroke={activeFavorite ? '#F15513' : '#343136'}
+          />
         </button>
         <img src={image} />
       </div>
