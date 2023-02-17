@@ -12,16 +12,17 @@ import { LS_KEY_ROLE } from '../../../shared/constants/localStorage';
 export const Footer: React.FC = () => {
   return (
     <div className={classes.Footer}>
-      <h2 style={{ fontSize: 24 }}>Footer</h2>
-      <LinkMUI 
-        to={`/${BASE_URL}/registerSeller`} 
-        underline="none" 
-        component={Link}
-        onClick={() => setItemToLS(LS_KEY_ROLE, 'seller')
-        }
-      >
-        Создать аккаунт продавца
-      </LinkMUI>
+      <div className={classes.wrapperFooter + ' ' + classes.container}>
+        <h2 style={{ fontSize: 24 }}>Footer</h2>
+        <LinkMUI
+          to={`/${BASE_URL}/registerSeller`}
+          underline="none"
+          component={Link}
+          onClick={() => setItemToLS(LS_KEY_ROLE, 'seller')}
+        >
+          Создать аккаунт продавца
+        </LinkMUI>
+      </div>
     </div>
   );
 };

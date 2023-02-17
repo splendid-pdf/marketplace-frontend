@@ -43,6 +43,7 @@ const SearchBar = () => {
         className={styles.input}
         placeholder="Искать товары"
       />
+
       {showDropdown && (
         <div className={styles.Dropdown}>
           {data

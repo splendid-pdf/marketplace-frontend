@@ -22,7 +22,7 @@ const test = [
 
 const HomePage = () => {
   return (
-    <div className={`${classes.HomePage} main`}>
+    <div className={`${classes.HomePage} main container`}>
       <h1>Добро пожаловать в Мир мебели!</h1>
       <div className={classes.wrapperTest}>
         {test.map((item, index) => (
