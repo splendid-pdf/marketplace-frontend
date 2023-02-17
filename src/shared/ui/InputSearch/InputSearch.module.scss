@@ -1,16 +1,16 @@
 .inputSearch {
-    padding: 2px 4px;
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    border-color: #a3a3a3;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border-color: #a3a3a3;
 
-    &__input {
-        margin-left: 8px;
-        flex: 1;
-    }
+  &__input {
+    margin-left: 8px;
+    flex: 1;
+  }
 
-    &__iconButton {
-        padding: 10px;
-    }
+  &__iconButton {
+    padding: 10px;
+  }
 }
