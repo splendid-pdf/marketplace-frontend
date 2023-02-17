@@ -1,0 +1,60 @@
+.cardBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 18px;
+  width: 305px;
+}
+
+.image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+  background-color: #efefef;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    width: 305px;
+  }
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 13px;
+  right: 12px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #343136;
+}
+
+.priceBlock {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.totalPrice {
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  column-gap: 8px;
+
+  span {
+    font-weight: 400;
+    color: #a3a3a3;
+    text-decoration: line-through;
+  }
+}
+
+.cartButton {
+  background-color: white;
+}
