@@ -37,13 +37,7 @@ const SearchBar = () => {
     <div className={classes.Container}>
       <Paper
         component="form"
-        style={{
-          padding: '2px 4px',
-          display: 'flex',
-          alignItems: 'center',
-          width: 600,
-          flexGrow: 2,
-        }}
+        className={classes.inputWrapper}
       >
         <InputBase
           style={{

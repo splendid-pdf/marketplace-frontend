@@ -15,21 +15,19 @@ export const NavBar = () => {
 
   return (
     <div className={classes.nav}>
-      <div className={classes.container}>
-        <div className={classes.wrapperNavBar}>
-          <Link to={`/${baseUrl}/delivery`}>
-            <IconWithText icon={<HomeRepairServiceOutlinedIcon />} text={'Доставка'} />
-          </Link>
-          <Link to={`?popup=login`} onClick={() => setItemToLS(LS_KEY_ROLE, 'buyer')}>
-            <IconWithText icon={<PermIdentityOutlinedIcon />} text={'Войти'} />
-          </Link>
-          <Link to={`/${baseUrl}/favorites`}>
-            <IconWithText icon={<FavoriteBorderOutlinedIcon />} text={'Избранное'} />
-          </Link>
-          <Link to={`/${baseUrl}/cart`}>
-            <IconWithText icon={<ShoppingBagOutlinedIcon />} text={'Корзина'} />
-          </Link>
-        </div>
+      <div className={classes.wrapperNavBar + ' ' + classes.container}>
+        <Link to={`/${baseUrl}/delivery`}>
+          <IconWithText icon={<HomeRepairServiceOutlinedIcon />} text={'Доставка'} />
+        </Link>
+        <Link to={`?popup=login`} onClick={() => setItemToLS(LS_KEY_ROLE, 'buyer')}>
+          <IconWithText icon={<PermIdentityOutlinedIcon />} text={'Войти'} />
+        </Link>
+        <Link to={`/${baseUrl}/favorites`}>
+          <IconWithText icon={<FavoriteBorderOutlinedIcon />} text={'Избранное'} />
+        </Link>
+        <Link to={`/${baseUrl}/cart`}>
+          <IconWithText icon={<ShoppingBagOutlinedIcon />} text={'Корзина'} />
+        </Link>
       </div>
     </div>
   );
