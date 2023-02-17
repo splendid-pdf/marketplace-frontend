@@ -8,6 +8,8 @@ import { Spinner } from '../shared/ui/Spinner/Spinner';
 import { NavBar } from '../widgets/NavBar';
 import { Header } from '../widgets/Header';
 import { Footer } from '../widgets/Footer';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 const App = () => {
   return (
@@ -15,10 +17,12 @@ const App = () => {
       <ErrorBoundary>
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
-            <Header />
-            <NavBar />
-            <Routing />
-            <Footer />
+            <Provider store={store}>
+              <Header />
+              <NavBar />
+              <Routing />
+              <Footer />
+            </Provider>
           </Suspense>
         </BrowserRouter>
       </ErrorBoundary>

@@ -1,5 +1,5 @@
-import { BuyerSchema } from '../../entities/Buyer';
+import { AuthBuyerSchema } from '../../features/userAuth/buyerAuth/model/types/AuthBuyerSchema';
 
 export interface StateSchema {
-  buyer: BuyerSchema;
+  buyer: AuthBuyerSchema;
 }

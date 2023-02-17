@@ -7,6 +7,8 @@ import { Paper, Typography, TextField, Button, Link as LinkMUI } from '@mui/mate
 import { BackdropMarket } from 'shared/ui/Backdrop/BackdropMarket';
 import { getItemFromLS } from '../../../../shared/utils/getItemFromLS';
 import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from '../../../../shared/constants/localStorage';
+import { useAppDispatch } from '../../../../app/store/hooks';
+import { authenticateBuyer } from '../model/slices/authBuyerSlice';
 
 interface AuthBuyerFormProps {
   isOpened: boolean;
@@ -15,6 +17,7 @@ interface AuthBuyerFormProps {
 export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -33,6 +36,7 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
   const onSubmit = (obj) => {
     const { email, password } = obj;
     console.log({ email, password });
+    dispatch(authenticateBuyer({ email, password }));
   };
 
   const navigateBack = () => {

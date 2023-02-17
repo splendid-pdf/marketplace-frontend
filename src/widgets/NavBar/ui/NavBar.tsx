@@ -15,7 +15,7 @@ export const NavBar = () => {
 
   return (
     <div className={classes.nav}>
-      <Link to={`/${baseUrl}`}>
+      <Link to={`/${baseUrl}/delivery`}>
         <IconWithText
           icon={<HomeRepairServiceOutlinedIcon />}
           text={"Доставка"}
@@ -36,7 +36,7 @@ export const NavBar = () => {
           text={"Избранное"}
         />
       </Link>
-      <Link to={`/${baseUrl}/contacts`}>
+      <Link to={`/${baseUrl}/cart`}>
         <IconWithText
           icon={<ShoppingBagOutlinedIcon />}
           text={"Корзина"}
