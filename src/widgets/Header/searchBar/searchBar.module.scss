@@ -1,7 +1,16 @@
-.Conteiner {
+.Container {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.inputWrapper {
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
 }
 
 .Dropdown {
@@ -11,7 +20,8 @@
   border: 1px solid gray;
   position: absolute;
   box-sizing: border-box;
-  width: 600px;
+  width: 300px;
+  max-width: 600px;
 }
 
 .DropdownRow {
