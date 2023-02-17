@@ -12,7 +12,7 @@ import { LS_KEY_ROLE } from '../../../shared/constants/localStorage';
 export const Footer: React.FC = () => {
   return (
     <div className={classes.Footer}>
-      <div className={classes.wrapperFooter + ' ' + classes.container}>
+      <div className={classes.wrapperFooter + ' container'}>
         <h2 style={{ fontSize: 24 }}>Footer</h2>
         <LinkMUI
           to={`/${BASE_URL}/registerSeller`}

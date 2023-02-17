@@ -15,7 +15,7 @@ export const NavBar = () => {
 
   return (
     <div className={classes.nav}>
-      <div className={classes.wrapperNavBar + ' ' + classes.container}>
+      <div className={`${classes.wrapperNavBar} container`}>
         <Link to={`/${baseUrl}/delivery`}>
           <IconWithText icon={<HomeRepairServiceOutlinedIcon />} text={'Доставка'} />
         </Link>
