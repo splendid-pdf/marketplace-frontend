@@ -1,22 +1,20 @@
 .root {
   position: relative;
-  border-radius: 30px !important;
+  border-radius: 10px !important;
   display: flex;
   flex-direction: column;
   padding: 0 30px;
 }
 
 .iconClose {
-  font-size: 30px !important;
-  color: white;
+  font-size: 32px !important;
   position: absolute;
   cursor: pointer;
-  right: -30px;
-  top: -30px;
+  right: 32px;
+  top: 32px;
 }
 
 .typography {
-  font-weight: 400 !important;
   font-size: 32px !important;
   padding: 50px 0 32px;
 }
@@ -25,7 +23,7 @@
   display: flex;
   flex-direction: column;
   width: 354px;
-  padding-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .field {
@@ -33,16 +31,16 @@
 }
 
 .buttonSubmit {
-  text-transform: none !important;
-  font-weight: 400 !important;
-  font-size: 16px !important;
   margin-top: 14px !important;
 }
 
 .linkContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  row-gap: 8px;
+  flex-direction: column;
+  row-gap: 5px;
   margin-bottom: 60px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 140%;
 }
