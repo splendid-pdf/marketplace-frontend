@@ -1,0 +1,28 @@
+.Footer {
+  background-color: white;
+}
+
+.FooterContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 61px;
+  align-items: center;
+  width: 1280px;
+  margin: auto;
+}
+
+.FooterAgreement {
+  display: flex;
+  gap: 20px;
+}
+
+.AgreementText {
+  font-weight: 600;
+  font-size: 16px;
+  color: #343136;
+}
+
+.RightsText {
+  font-weight: 400;
+  font-size: 16px;
+}
