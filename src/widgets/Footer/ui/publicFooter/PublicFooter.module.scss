@@ -1,0 +1,57 @@
+.Footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 4rem 0;
+}
+
+.FooterWrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.FooterHeading {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.Footer a {
+  text-decoration: none;
+  color: white;
+  gap: 1rem;
+}
+
+.FooterAppLinks {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.FooterLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.AppLinks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.SocialLinksContainer {
+  margin-top: 2rem;
+}
+
+.SocialLinks {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
