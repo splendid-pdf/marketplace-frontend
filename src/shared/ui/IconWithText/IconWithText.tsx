@@ -11,7 +11,7 @@ export const IconWithText: FC<IIconProps> = ({icon,text}) => {
   return (
     <Grid container direction="column" alignItems="center">
       <Grid className={styles.iconWithText__icon} item>{icon}</Grid>
-      <Grid item>{text}</Grid>
+      <Grid item className={styles.iconWithText__text}>{text}</Grid>
     </Grid>
   );
 };

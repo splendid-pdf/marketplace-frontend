@@ -1,7 +1,8 @@
 .Header {
+  display: flex;
   height: var(--header-height);
-  padding: 1rem;
-  background-color: var(--secondary-color);
+  align-items: center;
+  border-bottom: 1px solid #a3a3a3;
 }
 
 .headerWrapper {
@@ -9,4 +10,21 @@
   flex-direction: row;
   justify-content: space-between;
   color: white;
+}
+
+.appBar {
+  background-color: initial !important;
+  box-shadow: none !important;
+}
+
+.btnHeader {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.toolBar {
+  justify-content: space-between;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
 }

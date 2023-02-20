@@ -1,8 +1,4 @@
-// import IconButton from '@mui/material/IconButton';
-// import SearchIcon from '@mui/icons-material/Search';
 import { useState, useEffect } from "react";
-// import Paper from '@mui/material/Paper';
-// import InputBase from '@mui/material/InputBase';
 import styles from "./searchBar.module.scss";
 import { fetchUsersTest } from "shared/api/fetchUsersTest";
 import InputSearch from "shared/ui/InputSearch/InputSearch";

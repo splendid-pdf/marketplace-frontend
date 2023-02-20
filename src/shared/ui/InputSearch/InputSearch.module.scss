@@ -2,8 +2,11 @@
   padding: 2px 4px;
   display: flex;
   align-items: center;
-  border-radius: 30px;
+  border-radius: 30px !important;/* поставила important т.к стиль mui не перезатирается для border-radius */
   border-color: #a3a3a3;
+  height: 46px !important;
+  box-shadow: none !important;
+  border: 1px solid #a3a3a3;
 
   &__input {
     margin-left: 8px;
