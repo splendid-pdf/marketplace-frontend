@@ -1,18 +1,27 @@
 {
   "files": {
-    "main.css": "/marketplace-frontend/static/css/main.0d1fab62.css",
-    "main.js": "/marketplace-frontend/static/js/main.8cef72a0.js",
+    "main.css": "/marketplace-frontend/static/css/main.c779f020.css",
+    "main.js": "/marketplace-frontend/static/js/main.ddb55ff4.js",
     "static/js/787.c23b093c.chunk.js": "/marketplace-frontend/static/js/787.c23b093c.chunk.js",
     "static/media/Farico12-322.jpg": "/marketplace-frontend/static/media/Farico12-322.a89f2aa1807628c67cd5.jpg",
+    "static/media/appStore.svg": "/marketplace-frontend/static/media/appStore.7496a32880e29145b21e265316986f99.svg",
+    "static/media/googlePlay.svg": "/marketplace-frontend/static/media/googlePlay.2a729c252b4085aea98506b0086f5776.svg",
+    "static/media/logo.svg": "/marketplace-frontend/static/media/logo.c46ae9ac658b38c16e3371d24579a38f.svg",
+    "static/media/youTube.svg": "/marketplace-frontend/static/media/youTube.27d9e4d6fc71bff40a3ef44c3527ec31.svg",
+    "static/media/tg.svg": "/marketplace-frontend/static/media/tg.af977bd402eb14026aa6927a143ed901.svg",
+    "static/media/vk.svg": "/marketplace-frontend/static/media/vk.ff5dfc0c7e7bded7ecd4ff68918dd570.svg",
+    "static/media/delivery.svg": "/marketplace-frontend/static/media/delivery.2862d04be3d9fe13debdf9742499e34f.svg",
     "index.html": "/marketplace-frontend/index.html",
-    "static/media/cart.svg": "/marketplace-frontend/static/media/cart.2b926ae80524f7cc23c7732c8637303c.svg",
-    "static/media/favorite.svg": "/marketplace-frontend/static/media/favorite.758af4c8e254acc1eee78e484240c01c.svg",
-    "main.0d1fab62.css.map": "/marketplace-frontend/static/css/main.0d1fab62.css.map",
-    "main.8cef72a0.js.map": "/marketplace-frontend/static/js/main.8cef72a0.js.map",
+    "static/media/search.svg": "/marketplace-frontend/static/media/search.de8224a8c077d54de87d835b4d710f9b.svg",
+    "static/media/cart.svg": "/marketplace-frontend/static/media/cart.2f37f801c02bce0d23d3398933072a1d.svg",
+    "static/media/favorite.svg": "/marketplace-frontend/static/media/favorite.8f66bd076fc23bf8e42bc7c7606beadd.svg",
+    "static/media/person.svg": "/marketplace-frontend/static/media/person.cbbf055c81fb29f5c34ea403f3e06e44.svg",
+    "main.c779f020.css.map": "/marketplace-frontend/static/css/main.c779f020.css.map",
+    "main.ddb55ff4.js.map": "/marketplace-frontend/static/js/main.ddb55ff4.js.map",
     "787.c23b093c.chunk.js.map": "/marketplace-frontend/static/js/787.c23b093c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d1fab62.css",
-    "static/js/main.8cef72a0.js"
+    "static/css/main.c779f020.css",
+    "static/js/main.ddb55ff4.js"
   ]
 }
