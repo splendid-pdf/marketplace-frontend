@@ -9,7 +9,7 @@ interface IInputSearchProps {
     onChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
     // eslint-disable-next-line no-unused-vars
     onSearch: (value: string) => void;
-    placeholder:string;
+    placeholder: string;
     iconColor?: string;
     className?: string;
 }
@@ -24,7 +24,10 @@ const InputSearch: FC<IInputSearchProps> = ({
 }) => {
   return (
     <>
-      <Paper component="form" className={classNames(styles.inputSearch, className)}>
+      <Paper
+        component="form"
+        className={classNames(styles.inputSearch, className)}
+      >
         <InputBase
           className={styles.inputSearch__input}
           placeholder={placeholder}

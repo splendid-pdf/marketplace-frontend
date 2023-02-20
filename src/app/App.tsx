@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import Routing from "pages";
 import ErrorBoundary from "./ErrorBoundary";
 import { Spinner } from "../shared/ui/Spinner/Spinner";
-import { NavBar } from "../widgets/NavBar";
 import { Header } from "../widgets/Header";
 import { Footer } from "../widgets/Footer";
 import { Provider } from "react-redux";
@@ -21,7 +20,6 @@ const App = () => {
             <Suspense fallback={<Spinner />}>
               <Provider store={store}>
                 <Header />
-                <NavBar />
                 <Routing />
                 <Footer />
               </Provider>
