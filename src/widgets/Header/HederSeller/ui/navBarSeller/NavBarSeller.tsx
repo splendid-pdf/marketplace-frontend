@@ -3,6 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+// import classes from "./NavBarSeller.module.scss";
 
 interface LinkTabProps {
   to: string;
