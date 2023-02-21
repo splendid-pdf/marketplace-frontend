@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { Typography, TextField, Button, Link as LinkMUI } from "@mui/material";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "shared/constants/base_url";
 
 export const AuthSellerForm = () => {
   const {
@@ -86,7 +87,7 @@ export const AuthSellerForm = () => {
         <LinkMUI to={`#`} underline="none" component={Link}>
           Забыли пароль?
         </LinkMUI>
-        <LinkMUI to={`#`} underline="none" component={Link}>
+        <LinkMUI to={`/${BASE_URL}/register-seller`} underline="none" component={Link}>
           Создать аккаунт?
         </LinkMUI>
       </div>

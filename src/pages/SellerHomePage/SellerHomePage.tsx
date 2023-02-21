@@ -1,11 +1,8 @@
-import classes from './SellerHomePage.module.scss';
+import React from "react";
+import classes from "./SellerHomePage.module.scss";
 
-const SellerHomePage = () => {
-  return (
-    <div className={`${classes.SellerHomePage} main`}>
-      <h1>Главная страница продавца</h1>
-    </div>
-  );
+const SellerHomePage: React.FC = () => {
+  return <div className={classes.root}> HomeSellerPage</div>;
 };
 
 export default SellerHomePage;

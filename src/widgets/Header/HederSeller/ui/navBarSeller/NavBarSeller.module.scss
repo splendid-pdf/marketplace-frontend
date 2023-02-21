@@ -1,0 +1,19 @@
+.wrapperNavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  column-gap: 1rem;
+}
+
+.wrapperNavBar a {
+  color: white;
+  text-decoration: none;
+}
+
+.nawrapperNavBar a.active {
+  color: white;
+}
+
+.link:hover svg {
+  fill: #343136;
+}

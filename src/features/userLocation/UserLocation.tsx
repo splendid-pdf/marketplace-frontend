@@ -1,15 +1,15 @@
-import React from 'react';
-import { fetchLocation } from 'shared/api/fetchLocation';
-import useGeolocation from 'shared/hooks/UseGeoLocation';
+import React from "react";
+import { fetchLocation } from "shared/api/fetchLocation";
+import useGeolocation from "shared/hooks/UseGeoLocation";
 
 export const UserLocation = () => {
-  const [location, setLocation] = React.useState('');
+  const [location, setLocation] = React.useState("");
   const geolocation = useGeolocation();
   const { latitude, longitude } = geolocation.coordinates;
 
   React.useEffect(() => {
     if (!geolocation.loaded) {
-      if ('error' in geolocation) {
+      if ("error" in geolocation) {
         console.log(geolocation.error);
       }
       return;
@@ -18,5 +18,5 @@ export const UserLocation = () => {
       .then((res) => setLocation(res.data.city))
       .catch(console.warn);
   }, [geolocation]);
-  return <div>{location}</div>;
+  return <>{location}</>;
 };

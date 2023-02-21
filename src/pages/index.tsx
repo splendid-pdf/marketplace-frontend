@@ -1,16 +1,19 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { BASE_URL } from 'shared/constants/base_url';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { BASE_URL } from "shared/constants/base_url";
 
-import GetParameterPopups from './PopupsRoutes';
-import HomePage from './HomePage/HomePage';
-import NotFoundPage from './NotFoundPage/NotFoundPage';
-// import SellerHomePage from './SellerHomePage/SellerHomePage';
-import UserProfilePage from './UserProfilePage/UserProfilePage';
-import RegisterSellerPage from './RegisterSellerPage/RegisterSellerPage';
-import CartPage from './CartPage/CartPage';
-import DeliveryPage from './DeliveryPage/DeliveryPage';
-import FavoritesPage from './FavoritesPage/FavoritesPage';
+import GetParameterPopups from "./PopupsRoutes";
+import HomePage from "./HomePage/HomePage";
+import NotFoundPage from "./NotFoundPage/NotFoundPage";
+import UserProfilePage from "./UserProfilePage/UserProfilePage";
+import CartPage from "./CartPage/CartPage";
+import DeliveryPage from "./DeliveryPage/DeliveryPage";
+import FavoritesPage from "./FavoritesPage/FavoritesPage";
+import AuthSellerPage from "./AuthSellerPage/AuthSellerPage";
+import RegisterSellerPage from "./RegisterSellerPage/RegisterSellerPage";
+import SellerBasePage from "./SellerBasePage/SellerBasePage";
+import SellerHomePage from "./SellerHomePage/SellerHomePage";
+import SellerProductPage from "./SellerProductPage/SellerProductPage";
 
 // import { lazy } from 'react';
 // const HomePage = lazy(() => import('./HomePage/HomePage'));
@@ -22,7 +25,7 @@ const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
 
   return (
-    <>
+    <div className={"container"}>
       <Routes>
         <Route path={`/${baseUrl}`} element={<HomePage />} />
         <Route path={`/${baseUrl}/userProfile`} element={<UserProfilePage />} />
@@ -30,12 +33,16 @@ const Routing: React.FC = () => {
         <Route path={`/${baseUrl}/delivery`} element={<DeliveryPage />} />
         <Route path={`/${baseUrl}/favorites`} element={<FavoritesPage />} />
         <Route path={`/${baseUrl}/cart`} element={<CartPage />} />
-        {/* <Route path={`/${baseUrl}/seller`} element={<SellerHomePage />} /> */}
-        <Route path={`/${baseUrl}/registerSeller`} element={<RegisterSellerPage />} />
+        <Route path={`/${baseUrl}/auth-seller`} element={<AuthSellerPage />} />
+        <Route path={`/${baseUrl}/register-seller`} element={<RegisterSellerPage />} />
+        <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
+          <Route path="" element={<SellerHomePage />} />
+          <Route path="product" element={<SellerProductPage />} />
+        </Route>
         <Route path={`/${baseUrl}/*`} element={<NotFoundPage />} />
       </Routes>
       <GetParameterPopups />
-    </>
+    </div>
   );
 };
 

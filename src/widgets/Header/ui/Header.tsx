@@ -1,19 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
 import classes from "./Header.module.scss";
 import SearchBar from "../searchBar/searchBar";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { ReactComponent as Logo } from "../../../shared/images/icons/logo.svg";
 import { ReactComponent as CatalogIcon } from "../../../shared/images/icons/catalog.svg";
-import { ButtonMarketPlace} from "shared/ui/Button/ButtonMarketPlace";
+import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
 import { NavBar } from "widgets/Header/NavBar";
 import { TopHeader } from "../TopHeader/TopHeader";
 
 export const Header: React.FC = () => {
+  const { pathname } = useLocation();
+  if (pathname.includes("home-seller")) return <></>;
   return (
     <>
-      <TopHeader/>
+      <TopHeader />
       <div className={classes.Header}>
         <div className={classes.headerWrapper + " " + "container"}>
           <Box sx={{ flexGrow: 1 }}>

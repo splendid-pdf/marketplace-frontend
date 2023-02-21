@@ -1,3 +1,4 @@
+import { UserLocation } from "features/userLocation/UserLocation";
 import classes from "./TopHeader.module.scss";
 
 export const TopHeader = () => {
@@ -7,7 +8,7 @@ export const TopHeader = () => {
         <div className={classes.topHeader__container}>
           <div className={classes.topHeader__leftSide}>
             <div>
-              <p>Санкт Петербург</p>
+              <p>{UserLocation()}</p>
             </div>
             <div>
               <p>Пункты выдачи</p>
