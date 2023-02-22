@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
-import NavBarSeller from "widgets/Header/HederSeller/ui/NavBarSeller/NavBarSeller";
+import { NavBarSeller } from "widgets/Header/HederSeller";
 import classes from "./SellerBasePage.module.scss";
 
 const SellerBasePage = () => {
