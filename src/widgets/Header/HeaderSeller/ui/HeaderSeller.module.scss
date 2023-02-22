@@ -1,0 +1,21 @@
+.Header {
+  display: flex;
+  padding: 30px 0;
+  align-items: center;
+  border-bottom: 1px solid #a3a3a3;
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftBlockHeader {
+  display: flex;
+  column-gap: 20px;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+}

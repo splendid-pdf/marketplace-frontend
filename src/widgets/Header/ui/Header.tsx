@@ -9,10 +9,18 @@ import { ReactComponent as CatalogIcon } from "../../../shared/images/icons/cata
 import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
 import { NavBar } from "widgets/Header/NavBar";
 import { TopHeader } from "../TopHeader/TopHeader";
+import { HeaderSeller } from "../HeaderSeller";
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
-  if (pathname.includes("home-seller")) return <></>;
+
+  if (
+    pathname.includes("home-seller") ||
+    pathname === `/${BASE_URL}/register-seller` ||
+    pathname === `/${BASE_URL}/auth-seller`
+  )
+    return <HeaderSeller />;
+
   return (
     <>
       <TopHeader />

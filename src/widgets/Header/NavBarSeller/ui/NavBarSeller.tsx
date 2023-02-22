@@ -10,7 +10,7 @@ interface LinkTabProps {
   label: string;
 }
 
-export default function NavBarSeller() {
+export const NavBarSeller = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -32,4 +32,4 @@ export default function NavBarSeller() {
       </Box>
     </Box>
   );
-}
+};
