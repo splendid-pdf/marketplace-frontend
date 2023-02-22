@@ -9,7 +9,7 @@ import { ReactComponent as CatalogIcon } from "../../../shared/images/icons/cata
 import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
 import { NavBar } from "widgets/Header/NavBar";
 import { TopHeader } from "../TopHeader/TopHeader";
-import { HeaderSeller } from "../HederSeller";
+import { HeaderSeller } from "../HeaderSeller";
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();

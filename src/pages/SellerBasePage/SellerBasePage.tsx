@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
-import { NavBarSeller } from "widgets/Header/HederSeller";
+import { NavBarSeller } from "widgets/Header/NavBarSeller";
 import classes from "./SellerBasePage.module.scss";
 
 const SellerBasePage = () => {
@@ -9,7 +9,7 @@ const SellerBasePage = () => {
     return <Navigate to={`/${BASE_URL}/auth-seller`} />;
   }
   return (
-    <div className={`${classes.SellerBasePage} main container`}>
+    <div className={classes.SellerBasePage}>
       <NavBarSeller />
       <Outlet />
     </div>
