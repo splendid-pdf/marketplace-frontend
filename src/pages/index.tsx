@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
-
 import GetParameterPopups from "./PopupsRoutes";
 import HomePage from "./HomePage/HomePage";
 import NotFoundPage from "./NotFoundPage/NotFoundPage";
@@ -25,7 +24,7 @@ const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
 
   return (
-    <div className={"container"}>
+    <div className={"content" + " " + "container"}>
       <Routes>
         <Route path={`/${baseUrl}`} element={<HomePage />} />
         <Route path={`/${baseUrl}/userProfile`} element={<UserProfilePage />} />
@@ -36,7 +35,7 @@ const Routing: React.FC = () => {
         <Route path={`/${baseUrl}/auth-seller`} element={<AuthSellerPage />} />
         <Route path={`/${baseUrl}/register-seller`} element={<RegisterSellerPage />} />
         <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
-          <Route path="" element={<SellerHomePage />} />
+          <Route index element={<SellerHomePage />} />
           <Route path="product" element={<SellerProductPage />} />
         </Route>
         <Route path={`/${baseUrl}/*`} element={<NotFoundPage />} />

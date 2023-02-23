@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/theme";
+import { TopHeader } from "widgets/Header/TopHeader/TopHeader";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <BrowserRouter>
             <Suspense fallback={<Spinner />}>
               <Provider store={store}>
+                <TopHeader />
                 <Header />
                 <Routing />
                 <Footer />
