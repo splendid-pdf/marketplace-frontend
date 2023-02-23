@@ -8,7 +8,6 @@ import { ReactComponent as Logo } from "../../../shared/images/icons/logo.svg";
 import { ReactComponent as CatalogIcon } from "../../../shared/images/icons/catalog.svg";
 import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
 import { NavBar } from "widgets/Header/NavBar";
-import { TopHeader } from "../TopHeader/TopHeader";
 import { HeaderSeller } from "../HeaderSeller";
 
 export const Header: React.FC = () => {
@@ -22,28 +21,25 @@ export const Header: React.FC = () => {
     return <HeaderSeller />;
 
   return (
-    <>
-      <TopHeader />
-      <div className={classes.Header}>
-        <div className={classes.headerWrapper + " " + "container"}>
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" className={classes.appBar}>
-              <Toolbar className={classes.toolBar}>
-                <Link to={BASE_URL}>
-                  <Logo fill="#1F1D1D" />
-                </Link>
-                <ButtonMarketPlace
-                  text="Каталог"
-                  icon={<CatalogIcon />}
-                  className={classes.btnHeader}
-                />
-                <SearchBar />
-                <NavBar />
-              </Toolbar>
-            </AppBar>
-          </Box>
-        </div>
+    <div className={classes.Header}>
+      <div className={classes.headerWrapper + " " + "container"}>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static" className={classes.appBar}>
+            <Toolbar className={classes.toolBar}>
+              <Link to={BASE_URL}>
+                <Logo fill="#1F1D1D" />
+              </Link>
+              <ButtonMarketPlace
+                text="Каталог"
+                icon={<CatalogIcon />}
+                className={classes.btnHeader}
+              />
+              <SearchBar />
+              <NavBar />
+            </Toolbar>
+          </AppBar>
+        </Box>
       </div>
-    </>
+    </div>
   );
 };

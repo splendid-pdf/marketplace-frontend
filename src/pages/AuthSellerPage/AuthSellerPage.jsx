@@ -9,10 +9,8 @@ const AuthSellerPage = () => {
     return <Navigate to={`/${BASE_URL}/home-seller`} />;
   }
   return (
-    <div className={`${classes.AuthSellerPage} main`}>
-      <div style={{ display: "flex" }}>
-        <AuthSellerForm />
-      </div>
+    <div className={classes.AuthSellerPage}>
+      <AuthSellerForm />
     </div>
   );
 };
