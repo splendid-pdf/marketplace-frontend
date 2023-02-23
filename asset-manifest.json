@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/marketplace-frontend/static/css/main.b7787ab6.css",
-    "main.js": "/marketplace-frontend/static/js/main.4d0a711c.js",
+    "main.css": "/marketplace-frontend/static/css/main.61b19ee3.css",
+    "main.js": "/marketplace-frontend/static/js/main.04f4210a.js",
     "static/js/787.c23b093c.chunk.js": "/marketplace-frontend/static/js/787.c23b093c.chunk.js",
     "static/media/Farico12-322.jpg": "/marketplace-frontend/static/media/Farico12-322.a89f2aa1807628c67cd5.jpg",
     "static/media/appStore.svg": "/marketplace-frontend/static/media/appStore.7496a32880e29145b21e265316986f99.svg",
@@ -17,12 +17,12 @@
     "static/media/cart.svg": "/marketplace-frontend/static/media/cart.6f5ac79e5681fd96d2ce0a77dbcce01a.svg",
     "index.html": "/marketplace-frontend/index.html",
     "static/media/search.svg": "/marketplace-frontend/static/media/search.1342bc3b998e05585bc41df0f46b8117.svg",
-    "main.b7787ab6.css.map": "/marketplace-frontend/static/css/main.b7787ab6.css.map",
-    "main.4d0a711c.js.map": "/marketplace-frontend/static/js/main.4d0a711c.js.map",
+    "main.61b19ee3.css.map": "/marketplace-frontend/static/css/main.61b19ee3.css.map",
+    "main.04f4210a.js.map": "/marketplace-frontend/static/js/main.04f4210a.js.map",
     "787.c23b093c.chunk.js.map": "/marketplace-frontend/static/js/787.c23b093c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7787ab6.css",
-    "static/js/main.4d0a711c.js"
+    "static/css/main.61b19ee3.css",
+    "static/js/main.04f4210a.js"
   ]
 }
