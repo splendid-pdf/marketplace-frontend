@@ -33,7 +33,10 @@ const Routing: React.FC = () => {
         <Route path={`/${baseUrl}/favorites`} element={<FavoritesPage />} />
         <Route path={`/${baseUrl}/cart`} element={<CartPage />} />
         <Route path={`/${baseUrl}/auth-seller`} element={<AuthSellerPage />} />
-        <Route path={`/${baseUrl}/register-seller`} element={<RegisterSellerPage />} />
+        <Route
+          path={`/${baseUrl}/register-seller`}
+          element={<RegisterSellerPage />}
+        />
         <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
           <Route index element={<SellerHomePage />} />
           <Route path="product" element={<SellerProductPage />} />
