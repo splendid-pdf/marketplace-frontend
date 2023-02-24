@@ -2,12 +2,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import classes from "./Slider.module.scss";
+import "./style.css";
 
-import banner01 from "shared/images/slider01.png";
-import banner02 from "shared/images/slider02.png";
+import slider01 from "shared/images/slider01.png";
+import slider02 from "shared/images/slider02.png";
 
-import { Pagination, Navigation, Autoplay} from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 
 export const Slider = () => {
   return (
@@ -19,25 +19,24 @@ export const Slider = () => {
       }}
       autoplay={{ delay: 8000, disableOnInteraction: true }}
       navigation={{
-        enabled: true
+        enabled: true,
       }}
       modules={[Pagination, Navigation, Autoplay]}
-      className={classes.swiper}
     >
       <SwiperSlide>
-        <img className={classes.images} src={banner01} />
+        <img src={slider01} />
       </SwiperSlide>
       <SwiperSlide>
-        <img className={classes.images} src={banner02} />
+        <img src={slider02} />
       </SwiperSlide>
       <SwiperSlide>
-        <img className={classes.images} src={banner01} />
+        <img src={slider01} />
       </SwiperSlide>
       <SwiperSlide>
-        <img className={classes.images} src={banner02} />
+        <img src={slider02} />
       </SwiperSlide>
       <SwiperSlide>
-        <img className={classes.images} src={banner01} />
+        <img src={slider01} />
       </SwiperSlide>
     </Swiper>
   );
