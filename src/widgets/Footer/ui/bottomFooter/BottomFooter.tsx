@@ -1,10 +1,10 @@
-import React from 'react';
-import classes from './BottomFooter.module.scss';
+import React from "react";
+import classes from "./BottomFooter.module.scss";
 
 export const BottomFooter: React.FC = () => {
   return (
     <div className={classes.Footer}>
-      <div className={classes.FooterContainer}>
+      <div className={classes.FooterContainer + " " + "container"}>
         <div className={classes.FooterAgreement}>
           <p className={classes.AgreementText}>Соглашение о конфиденциальности</p>
           <p className={classes.AgreementText}>Пользовательское Соглашение</p>
@@ -15,6 +15,6 @@ export const BottomFooter: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default BottomFooter;
