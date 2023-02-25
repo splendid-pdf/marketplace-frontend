@@ -1,6 +1,5 @@
 import * as React from 'react';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import classes from './MySelect.module.scss';
 const numbers = [
@@ -28,19 +27,20 @@ export const MySelect: React.FC<MySelectProps> = ({ onChange }) => {
   };
 
   return (
-    <div>
-      <FormControl>
-        <Select
-          value={count}
-          onChange={handleChange}
-        >
-          {numbers.map((number) => (
-            <MenuItem key={number} value={number}>
-              {number}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <div className={classes.ContainerSelect}>
+      <div>
+        Показать товаров
+      </div>
+      <Select
+        value={count}
+        onChange={handleChange}
+      >
+        {numbers.map((number) => (
+          <MenuItem key={number} value={number}>
+            {number}
+          </MenuItem>
+        ))}
+      </Select>
     </div>
   );
 };
