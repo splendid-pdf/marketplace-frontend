@@ -1,7 +1,14 @@
 import React from "react";
-import classes from "./SellerProductPage.module.scss";
+import { getAll } from "shared/api/fixtures/library/products";
+import Content from "./content/Content";
+
 
 const SellerProductPage: React.FC = () => {
-  return <div className={classes.root}>SelllerProductsPage</div>;
+  const products = getAll()
+  return (
+    <div>
+      <Content/>
+    </div>
+  );
 };
 export default SellerProductPage;

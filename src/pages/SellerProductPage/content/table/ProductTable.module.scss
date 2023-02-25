@@ -1,0 +1,72 @@
+.Table {
+  display: flex;
+  flex-direction: column;
+}
+
+.HeadRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+.HeaderCell {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.TableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.BodyRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7f7;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  min-height: 7rem;
+  padding: 0 2rem;
+}
+
+.BodyRow:last-child {
+  margin-bottom: 2rem;
+}
+
+.BodyCell {
+  overflow: hidden;
+}
+
+.ContentRowImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.3rem;
+}
+
+.ButtonsCell {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Button {
+  background-color: transparent;
+
+  svg {
+    path,
+    rect {
+      fill: #343136;
+    }
+  }
+
+  &:hover {
+    svg {
+      path,
+      rect {
+        fill: #f15513;
+      }
+    }
+  }
+}
