@@ -1,11 +1,9 @@
-import React from 'react';
+import { GET_ENUMS } from "shared/constants/parametersPopup";
 
-import { GET_ENUMS } from 'shared/constants/parametersPopup';
+import useGetPopupState from "./hooks/useGetPopupState";
 
-import useGetPopupState from './hooks/useGetPopupState';
-
-import { AuthBuyerForm } from 'features/userAuth/buyerAuth';
-import { RegisterBuyerForm } from 'features/userRegister/buyerRegister';
+import { AuthBuyerForm } from "features/userAuth/buyerAuth";
+import { RegisterBuyerForm } from "features/userRegister/buyerRegister";
 
 const popups = {
   [GET_ENUMS.popup.loginUser]: AuthBuyerForm,

@@ -1,7 +1,7 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from "react";
 
-import { GET_PARAMS } from 'shared/constants/parametersPopup';
-import useGetParameter from './useGetPameter';
+import { GET_PARAMS } from "shared/constants/parametersPopup";
+import useGetParameter from "./useGetPameter";
 
 let timeout;
 

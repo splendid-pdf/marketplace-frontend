@@ -1,0 +1,22 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 414px;
+  background-color: white;
+  padding: 40px 30px 0 30px;
+  border-radius: 10px;
+}
+
+.iconClose {
+  position: absolute;
+  cursor: pointer;
+  right: 32px;
+  top: 32px;
+}
+
+.typography {
+  font-size: 32px !important;
+  width: 90%;
+}
