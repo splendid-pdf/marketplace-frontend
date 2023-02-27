@@ -1,7 +1,12 @@
 import React from "react";
-import classes from "./SellerProductPage.module.scss";
+import Content from "./content/Content";
+
 
 const SellerProductPage: React.FC = () => {
-  return <div className={classes.root}>SelllerProductsPage</div>;
+  return (
+    <div>
+      <Content/>
+    </div>
+  );
 };
 export default SellerProductPage;

@@ -1,0 +1,10 @@
+.Container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Container .btn {
+  background-color: transparent;
+  color: #343136;
+  border: solid 1px black;
+}
