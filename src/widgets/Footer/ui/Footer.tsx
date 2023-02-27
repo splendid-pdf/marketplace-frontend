@@ -14,7 +14,9 @@ export const Footer: React.FC = () => {
 
   return (
     <div className={classes.Footer}>
-      {pathname.includes("home-seller") ? <SellerFooter /> : <PublicFooter />}
+      <div className={classes.FooterWrapper + " " + "container"}>
+        {pathname.includes("home-seller") ? <SellerFooter /> : <PublicFooter />}
+      </div>
       <BottomFooter />
     </div>
   );

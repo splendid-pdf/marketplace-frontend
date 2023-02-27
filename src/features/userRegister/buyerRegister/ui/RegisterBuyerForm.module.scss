@@ -1,29 +1,7 @@
-.root {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  border-radius: 10px !important;
-  padding: 0 30px;
-}
-
-.iconClose {
-  font-size: 32px !important;
-  position: absolute;
-  cursor: pointer;
-  right: 32px;
-  top: 32px;
-}
-
-.typography {
-  font-size: 32px !important;
-  padding: 50px 0 32px;
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  width: 354px;
-  padding-bottom: 60px;
+  margin: 40px 0 50px;
 }
 
 .field {
