@@ -1,4 +1,5 @@
-import { useState} from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useState } from "react";
 import InputSearch from 'shared/ui/InputSearch/InputSearch';
 import classes from './ProductActions.module.scss';
 import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
