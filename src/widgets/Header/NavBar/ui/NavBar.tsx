@@ -13,8 +13,8 @@ export const NavBar = () => {
   const baseUrl = BASE_URL;
 
   return (
-    <div className={classes.nav}>
-      <div className={`${classes.wrapperNavBar}`}>
+    <>
+      <div className={classes.wrapperNavBar}>
         <Link to={`/${baseUrl}/delivery`} className={classes.link}>
           <IconWithText icon={<DeliveryIcon />} text={"Доставка"} />
         </Link>
@@ -32,6 +32,6 @@ export const NavBar = () => {
           <IconWithText icon={<CartIcon />} text={"Корзина"} />
         </Link>
       </div>
-    </div>
+    </>
   );
 };
