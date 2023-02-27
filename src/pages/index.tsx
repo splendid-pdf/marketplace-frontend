@@ -13,6 +13,7 @@ import RegisterSellerPage from "./RegisterSellerPage/RegisterSellerPage";
 import SellerBasePage from "./SellerBasePage/SellerBasePage";
 import SellerHomePage from "./SellerHomePage/SellerHomePage";
 import SellerProductPage from "./SellerProductPage/SellerProductPage";
+import SellerOrdersPage from "./SellerOrdersPage/SellerOrdersPage";
 
 // import { lazy } from 'react';
 // const HomePage = lazy(() => import('./HomePage/HomePage'));
@@ -40,6 +41,7 @@ const Routing: React.FC = () => {
         <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
           <Route index element={<SellerHomePage />} />
           <Route path="product" element={<SellerProductPage />} />
+          <Route path="orders" element={<SellerOrdersPage />} />
         </Route>
         <Route path={`/${baseUrl}/*`} element={<NotFoundPage />} />
       </Routes>

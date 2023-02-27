@@ -1,35 +1,73 @@
-import React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
-// import classes from "./NavBarSeller.module.scss";
+import { BASE_URL } from "shared/constants/base_url";
+import { DropdownMenu } from "shared/ui/DropdownMenu/DropdownMenu";
+import classes from "./NavBarSeller.module.scss";
 
-interface LinkTabProps {
-  to: string;
-  label: string;
-}
+export type TItems = {
+  name: string;
+  url: string;
+  listMenu?: Array<{ name: string; url?: string }>;
+};
+
+const items: TItems[] = [
+  {
+    name: "Главная",
+    url: `${BASE_URL}/home-seller`,
+    listMenu: [],
+  },
+  {
+    name: "Товары",
+    url: `${BASE_URL}/home-seller/product`,
+    listMenu: [
+      {
+        name: "Список товаров",
+        url: "",
+      },
+      {
+        name: "Архив",
+        url: "",
+      },
+      {
+        name: "Отзывы",
+        url: "",
+      },
+      {
+        name: "Вопросы",
+        url: "",
+      },
+      {
+        name: "Рукомендации",
+        url: "",
+      },
+    ],
+  },
+  {
+    name: "Заказы",
+    url: `${BASE_URL}/home-seller/orders`,
+    listMenu: [
+      {
+        name: "Все",
+        url: "",
+      },
+      {
+        name: "Активные",
+        url: "",
+      },
+      {
+        name: "Завешенные",
+        url: "",
+      },
+    ],
+  },
+];
 
 export const NavBarSeller = () => {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-
-  function LinkTab(props: LinkTabProps) {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Tab component={Link} {...props} />;
-  }
-
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <LinkTab label="Главная" to="" />
-          <LinkTab label="Товары" to="product" />
-        </Tabs>
-      </Box>
-    </Box>
+    <>
+      <div className={classes.wrapperNavBarSeller}>
+        {items.map((item, index) => {
+          return <DropdownMenu key={index} item={item} />;
+        })}
+      </div>
+    </>
   );
 };

@@ -1,3 +1,20 @@
-.root {
-  color: black;
+.wrapperNavBarSeller {
+  display: flex;
+  column-gap: 2rem;
+  margin-top: 10px;
+}
+
+.wrapperNavBarSeller a {
+  font-size: 16px;
+  font-weight: 400;
+  color: #343136;
+}
+
+.wrapperNavBarSeller a:hover {
+  font-weight: 600;
+}
+
+.wrapperNavBarSeller a:active {
+  text-decoration: none;
+  color: #343136;
 }

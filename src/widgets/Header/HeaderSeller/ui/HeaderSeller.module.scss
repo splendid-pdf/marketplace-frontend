@@ -1,21 +1,44 @@
-.Header {
+.headerSeller {
   display: flex;
-  padding: 25px 0;
+  padding-top: 25px;
   align-items: center;
   border-bottom: 1px solid #a3a3a3;
-}
 
-.headerWrapper {
-  display: flex;
-  justify-content: space-between;
-}
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.leftBlockHeader {
-  display: flex;
-  column-gap: 20px;
+  &__appBar {
+    background-color: initial !important;
+    box-shadow: none !important;
+  }
 
   h1 {
     font-size: 36px;
     font-weight: 600;
+    color: #343136;
+    margin-left: 20px;
   }
+
+  &__toolBar {
+    padding: 0 !important;
+    flex-wrap: wrap;
+  }
+
+  &__typography {
+    color: #343136;
+    font-size: 36px !important;
+    font-weight: 600 !important;
+    margin-bottom: 7px !important;
+    margin-left: 20px !important;
+  }
+
+  &__nav {
+    height: 51px;
+  }
+}
+
+.link:hover svg {
+  fill: #343136;
 }
