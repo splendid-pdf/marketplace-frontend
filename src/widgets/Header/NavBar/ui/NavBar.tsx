@@ -25,6 +25,9 @@ export const NavBar = () => {
         >
           <IconWithText icon={<PersonIcon />} text={"Войти"} />
         </Link>
+        <Link to={`/${baseUrl}/buyer/account`} className={classes.link}>
+          <IconWithText icon={<PersonIcon />} text={"Профиль"} />
+        </Link>
         <Link to={`/${baseUrl}/favorites`} className={classes.link}>
           <IconWithText icon={<FavoriteIcon />} text={"Избранное"} />
         </Link>

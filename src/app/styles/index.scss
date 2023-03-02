@@ -1,3 +1,11 @@
 @import "./vars";
 @import "./normalize";
 @import "./main";
+
+@font-face {
+  font-family: Manrope;
+  src:
+    local("Manrope"),
+    url("../../shared/fonts/Manrope/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+}

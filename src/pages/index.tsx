@@ -4,7 +4,6 @@ import { BASE_URL } from "shared/constants/base_url";
 import GetParameterPopups from "./PopupsRoutes";
 import HomePage from "./HomePage/HomePage";
 import NotFoundPage from "./NotFoundPage/NotFoundPage";
-import UserProfilePage from "./UserProfilePage/UserProfilePage";
 import CartPage from "./CartPage/CartPage";
 import DeliveryPage from "./DeliveryPage/DeliveryPage";
 import FavoritesPage from "./FavoritesPage/FavoritesPage";
@@ -14,12 +13,11 @@ import SellerBasePage from "./SellerBasePage/SellerBasePage";
 import SellerHomePage from "./SellerHomePage/SellerHomePage";
 import SellerProductPage from "./SellerProductPage/SellerProductPage";
 import SellerOrdersPage from "./SellerOrdersPage/SellerOrdersPage";
-
-// import { lazy } from 'react';
-// const HomePage = lazy(() => import('./HomePage/HomePage'));
-// const ContactsPage = lazy(() => import('./ContactsPage/ContactsPage'));
-// const NotFoundPage = lazy(() => import('./NotFoundPage/NotFoundPage'));
-// const UserProfilePage = lazy(() => import('./UserProfilePage/UserProfilePage'));
+import BuyerAccountPage from './BuyerAccountPage/BuyerAccountPage';
+import { BuyerProfilePage } from './BuyerAccountPage/BuyerProfilePage';
+import { BuyerOrdersPage } from './BuyerAccountPage/BuyerOrdersPage';
+import { BuyerFeedbackPage } from './BuyerAccountPage/BuyerFeedbackPage';
+import { BuyerSettingsPage } from './BuyerAccountPage/BuyerSettingsPage';
 
 const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
@@ -27,9 +25,15 @@ const Routing: React.FC = () => {
   return (
     <div className={"content" + " " + "container"}>
       <Routes>
+        <Route index element={<HomePage />} />
         <Route path={`/${baseUrl}`} element={<HomePage />} />
-        <Route path={`/${baseUrl}/userProfile`} element={<UserProfilePage />} />
-        {/* <Route path={`/${baseUrl}/catalogue:id`} element={<ItemPage />} /> */}
+        <Route path={`/${baseUrl}/buyer/account/`} element={<BuyerAccountPage />} > 
+          <Route index element={<BuyerProfilePage />} />
+          <Route path="details" element={<BuyerProfilePage />} />
+          <Route path="orders" element={<BuyerOrdersPage />} />
+          <Route path="feedback" element={<BuyerFeedbackPage />} />
+          <Route path="settings" element={<BuyerSettingsPage />} />
+        </Route>
         <Route path={`/${baseUrl}/delivery`} element={<DeliveryPage />} />
         <Route path={`/${baseUrl}/favorites`} element={<FavoritesPage />} />
         <Route path={`/${baseUrl}/cart`} element={<CartPage />} />

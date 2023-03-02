@@ -14,7 +14,12 @@
 
 .container {
   margin: 0 auto;
+  width: 1300px;
   max-width: 1300px;
   padding: 0 10px;
   flex-grow: 1;
+}
+
+.rightWrapper {
+  margin-top: -1rem;
 }
