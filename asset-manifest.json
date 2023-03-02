@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/marketplace-frontend/static/css/main.1681da0a.css",
-    "main.js": "/marketplace-frontend/static/js/main.0c342563.js",
+    "main.css": "/marketplace-frontend/static/css/main.750101e4.css",
+    "main.js": "/marketplace-frontend/static/js/main.61109b41.js",
     "static/js/787.c23b093c.chunk.js": "/marketplace-frontend/static/js/787.c23b093c.chunk.js",
     "static/media/slider01.png": "/marketplace-frontend/static/media/slider01.72fac7eb6ebff26f9f0e.png",
     "static/media/slider02.png": "/marketplace-frontend/static/media/slider02.f371614525a37816c5f4.png",
-    "static/media/Farico12-322.jpg": "/marketplace-frontend/static/media/Farico12-322.a89f2aa1807628c67cd5.jpg",
+    "static/media/card3.png": "/marketplace-frontend/static/media/card3.bdc7078d36f18dd80547.png",
+    "static/media/card2.png": "/marketplace-frontend/static/media/card2.c231728901320cbab964.png",
+    "static/media/card4.png": "/marketplace-frontend/static/media/card4.00d9dcfda7d150ac1b64.png",
     "static/media/appStore.svg": "/marketplace-frontend/static/media/appStore.7496a32880e29145b21e265316986f99.svg",
     "static/media/googlePlay.svg": "/marketplace-frontend/static/media/googlePlay.2a729c252b4085aea98506b0086f5776.svg",
+    "static/media/card1.png": "/marketplace-frontend/static/media/card1.76250f0e1ce99536bea2.png",
     "static/media/logo.svg": "/marketplace-frontend/static/media/logo.19c934d27de1aa405157ea6b491147c7.svg",
     "static/media/catalog.svg": "/marketplace-frontend/static/media/catalog.22ec3951b3b1a656b838a54a9071fced.svg",
     "static/media/favorite.svg": "/marketplace-frontend/static/media/favorite.be7a930ab34c12aefbab599834c61c73.svg",
@@ -16,15 +19,20 @@
     "static/media/youTube.svg": "/marketplace-frontend/static/media/youTube.27d9e4d6fc71bff40a3ef44c3527ec31.svg",
     "static/media/tg.svg": "/marketplace-frontend/static/media/tg.af977bd402eb14026aa6927a143ed901.svg",
     "static/media/vk.svg": "/marketplace-frontend/static/media/vk.ff5dfc0c7e7bded7ecd4ff68918dd570.svg",
+    "static/media/cart2.svg": "/marketplace-frontend/static/media/cart2.3f8ffcbcefa0f60423a4703320426326.svg",
     "static/media/cart.svg": "/marketplace-frontend/static/media/cart.6f5ac79e5681fd96d2ce0a77dbcce01a.svg",
+    "static/media/edit.svg": "/marketplace-frontend/static/media/edit.2418f2a7cf5aba272cd7d5b4b67c44a2.svg",
     "index.html": "/marketplace-frontend/index.html",
     "static/media/search.svg": "/marketplace-frontend/static/media/search.1342bc3b998e05585bc41df0f46b8117.svg",
-    "main.1681da0a.css.map": "/marketplace-frontend/static/css/main.1681da0a.css.map",
-    "main.0c342563.js.map": "/marketplace-frontend/static/js/main.0c342563.js.map",
+    "static/media/delete.svg": "/marketplace-frontend/static/media/delete.a88b8728e7d24af160a025a64751e1c9.svg",
+    "static/media/heart.svg": "/marketplace-frontend/static/media/heart.366633f0fbc8479d5111f017bf9f213f.svg",
+    "static/media/closeIcon.svg": "/marketplace-frontend/static/media/closeIcon.b2756793802572e2535c383ca45ad118.svg",
+    "main.750101e4.css.map": "/marketplace-frontend/static/css/main.750101e4.css.map",
+    "main.61109b41.js.map": "/marketplace-frontend/static/js/main.61109b41.js.map",
     "787.c23b093c.chunk.js.map": "/marketplace-frontend/static/js/787.c23b093c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1681da0a.css",
-    "static/js/main.0c342563.js"
+    "static/css/main.750101e4.css",
+    "static/js/main.61109b41.js"
   ]
 }
