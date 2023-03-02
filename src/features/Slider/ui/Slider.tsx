@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./style.css";
+import classes from "./Slider.module.scss";
 
 import slider01 from "shared/images/slider01.png";
 import slider02 from "shared/images/slider02.png";
@@ -12,6 +12,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 export const Slider = () => {
   return (
     <Swiper
+      className={classes.slider}
       slidesPerView={1}
       loop={true}
       pagination={{
