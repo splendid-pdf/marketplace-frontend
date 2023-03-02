@@ -3,7 +3,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./style.css";
-//import classes from "./Carousel.module.scss";
 import { Card } from "shared/ui/ProductCard/Card";
 import card1 from "../../../shared/images/card1.png";
 import card2 from "../../../shared/images/card2.png";
@@ -87,6 +86,10 @@ const test3 = [
 export const Carousel = () => {
   return (
     <div className="container-main">
+      <div className="titles">
+        <h1>Новинки</h1>
+        <a className="watch-all" href="#">Смотреть всё</a>
+      </div>
       <Swiper
         slidesPerView={1}
         spaceBetween={20}

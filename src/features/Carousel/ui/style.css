@@ -1,5 +1,5 @@
 .container-main {
-  height: 456px;
+  height: 543px;
   max-width: 1280px;
   margin-bottom: 80px;
 }
@@ -19,7 +19,7 @@
   --swiper-navigation-size: 22px;
   right: 0px;
   color: #343631;
-  --swiper-navigation-top-offset: 97%;
+  --swiper-navigation-top-offset: 96.5%;
   z-index: 100;
 }
 
@@ -27,7 +27,7 @@
   left: 1175px;
   --swiper-navigation-size: 22px;
   color: #343631;
-  --swiper-navigation-top-offset: 97%;
+  --swiper-navigation-top-offset: 96.5%;
   z-index: 100;
 }
 
@@ -38,4 +38,23 @@
 
 .swiper-pagination {
   font-size: 16px;
+}
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.watch-all {
+  font-size: 16px;
+}
+
+.watch-all:hover {
+  font-size: 16px;
+  color: #f15513;
+  border-bottom: 2px solid #f15513;
+  padding-bottom: 2px;
 }
