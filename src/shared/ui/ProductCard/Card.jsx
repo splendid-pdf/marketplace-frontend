@@ -7,8 +7,7 @@ import { ReactComponent as FavoriteIcon } from "../../images/icons/heart.svg";
 export const Card = ({ obj }) => {
   // eslint-disable-next-line react/prop-types
   const { image, price, title } = obj;
-  const [activeFavoriteIcon, setActiveFavoriteIcon, activeCart, setActiveCart] =
-    React.useState(false);
+  const [activeFavoriteIcon, setActiveFavoriteIcon] = React.useState(false);
 
   return (
     <div className={classes.cardBlock}>
@@ -29,10 +28,7 @@ export const Card = ({ obj }) => {
       <div className={classes.title}>{title}</div>
       <div className={classes.priceBlock}>
         <div className={classes.totalPrice}>{price} ₽</div>
-        <button
-          className={classes.cartButton}
-          onClick={() => setActiveCart(!activeCart)}
-        >
+        <button className={classes.cartButton}>
           <Cart />
         </button>
       </div>
