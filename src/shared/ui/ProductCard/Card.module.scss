@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  row-gap: 18px;
   width: 305px;
 }
 
@@ -32,7 +31,9 @@
 .title {
   font-size: 16px;
   font-weight: 400;
-  color: var(--secondary-color);
+  margin-top: 18px;
+  margin-bottom: 10px;
+  height: 40px;
 }
 
 .priceBlock {
@@ -55,6 +56,15 @@
   }
 }
 
+a:visited {
+  color: #343136;
+}
+
 .cartButton {
-  background-color: white;
+  background-color: #fff;
+}
+
+.cardBlock:hover {
+  color: #f15513;
+  cursor: pointer;
 }
