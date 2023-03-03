@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: flex-start;
   width: 305px;
+  position: relative;
 }
 
 .image {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,9 +62,17 @@ a:visited {
 
 .cartButton {
   background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .cardBlock:hover {
   color: #f15513;
+  transition-duration: 0.7s;
   cursor: pointer;
+}
+.wrap:hover svg {
+  fill: #f15513;
+  transition: fill 0.7s ease;
 }

@@ -17,20 +17,20 @@ export const Card = ({ obj }) => {
           onClick={() => setActiveFavoriteIcon(!activeFavoriteIcon)}
         >
           <FavoriteIcon
-            fill={activeFavoriteIcon ? "#B00101" : "#EFEFEF"}
+            fill={activeFavoriteIcon ? "#F15513" : "#EFEFEF"}
             stroke={activeFavoriteIcon ? "#" : "#343631"}
           />
         </button>
-        <a href="#">
+        <div className={classes.wrap}>
+          <button className={classes.cartButton}>
+            <Cart />
+          </button>
           <img src={image} />
-        </a>
+        </div>
       </div>
       <div className={classes.title}>{title}</div>
       <div className={classes.priceBlock}>
         <div className={classes.totalPrice}>{price} ₽</div>
-        <button className={classes.cartButton}>
-          <Cart />
-        </button>
       </div>
     </div>
   );
