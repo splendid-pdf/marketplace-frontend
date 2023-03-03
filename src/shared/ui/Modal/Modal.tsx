@@ -8,14 +8,16 @@ import { ReactComponent as CloseIcon } from "shared/images/icons/closeIcon.svg";
 interface ModalProps {
   title: string;
   isOpened: boolean;
+  onClose?: () => void;
   children: ReactNode;
 }
 
-export const Modal: React.FC<ModalProps> = ({ children, isOpened, title }) => {
+export const Modal: React.FC<ModalProps> = ({ children, isOpened, onClose, title }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const navigateBack = () => {
+    if (onClose) return onClose();
     navigate(location.pathname);
   };
 
