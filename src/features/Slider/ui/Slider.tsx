@@ -14,7 +14,7 @@ export const Slider = () => {
     <Swiper
       className={classes.slider}
       slidesPerView={1}
-      loop={true}
+      speed={1500}
       pagination={{
         clickable: true,
       }}
