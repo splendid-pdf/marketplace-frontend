@@ -1,14 +1,23 @@
 {
   "files": {
-    "main.css": "/marketplace-frontend/static/css/main.5e6237eb.css",
-    "main.js": "/marketplace-frontend/static/js/main.55a4734e.js",
+    "main.css": "/marketplace-frontend/static/css/main.37fbbf0d.css",
+    "main.js": "/marketplace-frontend/static/js/main.bbb0aa9a.js",
     "static/js/787.c23b093c.chunk.js": "/marketplace-frontend/static/js/787.c23b093c.chunk.js",
     "static/media/slider01.png": "/marketplace-frontend/static/media/slider01.72fac7eb6ebff26f9f0e.png",
     "static/media/slider02.png": "/marketplace-frontend/static/media/slider02.f371614525a37816c5f4.png",
     "static/media/Manrope-VariableFont_wght.ttf": "/marketplace-frontend/static/media/Manrope-VariableFont_wght.cae461b0196986f4250c.ttf",
+    "static/media/Manrope-Bold.ttf": "/marketplace-frontend/static/media/Manrope-Bold.15c3a2fdedaee1ebf773.ttf",
+    "static/media/card10.png": "/marketplace-frontend/static/media/card10.fe218890becc86bb4347.png",
+    "static/media/card6.png": "/marketplace-frontend/static/media/card6.be2eb9d27f35d1b0aba7.png",
     "static/media/card3.png": "/marketplace-frontend/static/media/card3.bdc7078d36f18dd80547.png",
+    "static/media/card8.png": "/marketplace-frontend/static/media/card8.f976f11da041eb096202.png",
+    "static/media/card9.png": "/marketplace-frontend/static/media/card9.29da3ae3ca7a87f59a0e.png",
     "static/media/card2.png": "/marketplace-frontend/static/media/card2.c231728901320cbab964.png",
+    "static/media/card11.png": "/marketplace-frontend/static/media/card11.c65352c928f0f8536bc0.png",
     "static/media/card4.png": "/marketplace-frontend/static/media/card4.00d9dcfda7d150ac1b64.png",
+    "static/media/card7.png": "/marketplace-frontend/static/media/card7.a0f557337d7df50ba9e6.png",
+    "static/media/card5.png": "/marketplace-frontend/static/media/card5.9d1a8acac4bb7e642d05.png",
+    "static/media/card12.png": "/marketplace-frontend/static/media/card12.0ce2bee51f46a4859e81.png",
     "static/media/appStore.svg": "/marketplace-frontend/static/media/appStore.7496a32880e29145b21e265316986f99.svg",
     "static/media/googlePlay.svg": "/marketplace-frontend/static/media/googlePlay.2a729c252b4085aea98506b0086f5776.svg",
     "static/media/card1.png": "/marketplace-frontend/static/media/card1.76250f0e1ce99536bea2.png",
@@ -20,20 +29,20 @@
     "static/media/youTube.svg": "/marketplace-frontend/static/media/youTube.27d9e4d6fc71bff40a3ef44c3527ec31.svg",
     "static/media/tg.svg": "/marketplace-frontend/static/media/tg.af977bd402eb14026aa6927a143ed901.svg",
     "static/media/vk.svg": "/marketplace-frontend/static/media/vk.ff5dfc0c7e7bded7ecd4ff68918dd570.svg",
-    "static/media/cart2.svg": "/marketplace-frontend/static/media/cart2.3f8ffcbcefa0f60423a4703320426326.svg",
-    "static/media/cart.svg": "/marketplace-frontend/static/media/cart.6f5ac79e5681fd96d2ce0a77dbcce01a.svg",
+    "static/media/cart2.svg": "/marketplace-frontend/static/media/cart2.a764ed9f9a5e40fb77352928cdf73bd0.svg",
+    "static/media/cart.svg": "/marketplace-frontend/static/media/cart.b6a1747c75df31d2d98ea5750191bd5d.svg",
     "static/media/edit.svg": "/marketplace-frontend/static/media/edit.2418f2a7cf5aba272cd7d5b4b67c44a2.svg",
     "index.html": "/marketplace-frontend/index.html",
     "static/media/search.svg": "/marketplace-frontend/static/media/search.1342bc3b998e05585bc41df0f46b8117.svg",
     "static/media/delete.svg": "/marketplace-frontend/static/media/delete.a88b8728e7d24af160a025a64751e1c9.svg",
     "static/media/heart.svg": "/marketplace-frontend/static/media/heart.366633f0fbc8479d5111f017bf9f213f.svg",
     "static/media/closeIcon.svg": "/marketplace-frontend/static/media/closeIcon.b2756793802572e2535c383ca45ad118.svg",
-    "main.5e6237eb.css.map": "/marketplace-frontend/static/css/main.5e6237eb.css.map",
-    "main.55a4734e.js.map": "/marketplace-frontend/static/js/main.55a4734e.js.map",
+    "main.37fbbf0d.css.map": "/marketplace-frontend/static/css/main.37fbbf0d.css.map",
+    "main.bbb0aa9a.js.map": "/marketplace-frontend/static/js/main.bbb0aa9a.js.map",
     "787.c23b093c.chunk.js.map": "/marketplace-frontend/static/js/787.c23b093c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5e6237eb.css",
-    "static/js/main.55a4734e.js"
+    "static/css/main.37fbbf0d.css",
+    "static/js/main.bbb0aa9a.js"
   ]
 }
