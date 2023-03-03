@@ -1,0 +1,12 @@
+.buttomMenu {
+  display: flex;
+  column-gap: 20px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+
+  &__active {
+    background-color: #ececec !important;
+    font-weight: 600 !important;
+    border: none !important;
+  }
+}
