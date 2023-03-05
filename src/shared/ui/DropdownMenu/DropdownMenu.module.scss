@@ -1,3 +1,13 @@
 .bold {
   font-weight: 600 !important;
 }
+
+.link {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.link :hover {
+  font-weight: 600;
+}

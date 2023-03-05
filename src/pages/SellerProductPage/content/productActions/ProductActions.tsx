@@ -32,7 +32,7 @@ const ProductActions = () => {
       <ButtonMarketPlace
         className={classes.btn}
         text="Снять с продажи"
-        onClick={() => setIsOpenModalStopSale((prev) => !prev)}
+        // onClick={() => setIsOpenModalStopSale((prev) => !prev)}
       />
       <ModalStopSale
         isOpened={isOpenModalStopSale}
@@ -41,7 +41,7 @@ const ProductActions = () => {
       <ButtonMarketPlace
         className={classes.btn}
         text="Выставить на продажу"
-        onClick={() => setIsOpenModalPutUpSale((prev) => !prev)}
+        // onClick={() => setIsOpenModalPutUpSale((prev) => !prev)}
       />
       <ModalPutUpSale
         isOpened={isOpenModalPutUpSale}
@@ -50,7 +50,7 @@ const ProductActions = () => {
       <ButtonMarketPlace
         className={classes.btn}
         text="Удалить данные"
-        onClick={() => setIsOpenModalDeleteProducts((prev) => !prev)}
+        // onClick={() => setIsOpenModalDeleteProducts((prev) => !prev)}
       />
       <ModalDeleteProducts
         isOpened={isOpenModalDeleteProducts}

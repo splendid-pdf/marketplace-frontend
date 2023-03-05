@@ -13,6 +13,14 @@ import SellerBasePage from "./SellerBasePage/SellerBasePage";
 import SellerHomePage from "./SellerHomePage/SellerHomePage";
 import SellerProductPage from "./SellerProductPage/SellerProductPage";
 import SellerOrdersPage from "./SellerOrdersPage/SellerOrdersPage";
+import { SellerArchivePage } from "./SellerArchivePage/SellerArchivePage";
+import { SellerReviewsPage } from "./SellerReviewsPage/SellerReviewsPage";
+import { SellerQuestionsPage } from "./SellerQuestionsPage/SellerQuestionsPage";
+import { SellerRecommendationsPage } from "./SellerRecommendationsPage/SellerRecommendationsPage";
+import { SellerActiveOrdersPage } from "./SellerActiveOrdersPage/SellerActiveOrdersPage";
+import { SellerCompletedOrdersPage } from "./SellerCompletedOrdersPage/SellerCompletedOrdersPage";
+import { SellerBaseOrdersPage } from "./SellerBaseOrdersPage/SellerBaseOrdersPage";
+import { SellerBaseProductPage } from "./SellerBaseProductPage/SellerBaseProductPage";
 import BuyerAccountPage from './BuyerAccountPage/BuyerAccountPage';
 import { BuyerProfilePage } from './BuyerAccountPage/BuyerProfilePage';
 import { BuyerOrdersPage } from './BuyerAccountPage/BuyerOrdersPage';
@@ -44,8 +52,21 @@ const Routing: React.FC = () => {
         />
         <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
           <Route index element={<SellerHomePage />} />
-          <Route path="product" element={<SellerProductPage />} />
-          <Route path="orders" element={<SellerOrdersPage />} />
+
+          <Route path="product" element={<SellerBaseProductPage />}>
+            <Route index element={<SellerProductPage />} />
+            <Route path="archive" element={<SellerArchivePage/>} />
+            <Route path="reviews" element={<SellerReviewsPage />} />
+            <Route path="questions" element={<SellerQuestionsPage />} />
+            <Route path="recommendations" element={<SellerRecommendationsPage />} />
+          </Route>
+         
+          <Route path="orders" element={<SellerBaseOrdersPage/>} >
+            <Route index element={<SellerOrdersPage />} />
+            <Route path="activeorders" element={<SellerActiveOrdersPage />} />
+            <Route path="completedorders" element={<SellerCompletedOrdersPage />} />
+          </Route>
+         
         </Route>
         <Route path={`/${baseUrl}/*`} element={<NotFoundPage />} />
       </Routes>

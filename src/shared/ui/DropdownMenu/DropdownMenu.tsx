@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, MenuItem, Button } from "@mui/material";
-import { TItems } from "widgets/Header/NavBarSeller/ui/NavBarSeller";
+import { TItems } from "shared/constants/seller_menu";
 import classes from "./DropdownMenu.module.scss";
 import classNames from "classnames";
 
@@ -14,7 +14,12 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ item }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const location = useLocation();
   const open = Boolean(anchorEl);
-  const page = "/" + item.url;
+  const page = item.listMenu?.find((el) => {
+    if(`/${el.url }`=== location.pathname){
+      return true
+    }
+  });
+
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const openDropdown = (event: React.MouseEvent<any, any>) => {
@@ -37,11 +42,11 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ item }) => {
         onMouseOver={openDropdown}
         onClick={handleClose}
         style={{ zIndex: 2000, backgroundColor: "white" }}
-        className={classNames(location.pathname === page && classes.bold)}
+        className={classNames(location.pathname === `/${page?.url}` && classes.bold)}
       >
         {item.name}
       </Button>
-      {item.listMenu?.length && location.pathname !== page ? (
+      {item.listMenu?.length && location.pathname !== `/${page?.url}` ? (
         <Menu
           PaperProps={{
             style: {
@@ -59,7 +64,9 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ item }) => {
           keepMounted={true}
         >
           {item.listMenu?.map((item, index) => {
-            return <MenuItem key={index}>{item.name}</MenuItem>;
+            return <Link className={classes.link} key={index} to={item.url || ''}>
+              <MenuItem >{item.name}</MenuItem>
+            </Link>;
           })}
         </Menu>
       ) : (
