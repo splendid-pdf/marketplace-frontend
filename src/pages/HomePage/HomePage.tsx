@@ -4,7 +4,7 @@ import { Carousel } from "features/Carousel";
 
 const HomePage = () => {
   return (
-    <div className={`${classes.HomePage} main `}>
+    <div className={`${classes.HomePage} main`}>
       <Slider />
       <Carousel />
     </div>

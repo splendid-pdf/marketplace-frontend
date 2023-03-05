@@ -205,20 +205,20 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
             flexDirection: 'row',
           }}
         >
-          <FormControlLabel value="male" control={<Radio />} label="Мужской" />
-          <FormControlLabel value="female" control={<Radio />} label="Женский" />
-          <FormControlLabel value="other" control={<Radio />} label="Другой" />
+          <FormControlLabel value="MALE" control={<Radio />} label="Мужской" />
+          <FormControlLabel value="FEMALE" control={<Radio />} label="Женский" />
+          <FormControlLabel value="NOT_INDICATED" control={<Radio />} label="Не указан" />
         </RadioGroup>
         <Typography
           sx={{
             fontFamily: 'Manrope, sans-serif',
             fontSize: 22,
-            marginTop: '40px'
+            marginTop: '40px',
+            marginBottom: '30px',
           }}
         >
           Город / Адрес доставки
         </Typography>
-        <InputLabel id="city-select-label">Город</InputLabel>
         <Select
           className={classes.field}
           labelId="city-select-label"
@@ -229,7 +229,7 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
         >
           <MenuItem value="Санкт-Петербург">Санкт-Петербург</MenuItem>
           <MenuItem value="Выборг">Выборг</MenuItem>
-          <MenuItem value="Киев">Киев</MenuItem>
+          <MenuItem value="Петрозаводск">Петрозаводск</MenuItem>
         </Select>
         <TextField
           className={classes.field}
