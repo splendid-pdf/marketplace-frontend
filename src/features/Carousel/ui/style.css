@@ -1,5 +1,4 @@
 .container-main {
-  height: 543px;
   max-width: 1280px;
   margin-bottom: 80px;
 }
@@ -42,12 +41,12 @@
 .titles {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   margin-bottom: 40px;
 }
 
 .watch-all {
+  color: #343631;
   font-size: 16px;
   font-weight: 600;
   text-decoration: underline;

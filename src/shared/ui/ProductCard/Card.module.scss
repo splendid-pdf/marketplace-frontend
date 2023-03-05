@@ -34,6 +34,7 @@
   margin-top: 18px;
   margin-bottom: 10px;
   height: 40px;
+  line-height: 130%;
 }
 
 .priceBlock {
@@ -71,6 +72,10 @@ a:visited {
   color: #f15513;
   transition-duration: 0.7s;
   cursor: pointer;
+}
+.image:hover {
+  border: 1px solid black;
+  transition: 1.5s;
 }
 
 .wrap:hover svg {
