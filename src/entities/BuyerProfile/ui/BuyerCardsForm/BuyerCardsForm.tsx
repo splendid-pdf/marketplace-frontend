@@ -59,6 +59,15 @@ export const BuyerCardsForm = (props: BuyerCardsFormProps) => {
 
   return (
     <div className={`${classes.BuyerProfileCard}`}>
+      <Typography variant="h5"
+        sx={{
+          marginBottom: 5,
+          fontFamily: 'Manrope, sans-serif',
+          fontSize: 36,
+        }}
+      >
+        Банковские карты
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <Typography
           sx={{
