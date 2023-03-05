@@ -5,3 +5,13 @@
 .btn {
   box-shadow: none !important;
 }
+
+.greyBorder {
+  border-color: #a3a3a3 !important;
+}
+
+.greyBorder:hover {
+  background-color: #ececec !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
