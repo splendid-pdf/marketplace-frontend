@@ -2,7 +2,6 @@ import { grey } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
-  shadows: ["none"],
   palette: {
     primary: {
       main: "#F15513",
@@ -19,6 +18,9 @@ export const theme = createTheme({
   components: {
     MuiTypography: {},
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           fontSize: 16,
