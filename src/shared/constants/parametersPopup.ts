@@ -6,6 +6,9 @@ export const GET_ENUMS = {
   popup: {
     loginUser: "login",
     registerUser: "register",
-    modalTest: "modalTest",
+    stopSale: "stopSale",
+    putUpSale: "putUpSale",
+    deleteProducts: "deleteProducts",
+    deleteOneProduct: "deleteOneProduct",
   },
 };

@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import classNames from "classnames";
 import { FC, ReactNode } from "react";
 import classes from "./ButtonMarketPlace.module.scss";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export enum ButtonVariant {
   // eslint-disable-next-line no-unused-vars
@@ -19,12 +19,12 @@ export enum BorderColorVarian {
 }
 
 interface IButtonMarketPlaceProps {
-    text: string;
-    icon?: ReactNode;
-    variant?: ButtonVariant;
-    borderColorVarian?: BorderColorVarian;
-    className?: string;
-    to?:string
+  text: string;
+  icon?: ReactNode;
+  variant?: ButtonVariant;
+  borderColorVarian?: BorderColorVarian;
+  className?: string;
+  to?: string;
 }
 
 export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
@@ -39,7 +39,7 @@ export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
     <Button
       className={classNames(
         //  variant === ButtonVariant.outlined ? classes.outlined  : ''
-        variant === ButtonVariant.outlined && classes.outlined, 
+        variant === ButtonVariant.outlined && classes.outlined,
         borderColorVarian === BorderColorVarian.grey && classes.greyBorder,
         className,
         classes.btn,
@@ -47,7 +47,7 @@ export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
       variant={variant}
       endIcon={icon}
       component={Link}
-      to={`/${to}` || ''}
+      to={`/${to}` || ""}
     >
       {text}
     </Button>

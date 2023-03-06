@@ -4,10 +4,20 @@ import useGetPopupState from "./hooks/useGetPopupState";
 
 import { AuthBuyerForm } from "features/userAuth/buyerAuth";
 import { RegisterBuyerForm } from "features/userRegister/buyerRegister";
+import {
+  ModalStopSale,
+  ModalPutUpSale,
+  ModalDeleteProducts,
+  ModalDeleteOneProduct,
+} from "../SellerProductPage/content/modalActions/modalActions";
 
 const popups = {
   [GET_ENUMS.popup.loginUser]: AuthBuyerForm,
   [GET_ENUMS.popup.registerUser]: RegisterBuyerForm,
+  [GET_ENUMS.popup.stopSale]: ModalStopSale,
+  [GET_ENUMS.popup.putUpSale]: ModalPutUpSale,
+  [GET_ENUMS.popup.deleteProducts]: ModalDeleteProducts,
+  [GET_ENUMS.popup.deleteOneProduct]: ModalDeleteOneProduct,
 };
 
 const GetParameterPopups = () => {
