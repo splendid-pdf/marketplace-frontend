@@ -5,13 +5,13 @@ import InputSearch from "shared/ui/InputSearch/InputSearch";
 import classes from "./ProductActions.module.scss";
 import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
 import { ModalDeleteProducts, ModalPutUpSale, ModalStopSale } from "../modalActions/modalActions";
+import { useLocation } from "react-router-dom";
+import { BASE_URL } from "shared/constants/base_url";
 
 const ProductActions = () => {
   const [value, setValue] = useState("");
-  const [isOpenModalStopSale, setIsOpenModalStopSale] = useState(false);
-  const [isOpenModalPutUpSale, setIsOpenModalPutUpSale] = useState(false);
-  const [isOpenModalDeleteProducts, setIsOpenModalDeleteProducts] = useState(false);
-
+  const { pathname } = useLocation();
+  const path = pathname.slice(1);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(value);
   };
@@ -32,29 +32,17 @@ const ProductActions = () => {
       <ButtonMarketPlace
         className={classes.btn}
         text="Снять с продажи"
-        // onClick={() => setIsOpenModalStopSale((prev) => !prev)}
-      />
-      <ModalStopSale
-        isOpened={isOpenModalStopSale}
-        onClose={() => setIsOpenModalStopSale((prev) => !prev)}
+        to={`${path}?popup=stopSale`}
       />
       <ButtonMarketPlace
         className={classes.btn}
         text="Выставить на продажу"
-        // onClick={() => setIsOpenModalPutUpSale((prev) => !prev)}
-      />
-      <ModalPutUpSale
-        isOpened={isOpenModalPutUpSale}
-        onClose={() => setIsOpenModalPutUpSale((prev) => !prev)}
+        to={`${path}?popup=putUpSale`}
       />
       <ButtonMarketPlace
         className={classes.btn}
         text="Удалить данные"
-        // onClick={() => setIsOpenModalDeleteProducts((prev) => !prev)}
-      />
-      <ModalDeleteProducts
-        isOpened={isOpenModalDeleteProducts}
-        onClose={() => setIsOpenModalDeleteProducts((prev) => !prev)}
+        to={`${path}?popup=deleteProducts`}
       />
     </div>
   );

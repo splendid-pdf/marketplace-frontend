@@ -4,21 +4,15 @@ import { ReactComponent as EditIcon } from "../../../../shared/images/icons/edit
 import { ReactComponent as DeleteIcon } from "../../../../shared/images/icons/delete.svg";
 import classes from "./ProductTable.module.scss";
 import Checkbox from "@mui/material/Checkbox";
-import { ModalDeleteOneProduct } from "../modalActions/modalActions";
+import { Link } from "react-router-dom";
 
 type Props = {
   products: Product[];
 };
 
 export const ProductTable = ({ products }: Props) => {
-  const [isOpenModalDeleteOneProduct, setIsOpenModalDeleteOneProduct] = React.useState(false);
-
   return (
     <div className={classes.Table}>
-      <ModalDeleteOneProduct
-        isOpened={isOpenModalDeleteOneProduct}
-        onClose={() => setIsOpenModalDeleteOneProduct((prev) => !prev)}
-      />
       <div className={classes.TableHead}>
         <div className={classes.HeadRow}>
           <Checkbox style={{ padding: 0 }} />
@@ -84,12 +78,9 @@ export const ProductTable = ({ products }: Props) => {
               {product.dateTime}
             </div>
             <div className={classes.ButtonsCell} style={{ width: "5rem" }}>
-              <button
-                className={classes.Button}
-                onClick={() => setIsOpenModalDeleteOneProduct((prev) => !prev)}
-              >
+              <Link className={classes.Button} to={`?popup=deleteOneProduct`}>
                 <DeleteIcon />
-              </button>
+              </Link>
 
               <button className={classes.Button}>
                 <EditIcon />

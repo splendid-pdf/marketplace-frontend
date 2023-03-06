@@ -16,10 +16,11 @@ export const theme = createTheme({
     fontWeightBold: 600,
   },
   components: {
-    MuiTypography: {
-      
-    },
+    MuiTypography: {},
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           fontSize: 16,
