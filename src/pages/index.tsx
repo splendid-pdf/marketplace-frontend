@@ -6,7 +6,7 @@ import HomePage from "./HomePage/HomePage";
 import NotFoundPage from "./NotFoundPage/NotFoundPage";
 import CartPage from "./CartPage/CartPage";
 import DeliveryPage from "./DeliveryPage/DeliveryPage";
-import FavoritesPage from "./FavoritesPage/FavoritesPage";
+import FavoritesPage from "./FavoritesPage/FavoritesPages";
 import AuthSellerPage from "./AuthSellerPage/AuthSellerPage";
 import RegisterSellerPage from "./RegisterSellerPage/RegisterSellerPage";
 import SellerBasePage from "./SellerBasePage/SellerBasePage";
@@ -62,9 +62,10 @@ const Routing: React.FC = () => {
 
           <Route path="feedback" element={<BuyerFeedbackPage />} />
           <Route path="settings" element={<BuyerSettingsPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
         </Route>
         <Route path={`/${baseUrl}/delivery`} element={<DeliveryPage />} />
-        <Route path={`/${baseUrl}/favorites`} element={<FavoritesPage />} />
+    
         <Route path={`/${baseUrl}/cart`} element={<CartPage />} />
         <Route path={`/${baseUrl}/auth-seller`} element={<AuthSellerPage />} />
         <Route path={`/${baseUrl}/register-seller`} element={<RegisterSellerPage />} />

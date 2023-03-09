@@ -1,5 +1,3 @@
-import { BASE_URL } from "shared/constants/base_url";
-
 export interface BuyerSidebarItemType {
   url: string;
   name: string;
@@ -15,7 +13,7 @@ export const BuyerSidebarItemsList: BuyerSidebarItemType[] = [
     name: "Мои заказы",
   },
   {
-    url: `/${BASE_URL}/favorites`,
+    url: `favorites`,
     name: "Избранное",
   },
   {
