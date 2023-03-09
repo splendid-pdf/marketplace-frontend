@@ -17,14 +17,14 @@
 
 .slider-controler .swiper-button-next {
   --swiper-navigation-size: 22px;
-  right: 0px;
+  right: 0%;
   color: #343631;
   --swiper-navigation-top-offset: 96.5%;
   z-index: 100;
 }
 
 .slider-controler .swiper-button-prev {
-  left: 1175px;
+  left: 90%;
   --swiper-navigation-size: 22px;
   color: #343631;
   --swiper-navigation-top-offset: 96.5%;
@@ -33,11 +33,11 @@
 
 .swiper-pagination-current {
   color: #f15513;
-  padding-left: 1175px;
 }
 
 .swiper-pagination {
   font-size: 16px;
+  left: 45%;
 }
 .titles {
   display: flex;
