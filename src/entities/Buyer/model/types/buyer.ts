@@ -5,6 +5,8 @@ export interface Buyer {
   role?: 'buyer';
 }
 
-export interface AuthBuyerSchema {
+export interface BuyerSchema {
   authData?: Buyer;
+  _mounted: boolean;
+  isAuth?: boolean;
 }

@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./AuthBuyerForm.module.scss";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TextField, Button, Link as LinkMUI } from "@mui/material";
-import { getItemFromLS } from "../../../../shared/utils/getItemFromLS";
-import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from "../../../../shared/constants/localStorage";
-import { useAppDispatch } from "../../../../app/store/hooks";
-import { authenticateBuyer } from "../model/slices/authBuyerSlice";
+import { getItemFromLS } from "shared/utils/getItemFromLS";
+import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from "shared/constants/localStorage";
+import { useAppDispatch } from "app/store/hooks";
 import { Modal } from "shared/ui/Modal/Modal";
+import { buyerAuthActions } from 'entities/Buyer';
 
 interface AuthBuyerFormProps {
   isOpened: boolean;
@@ -15,6 +15,7 @@ interface AuthBuyerFormProps {
 
 export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -32,8 +33,9 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
   //@ts-ignore
   const onSubmit = (obj) => {
     const { email, password } = obj;
-    console.log({ email, password });
-    dispatch(authenticateBuyer({ email, password }));
+    const role = "buyer";
+    dispatch(buyerAuthActions.setAuthData({ email, password, role }));
+    navigate("marketplace-frontend");
   };
 
   return (

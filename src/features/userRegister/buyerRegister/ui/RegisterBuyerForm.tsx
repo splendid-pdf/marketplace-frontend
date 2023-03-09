@@ -4,15 +4,15 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
 
-import { axiosInstance } from "../../../../shared/api/axiosInstance";
-import { setItemToLS } from "../../../../shared/utils/setItemToLS";
+import { axiosInstance } from "shared/api/axiosInstance";
+import { setItemToLS } from "shared/utils/setItemToLS";
 import {
   LS_KEY_EMAIL,
   LS_KEY_ID,
   LS_KEY_PASSWORD,
-} from "../../../../shared/constants/localStorage";
-import { API_REGISTER_BUYER_URL } from "../../../../shared/api/apiEndpoints";
-import { BASE_URL } from "../../../../shared/constants/base_url";
+} from "shared/constants/localStorage";
+import { API_REGISTER_BUYER_URL } from "shared/api/apiEndpoints";
+import { BASE_URL } from "shared/constants/base_url";
 import { Modal } from "shared/ui/Modal/Modal";
 
 interface RegisterBuyerFormProps {
@@ -43,12 +43,10 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
   //@ts-ignore
   const onSubmit = async (obj) => {
     const { email, password, checkbox } = obj;
-    console.log({ email, password, checkbox });
     try {
       // TODO: Когда будет работать сервер, все эти функции до "const response ..."
       // нужно будет удалить -
       // они повторяются в конце try-блока, после успешного ответа от сервера
-      console.log(`we are in onSubmit`);
       if (checkbox) {
         setItemToLS(LS_KEY_EMAIL, email);
         setItemToLS(LS_KEY_PASSWORD, password);

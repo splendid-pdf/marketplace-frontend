@@ -30,36 +30,6 @@ export const buyerProfileSlice = createSlice({
       };
     },
   },
-
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchBuyerProfileData.pending, (state) => {
-        state.error = undefined;
-        state.isLoading = true;
-      })
-
-      .addCase(fetchBuyerProfileData.fulfilled, (state, action: PayloadAction<BuyerProfile>) => {
-        state.isLoading = false;
-        state.data = action.payload;
-        state.form = action.payload;
-      })
-
-      .addCase(fetchBuyerProfileData.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-
-      .addCase(updateBuyerProfileData.pending, (state) => {
-        state.isLoading = true;
-      })
-
-      .addCase(updateBuyerProfileData.fulfilled, (state, action: PayloadAction<BuyerProfile>) => {
-        state.isLoading = false;
-        state.data = action.payload;
-        state.form = action.payload;
-        state.readonly = true;
-      })
-  },
 });
 
 export const { actions: buyerProfileActions } = buyerProfileSlice;

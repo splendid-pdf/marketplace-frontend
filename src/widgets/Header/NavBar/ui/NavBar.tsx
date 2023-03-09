@@ -20,7 +20,6 @@ export const NavBar = () => {
         </Link>
         <Link
           to={`?popup=login`}
-          onClick={() => setItemToLS(LS_KEY_ROLE, "buyer")}
           className={classes.link}
         >
           <IconWithText icon={<PersonIcon />} text={"Войти"} />

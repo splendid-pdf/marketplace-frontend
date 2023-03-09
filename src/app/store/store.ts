@@ -1,13 +1,12 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-// eslint-disable-next-line max-len
-import { registerBuyerReducer } from 'features/userRegister/buyerRegister/model/slices/registerBuyerSlice';
+import { buyerAuthReducer } from '../../entities/Buyer';
 
 /**
  * @description Redux store
  */
 export const store = configureStore({
   reducer: {
-    buyer: registerBuyerReducer,
+    buyer: buyerAuthReducer,
   },
 });
 
