@@ -1,0 +1,83 @@
+.cardBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 305px;
+  position: relative;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+  background-color: #efefef;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    width: 305px;
+  }
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 13px;
+  right: 12px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 18px;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.priceBlock {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.totalPrice {
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  column-gap: 8px;
+
+  span {
+    font-weight: 400;
+    color: #a3a3a3;
+    text-decoration: line-through;
+  }
+}
+
+a:visited {
+  color: #343136;
+}
+
+.cartButton {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cardBlock:hover {
+  color: #f15513;
+  transition-duration: 0.7s;
+  cursor: pointer;
+}
+
+.wrap:hover svg {
+  fill: #f15513;
+  transition: fill 0.7s ease;
+}
+
+.image:hover {
+  border: 1px solid #343136;
+}
