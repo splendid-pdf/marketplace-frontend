@@ -1,6 +1,6 @@
 import classes from "./HomePage.module.scss";
-import { Slider } from "features/Slider";
-import { Carousel } from "features/Carousel";
+import { Slider } from "widgets/Slider";
+import { Carousel } from "widgets/Carousel";
 
 const HomePage = () => {
   return (
