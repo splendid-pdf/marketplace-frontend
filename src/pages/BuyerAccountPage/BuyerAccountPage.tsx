@@ -6,7 +6,7 @@ import { BuyerSidebar } from "../../widgets/BuyerSidebar";
 const BuyerAccountPage = () => {
   const isAuth = true; // для перехода в кабинет покупателя поменять значение на true, также в компоненте AuthBuyerPage поменять на true
   if (!isAuth) {
-    return <Navigate to={`/${BASE_URL}/auth-buyer`} replace={true} />;
+    return <Navigate to={`/${BASE_URL}/?popup=login`} replace={true} />;
   }
   return (
     <div className={"content" + " " + "container"}>

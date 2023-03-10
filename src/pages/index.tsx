@@ -26,6 +26,16 @@ import { BuyerProfilePage } from "./BuyerAccountPage/BuyerProfilePage";
 import { BuyerOrdersPage } from "./BuyerAccountPage/BuyerOrdersPage";
 import { BuyerFeedbackPage } from "./BuyerAccountPage/BuyerFeedbackPage";
 import { BuyerSettingsPage } from "./BuyerAccountPage/BuyerSettingsPage";
+import { BaseMyOrdersPage, BaseMyReturnOrdersPage } from "./BuyerAccountPage/BuyerOrdersPage/pages";
+import {
+  ActiveOrdersPage,
+  ArchiveOrdersPage,
+  ChecksOrdersPage,
+} from "./BuyerAccountPage/BuyerOrdersPage/pages/BaseMyOrdersPage/pages";
+import {
+  ReturnOrdersPage,
+  ReturnProcessingPage,
+} from "./BuyerAccountPage/BuyerOrdersPage/pages/BaseMyReturnOrdersPage/pages";
 
 const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
@@ -35,13 +45,21 @@ const Routing: React.FC = () => {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path={`/${baseUrl}`} element={<HomePage />} />
-        <Route
-          path={`/${baseUrl}/buyer/account/`}
-          element={<BuyerAccountPage />}
-        >
+        <Route path={`/${baseUrl}/buyer/account/`} element={<BuyerAccountPage />}>
           <Route index element={<BuyerProfilePage />} />
           <Route path="details" element={<BuyerProfilePage />} />
-          <Route path="orders" element={<BuyerOrdersPage />} />
+          <Route path="orders" element={<BuyerOrdersPage />}>
+            <Route path="my-orders" element={<BaseMyOrdersPage />}>
+              <Route index element={<ActiveOrdersPage />} />
+              <Route path="archive" element={<ArchiveOrdersPage />} />
+              <Route path="checks" element={<ChecksOrdersPage />} />
+            </Route>
+            <Route path="return" element={<BaseMyReturnOrdersPage />}>
+              <Route index element={<ReturnOrdersPage />} />
+              <Route path="processing" element={<ReturnProcessingPage />} />
+            </Route>
+          </Route>
+
           <Route path="feedback" element={<BuyerFeedbackPage />} />
           <Route path="settings" element={<BuyerSettingsPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
@@ -50,10 +68,7 @@ const Routing: React.FC = () => {
 
         <Route path={`/${baseUrl}/cart`} element={<CartPage />} />
         <Route path={`/${baseUrl}/auth-seller`} element={<AuthSellerPage />} />
-        <Route
-          path={`/${baseUrl}/register-seller`}
-          element={<RegisterSellerPage />}
-        />
+        <Route path={`/${baseUrl}/register-seller`} element={<RegisterSellerPage />} />
         <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
           <Route index element={<SellerHomePage />} />
 
