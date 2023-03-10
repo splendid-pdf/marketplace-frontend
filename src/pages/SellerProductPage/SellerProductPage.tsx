@@ -3,8 +3,10 @@ import Content from "./content/Content";
 
 const SellerProductPage: React.FC = () => {
   return (
-    <div>
-      <Content/>
+    <div className={"content" + " " + "container"}>
+      <div>
+        <Content />
+      </div>
     </div>
   );
 };
