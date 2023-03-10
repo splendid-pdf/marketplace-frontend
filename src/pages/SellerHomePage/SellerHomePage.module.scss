@@ -1,3 +1,141 @@
-.root {
-  color: black;
+.headerContentSeller {
+  margin-top: 50px;
+  margin-bottom: 80px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template:
+    "balance rating salesDay salesWeek"
+    "statistics statistics orders orders"
+    "reviews reviews list list" /
+    305px 305px 305px 305px
+    200px 344px 276px;
+
+  &__mainCard {
+    border: 1px solid #ececec;
+    border-radius: 10px;
+  }
+
+  &__headerCard {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 28px 14px 26px;
+  }
+
+  &__balanceNumder {
+    font-weight: 600;
+    font-size: 28px;
+    color: #3f3744;
+    margin-left: 26px;
+    margin-bottom: 36px;
+  }
+
+  p {
+    position: relative;
+  }
+
+  &__circleBlack::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 2px;
+    width: 10px;
+    height: 10px;
+    background-color: #343136;
+    border-radius: 50px;
+  }
+
+  &__circleGrey::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 2px;
+    width: 10px;
+    height: 10px;
+    background-color: #a3a3a3;
+    border-radius: 50px;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 22px;
+    color: #3f3744;
+    font-family: Manrope, sans-serif;
+  }
+
+  span {
+    font-weight: 600;
+    font-size: 16px;
+    color: #343136;
+    position: relative;
+  }
+
+  span.activ::after,
+  span:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    right: 0;
+    height: 2px;
+    background-color: #343136;
+    border-radius: 50px;
+  }
+
+  &__development {
+    background-color: #ececec;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__calendar {
+    display: flex;
+    column-gap: 54px;
+  }
+
+  &__greyBtn {
+    background-color: #a3a3a3 !important;
+    margin-left: 26px;
+
+    &:hover {
+      background-color: #8f8f8f !important;
+    }
+  }
+
+  &__marginSpan {
+    margin-right: 10px;
+  }
+
+  &__balance {
+    grid-area: balance;
+  }
+
+  &__rating {
+    grid-area: rating;
+  }
+
+  &__salesDay {
+    grid-area: salesDay;
+  }
+
+  &__salesWeek {
+    grid-area: salesWeek;
+  }
+
+  &__statistics {
+    grid-area: statistics;
+  }
+
+  &__orders {
+    grid-area: orders;
+  }
+
+  &__reviews {
+    grid-area: reviews;
+  }
+
+  &__list {
+    grid-area: list;
+  }
 }
