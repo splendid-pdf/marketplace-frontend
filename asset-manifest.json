@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.css": "/marketplace-frontend/static/css/main.bd672e4a.css",
-    "main.js": "/marketplace-frontend/static/js/main.376ad69e.js",
+    "main.css": "/marketplace-frontend/static/css/main.f3c0855a.css",
+    "main.js": "/marketplace-frontend/static/js/main.a9d0686c.js",
     "static/js/787.c23b093c.chunk.js": "/marketplace-frontend/static/js/787.c23b093c.chunk.js",
     "static/media/slider01.png": "/marketplace-frontend/static/media/slider01.72fac7eb6ebff26f9f0e.png",
     "static/media/slider02.png": "/marketplace-frontend/static/media/slider02.f371614525a37816c5f4.png",
+    "static/media/promo1.png": "/marketplace-frontend/static/media/promo1.499f3b48752695920cfc.png",
+    "static/media/promo2.png": "/marketplace-frontend/static/media/promo2.1d043888f7c0184ab5bc.png",
     "static/media/Manrope-VariableFont_wght.ttf": "/marketplace-frontend/static/media/Manrope-VariableFont_wght.cae461b0196986f4250c.ttf",
     "static/media/Manrope-Bold.ttf": "/marketplace-frontend/static/media/Manrope-Bold.15c3a2fdedaee1ebf773.ttf",
+    "static/media/promo3.png": "/marketplace-frontend/static/media/promo3.d50eefdabc5d4129c99f.png",
     "static/media/card12.png": "/marketplace-frontend/static/media/card12.d5da6585cd15f7d310c1.png",
     "static/media/card8.png": "/marketplace-frontend/static/media/card8.6131ee7c59e9fd4188a1.png",
     "static/media/card3.png": "/marketplace-frontend/static/media/card3.bdc7078d36f18dd80547.png",
@@ -38,12 +41,12 @@
     "static/media/delete.svg": "/marketplace-frontend/static/media/delete.a88b8728e7d24af160a025a64751e1c9.svg",
     "static/media/heart.svg": "/marketplace-frontend/static/media/heart.366633f0fbc8479d5111f017bf9f213f.svg",
     "static/media/closeIcon.svg": "/marketplace-frontend/static/media/closeIcon.b2756793802572e2535c383ca45ad118.svg",
-    "main.bd672e4a.css.map": "/marketplace-frontend/static/css/main.bd672e4a.css.map",
-    "main.376ad69e.js.map": "/marketplace-frontend/static/js/main.376ad69e.js.map",
+    "main.f3c0855a.css.map": "/marketplace-frontend/static/css/main.f3c0855a.css.map",
+    "main.a9d0686c.js.map": "/marketplace-frontend/static/js/main.a9d0686c.js.map",
     "787.c23b093c.chunk.js.map": "/marketplace-frontend/static/js/787.c23b093c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd672e4a.css",
-    "static/js/main.376ad69e.js"
+    "static/css/main.f3c0855a.css",
+    "static/js/main.a9d0686c.js"
   ]
 }
