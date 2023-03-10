@@ -11,34 +11,35 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 
 export const Slider = () => {
   return (
-    <Swiper
-      className={classes.slider}
-      slidesPerView={1}
-      speed={1500}
-      pagination={{
-        clickable: true,
-      }}
-      autoplay={{ delay: 8000, disableOnInteraction: true }}
-      navigation={{
-        enabled: true,
-      }}
-      modules={[Pagination, Navigation, Autoplay]}
-    >
-      <SwiperSlide>
-        <img src={slider01} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slider02} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slider01} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slider02} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slider01} />
-      </SwiperSlide>
-    </Swiper>
+    <div className={"content" + " " + "container"}>
+      <Swiper
+        className={classes.slider}
+        slidesPerView={1}
+        speed={1500}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={{
+          enabled: true,
+        }}
+        modules={[Pagination, Navigation, Autoplay]}
+      >
+        <SwiperSlide>
+          <img src={slider01} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slider02} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slider01} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slider02} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slider01} />
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };

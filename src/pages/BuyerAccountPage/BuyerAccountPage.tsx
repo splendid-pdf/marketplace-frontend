@@ -9,10 +9,12 @@ const BuyerAccountPage = () => {
     return <Navigate to={`/${BASE_URL}/?popup=login`} replace={true} />;
   }
   return (
-    <div className={`${classes.BuyerAccountPage}`}>
-      <BuyerSidebar />
-      <div className={`${classes.content}`}>
-        <Outlet />
+    <div className={"content" + " " + "container"}>
+      <div className={`${classes.BuyerAccountPage}`}>
+        <BuyerSidebar />
+        <div className={`${classes.content}`}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );

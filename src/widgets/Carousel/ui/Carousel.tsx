@@ -96,7 +96,7 @@ const test3 = [
 
 export const Carousel = () => {
   return (
-    <div className="container-main">
+    <div className="container-carousel">
       <div className="titles">
         <h1>Новинки</h1>
         <a className="watch-all" href="#">
@@ -118,22 +118,21 @@ export const Carousel = () => {
         modules={[Pagination, Navigation]}
       >
         <SwiperSlide>
-          <div className="wrapper">
+          <div className="card-wrapper">
             {test.map((item, index) => (
               <Card obj={item} key={index} />
             ))}
           </div>
-          <div className="magic"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="wrapper">
+          <div className="card-wrapper">
             {test2.map((item, index) => (
               <Card obj={item} key={index} />
             ))}
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="wrapper">
+          <div className="card-wrapper">
             {test3.map((item, index) => (
               <Card obj={item} key={index} />
             ))}

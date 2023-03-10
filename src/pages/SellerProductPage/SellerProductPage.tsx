@@ -4,7 +4,7 @@ import Content from "./content/Content";
 const SellerProductPage: React.FC = () => {
   return (
     <div>
-      <Content/>
+      <Content />
     </div>
   );
 };

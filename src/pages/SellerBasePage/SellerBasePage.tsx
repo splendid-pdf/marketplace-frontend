@@ -8,8 +8,10 @@ const SellerBasePage = () => {
     return <Navigate to={`/${BASE_URL}/auth-seller`} replace={true} />;
   }
   return (
-    <div className={classes.SellerBasePage}>
-      <Outlet />
+    <div className={"content" + " " + "container"}>
+      <div className={classes.SellerBasePage}>
+        <Outlet />
+      </div>
     </div>
   );
 };
