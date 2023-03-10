@@ -1,7 +1,7 @@
-import { Button, Grid, Paper, styled } from "@mui/material";
 import React from "react";
-import { Card } from "shared/ui/ProductCard/Card";
+import { Button } from "@mui/material";
 import classes from "./OrderCard.module.scss";
+import { Card } from "shared/ui/ProductCard/Card";
 import card1 from "shared/images/products/card1.png";
 import card2 from "shared/images/products/card2.png";
 import card3 from "shared/images/products/card3.png";
