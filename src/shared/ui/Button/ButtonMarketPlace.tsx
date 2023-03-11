@@ -18,11 +18,19 @@ export enum BorderColorVarian {
   grey = "grey",
 }
 
+export enum TextColorVarian {
+  // eslint-disable-next-line no-unused-vars
+  white = "white",
+  // eslint-disable-next-line no-unused-vars
+  black = "black",
+}
+
 interface IButtonMarketPlaceProps {
   text: string;
   icon?: ReactNode;
   variant?: ButtonVariant;
   borderColorVarian?: BorderColorVarian;
+  textColor?:TextColorVarian;
   className?: string;
   to?: string;
 }
@@ -32,6 +40,7 @@ export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
   icon,
   variant = ButtonVariant.contained,
   borderColorVarian = BorderColorVarian.orange,
+  textColor = TextColorVarian.black,
   className,
   to,
 }) => {
@@ -41,8 +50,9 @@ export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
         //  variant === ButtonVariant.outlined ? classes.outlined  : ''
         variant === ButtonVariant.outlined && classes.outlined,
         borderColorVarian === BorderColorVarian.grey && classes.greyBorder,
-        className,
+        textColor ===  TextColorVarian.black ? classes.textBlack : classes.textWhite ,
         classes.btn,
+        className,
       )}
       variant={variant}
       endIcon={icon}
