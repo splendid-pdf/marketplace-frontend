@@ -1,4 +1,4 @@
-import { RegisterSellerForm } from "features/userRegister/sellerRegister";
+import { RegisterSellerForm } from '../../features/sellerAuth';
 import classes from "./RegisterSellerPage.module.scss";
 
 const RegisterSellerPage = () => {

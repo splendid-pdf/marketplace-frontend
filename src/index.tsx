@@ -4,11 +4,15 @@ import reportWebVitals from './reportWebVitals';
 import App from './app/App';
 import './app/styles/index.scss';
 import './shared/fonts/Manrope/Manrope-VariableFont_wght.ttf';
+import { Provider } from 'react-redux';
+import { store } from './app/store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

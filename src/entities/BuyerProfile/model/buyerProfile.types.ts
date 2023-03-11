@@ -1,6 +1,7 @@
 export enum Gender {
   'Мужской',
-  'Женский'
+  'Женский',
+  'Не указан'
 }
 
 export interface Location {

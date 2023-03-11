@@ -1,4 +1,4 @@
-import { AuthSellerForm } from "features/userAuth/sellerAuth";
+import { AuthSellerForm } from "features/sellerAuth";
 import classes from "./AuthSellerPage.module.scss";
 import { Navigate } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";

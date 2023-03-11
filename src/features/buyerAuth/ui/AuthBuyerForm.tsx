@@ -1,13 +1,15 @@
 import React from "react";
 import classes from "./AuthBuyerForm.module.scss";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TextField, Button, Link as LinkMUI } from "@mui/material";
-import { getItemFromLS } from "../../../../shared/utils/getItemFromLS";
-import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from "../../../../shared/constants/localStorage";
-import { useAppDispatch } from "../../../../app/store/hooks";
-import { authenticateBuyer } from "../model/slices/authBuyerSlice";
+import { getItemFromLS } from "shared/utils/getItemFromLS";
+import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from "shared/constants/localStorage";
+import { useAppDispatch } from "app/store/hooks";
 import { Modal } from "shared/ui/Modal/Modal";
+import { loginBuyer } from '../model/slice/loginBuyer';
+import { buyerAuthActions } from '../model/slice/buyerAuthSlice';
+import { BuyerAuth } from '../model/types/BuyerAuthSchema';
 
 interface AuthBuyerFormProps {
   isOpened: boolean;
@@ -15,6 +17,7 @@ interface AuthBuyerFormProps {
 
 export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -28,12 +31,16 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
     mode: "onSubmit",
   });
 
-  //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
-  const onSubmit = (obj) => {
+  const onSubmit = (obj: BuyerAuth) => {
     const { email, password } = obj;
-    console.log({ email, password });
-    dispatch(authenticateBuyer({ email, password }));
+    const role = "buyer";
+
+    // TODO: remove this line when the backend is ready
+    dispatch(buyerAuthActions.setAuthData({ email, password }));
+
+    // TODO: uncomment this line when the backend is ready
+    // dispatch(loginBuyer({ email, password }));
+    navigate("marketplace-frontend");
   };
 
   return (
@@ -45,7 +52,6 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
           error={Boolean(errors.email?.message)}
           helperText={errors.email?.message}
           size="small"
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register("email", {
             required: "Укажите e-mail",
             pattern: {
@@ -62,7 +68,6 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
           size="small"
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register("password", {
             required: "Неверный логин и/или пароль",
             minLength: {

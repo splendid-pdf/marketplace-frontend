@@ -4,16 +4,16 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
 
-import { axiosInstance } from "../../../../shared/api/axiosInstance";
-import { setItemToLS } from "../../../../shared/utils/setItemToLS";
+import { setItemToLS } from "shared/utils/setItemToLS";
 import {
   LS_KEY_EMAIL,
-  LS_KEY_ID,
   LS_KEY_PASSWORD,
-} from "../../../../shared/constants/localStorage";
-import { API_REGISTER_BUYER_URL } from "../../../../shared/api/apiEndpoints";
-import { BASE_URL } from "../../../../shared/constants/base_url";
+} from "shared/constants/localStorage";
+import { API_REGISTER_BUYER_URL } from "shared/api/apiEndpoints";
+import { BASE_URL } from "shared/constants/base_url";
 import { Modal } from "shared/ui/Modal/Modal";
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { buyerAuthActions } from '..';
 
 interface RegisterBuyerFormProps {
   isOpened: boolean;
@@ -21,6 +21,8 @@ interface RegisterBuyerFormProps {
 
 export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { loading, error, isReg } = useAppSelector((state) => state.buyerAuth);
 
   const {
     watch,
@@ -43,34 +45,16 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
   //@ts-ignore
   const onSubmit = async (obj) => {
     const { email, password, checkbox } = obj;
-    console.log({ email, password, checkbox });
     try {
-      // TODO: Когда будет работать сервер, все эти функции до "const response ..."
-      // нужно будет удалить -
-      // они повторяются в конце try-блока, после успешного ответа от сервера
-      console.log(`we are in onSubmit`);
       if (checkbox) {
         setItemToLS(LS_KEY_EMAIL, email);
         setItemToLS(LS_KEY_PASSWORD, password);
       }
-      setItemToLS(LS_KEY_ID, "userID_received_from_api");
-      reset();
-      navigate("marketplace-frontend?popup=login");
-      const response = await axiosInstance.post(
-        // TODO: Вставить правильный URL для регистрации, когда будет работать сервер
-        API_REGISTER_BUYER_URL,
-        JSON.stringify({ obj }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        },
-      );
-      console.dir(response.data);
-      if (checkbox) {
-        setItemToLS(LS_KEY_EMAIL, email);
-        setItemToLS(LS_KEY_PASSWORD, password);
-      }
-      setItemToLS(LS_KEY_ID, response.data);
+      // TODO: uncomment this line when the backend is ready
+      // dispatch(registerBuyer({ email, password }));
+
+      // TODO: remove this line when the backend is ready
+      dispatch(buyerAuthActions.setRegData({id: 'fake_id', role: 'buyer'}));
       reset();
       navigate(`/${BASE_URL}?popup=login`);
     } catch (error) {
@@ -87,7 +71,6 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           error={Boolean(errors.email?.message)}
           helperText={errors.email?.message}
           size="small"
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register("email", {
             required: "Укажите e-mail",
             pattern: {
@@ -104,20 +87,21 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           size="small"
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register("password", {
             required: "Введите пароль",
             minLength: {
-              value: 6,
-              message: "Минимальная длина пароля 6 символов",
+              value: 8,
+              message: "Минимальная длина пароля 8 символов",
             },
             maxLength: {
-              value: 14,
-              message: "Максимальная длина пароля 14 символов",
+              value: 30,
+              message: "Максимальная длина пароля 30 символов",
             },
             pattern: {
-              value: /^[\w~'`!@#№?$%^&*()=+<>|/\\.,:;[\]{} \x22-]{6,25}$/i,
-              message: "Пароль указан некорректно",
+              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*])[A-Za-z\d#$@!%&*]{8,30}$/,
+              message: 
+            `Пароль должен иметь от 8 до 30 символов и содержать минимум 1 букву в нижнем регистре 
+            и 1 букву в верхнем, минимум 1 цифру и минимум один из символов #$@!%&*`,
             },
           })}
         />
@@ -129,7 +113,6 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           size="small"
           error={Boolean(errors.confirmPassword?.message)}
           helperText={errors.confirmPassword?.message}
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register("confirmPassword", {
             required: "Введите повторно пароль",
             validate: (val: string) => {
@@ -138,16 +121,12 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
               }
             },
             minLength: {
-              value: 6,
-              message: "Минимальная длина пароля 6 символов",
+              value: 8,
+              message: "Минимальная длина пароля 8 символов",
             },
             maxLength: {
-              value: 14,
-              message: "Максимальная длина пароля 14 символов",
-            },
-            pattern: {
-              value: /^[\w~'`!@#№?$%^&*()=+<>|/\\.,:;[\]{} \x22-]{6,25}$/i,
-              message: "Пароль указан некорректно",
+              value: 30,
+              message: "Максимальная длина пароля 30 символов",
             },
           })}
         />
@@ -157,14 +136,13 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           render={({ field }) => (
             <FormControlLabel
               className={classes.checkbox}
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              control={<Checkbox {...field} checked={field.value} disabled={!isValid} />}
+              control={<Checkbox {...field} checked={field.value} />}
               label="Запомнить"
             />
           )}
         />
         <Button
-          // disabled={!isValid}
+          disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"
