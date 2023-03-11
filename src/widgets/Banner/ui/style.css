@@ -1,0 +1,24 @@
+.banner-container {
+  height: 490px;
+  position: relative;
+  margin-bottom: 80px;
+}
+.text p {
+  position: absolute;
+  font-size: 48px;
+  font-family: Manrope;
+  font-weight: 600;
+  line-height: 130%;
+  width: 500px;
+  top: 100px;
+  left: 140px;
+  margin-bottom: 60px;
+}
+.btnHeader {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  position: absolute !important;
+  top: 350px;
+  left: 140px;
+  color: #FFF;
+}

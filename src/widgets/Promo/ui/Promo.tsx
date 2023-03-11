@@ -6,9 +6,9 @@ import "swiper/css/navigation";
 import "./style.css";
 import { Pagination, Navigation } from "swiper";
 
-import promo1 from "shared/images/promo1.png";
-import promo2 from "shared/images/promo2.png";
-import promo3 from "shared/images/promo3.png";
+import promo1 from "shared/images/promo/promo1.png";
+import promo2 from "shared/images/promo/promo2.png";
+import promo3 from "shared/images/promo/promo3.png";
 
 export const Promo = () => {
   return (

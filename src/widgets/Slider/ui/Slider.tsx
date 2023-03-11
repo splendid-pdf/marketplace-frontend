@@ -4,8 +4,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import classes from "./Slider.module.scss";
 
-import slider01 from "shared/images/slider01.png";
-import slider02 from "shared/images/slider02.png";
+import slider01 from "shared/images/slider/slider01.png";
+import slider02 from "shared/images/slider/slider02.png";
 
 import { Pagination, Navigation, Autoplay } from "swiper";
 

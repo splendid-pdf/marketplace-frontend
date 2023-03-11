@@ -6,11 +6,11 @@
 }
 .container-promo .swiper-wrapper {
   height: 460px;
-  width: 1280px;
+  width: 2254px;
   border-radius: 20px;
 }
 .container-promo .swiper-button-next {
-  right: 43.3%;
+  right: 43.2%;
   color: #343631;
   z-index: 100;
   --swiper-navigation-top-offset: 96.5%;
