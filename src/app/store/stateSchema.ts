@@ -1,7 +1,7 @@
-import { BuyerSchema } from '../../entities/Buyer';
 import { BuyerProfileSchema } from '../../entities/BuyerProfile';
+import { BuyerAuthSchema } from '../../features/buyerAuth';
 
 export interface StateSchema {
-  buyer: BuyerSchema;
+  buyerAuth?: BuyerAuthSchema;
   buyerProfile?: BuyerProfileSchema;
 }

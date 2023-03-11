@@ -1,0 +1,43 @@
+.container-promo {
+  height: 549px;
+  width: 2254px;
+  margin-bottom: 80px;
+  cursor: pointer;
+}
+.container-promo .swiper-wrapper {
+  height: 460px;
+  width: 2254px;
+  border-radius: 20px;
+}
+.container-promo .swiper-button-next {
+  right: 43.2%;
+  color: #343631;
+  z-index: 100;
+  --swiper-navigation-top-offset: 96.5%;
+  --swiper-navigation-size: 22px;
+}
+
+.container-promo .swiper-button-prev {
+  left: 51.2%;
+  color: #343631;
+  z-index: 100;
+  --swiper-navigation-top-offset: 96.5%;
+  --swiper-navigation-size: 22px;
+}
+
+.container-promo .swiper-pagination-current {
+  color: #f15513;
+}
+
+.container-promo .swiper-pagination {
+  font-size: 16px;
+  left: 25.7%;
+  margin-top: 20px;
+  width: 1280px;
+}
+.images {
+  border-radius: 20px;
+}
+.promo-swiper {
+  border-radius: 20px;
+}

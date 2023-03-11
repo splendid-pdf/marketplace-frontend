@@ -10,3 +10,4 @@ export const LS_KEY_PASSWORD = 'marketplace_user_password';
 export const LS_KEY_BUYER_AUTH_DATA = 'marketplace_buyer_authData';
 export const LS_KEY_BUYER_TOKEN = 'marketplace_buyer_token';
 export const LS_KEY_BUYER_ID = 'marketplace_buyer_id';
+export const LS_KEY_BUYER_ACCESS_TOKEN = 'marketplace_buyer_access_token';

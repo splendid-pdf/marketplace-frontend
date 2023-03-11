@@ -1,12 +1,12 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-import { buyerAuthReducer } from '../../entities/Buyer';
+import { buyerAuthReducer } from '../../features/buyerAuth';
 
 /**
  * @description Redux store
  */
 export const store = configureStore({
   reducer: {
-    buyer: buyerAuthReducer,
+    buyerAuth: buyerAuthReducer,
   },
 });
 

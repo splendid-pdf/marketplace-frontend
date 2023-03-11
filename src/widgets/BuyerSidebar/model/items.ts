@@ -1,4 +1,3 @@
-
 export interface BuyerSidebarItemType {
   url: string;
   name: string;
@@ -7,22 +6,22 @@ export interface BuyerSidebarItemType {
 export const BuyerSidebarItemsList: BuyerSidebarItemType[] = [
   {
     url: `details`,
-    name: 'Личные данные',
+    name: "Личные данные",
   },
   {
-    url: `orders`,
-    name: 'Мои заказы',
+    url: `orders/my-orders`,
+    name: "Мои заказы",
   },
   {
     url: `favorites`,
-    name: 'Избранное',
+    name: "Избранное",
   },
   {
     url: `feedback`,
-    name: 'Отзывы и вопросы о товарах',
+    name: "Отзывы и вопросы о товарах",
   },
   {
     url: `settings`,
-    name: 'Настройки и уведомления',
+    name: "Настройки и уведомления",
   },
 ];

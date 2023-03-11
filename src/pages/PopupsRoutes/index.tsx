@@ -2,8 +2,7 @@ import { GET_ENUMS } from "shared/constants/parametersPopup";
 
 import useGetPopupState from "./hooks/useGetPopupState";
 
-import { AuthBuyerForm } from "features/userAuth/buyerAuth";
-import { RegisterBuyerForm } from "features/userRegister/buyerRegister";
+import { AuthBuyerForm, RegisterBuyerForm } from "features/buyerAuth";
 import {
   ModalStopSale,
   ModalPutUpSale,

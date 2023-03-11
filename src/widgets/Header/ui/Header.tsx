@@ -6,7 +6,7 @@ import SearchBar from "../searchBar/searchBar";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { ReactComponent as Logo } from "../../../shared/images/icons/logo.svg";
 import { ReactComponent as CatalogIcon } from "../../../shared/images/icons/catalog.svg";
-import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
+import { ButtonMarketPlace, TextColorVarian } from "shared/ui/Button/ButtonMarketPlace";
 import { NavBar } from "widgets/Header/NavBar";
 import { HeaderSeller } from "../HeaderSeller";
 
@@ -33,6 +33,7 @@ export const Header: React.FC = () => {
                 text="Каталог"
                 icon={<CatalogIcon />}
                 className={classes.btnHeader}
+                textColor={TextColorVarian.white}
               />
               <SearchBar />
               <NavBar />

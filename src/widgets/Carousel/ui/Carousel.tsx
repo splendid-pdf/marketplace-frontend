@@ -96,55 +96,56 @@ const test3 = [
 
 export const Carousel = () => {
   return (
-    <div className="container-main">
-      <div className="titles">
-        <h1>Новинки</h1>
-        <a className="watch-all" href="#">
-          Смотреть всё
-        </a>
-      </div>
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={20}
-        speed={1500}
-        pagination={{
-          clickable: true,
-          type: "fraction",
-        }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
-        modules={[Pagination, Navigation]}
-      >
-        <SwiperSlide>
-          <div className="wrapper">
-            {test.map((item, index) => (
-              <Card obj={item} key={index} />
-            ))}
-          </div>
-          <div className="magic"></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="wrapper">
-            {test2.map((item, index) => (
-              <Card obj={item} key={index} />
-            ))}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="wrapper">
-            {test3.map((item, index) => (
-              <Card obj={item} key={index} />
-            ))}
-          </div>
-        </SwiperSlide>
-        <div className="slider-controler">
-          <div className="swiper-button-prev"></div>
-          <div className="swiper-button-next"></div>
-          <div className="swiper-pagination"></div>
+    <div className={"content" + " " + "container"}>
+      <div className="container-carousel">
+        <div className="titles">
+          <h1>Новинки</h1>
+          <a className="watch-all" href="#">
+            Смотреть всё
+          </a>
         </div>
-      </Swiper>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={20}
+          speed={1500}
+          pagination={{
+            clickable: true,
+            type: "fraction",
+          }}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          modules={[Pagination, Navigation]}
+        >
+          <SwiperSlide>
+            <div className="card-wrapper">
+              {test.map((item, index) => (
+                <Card obj={item} key={index} />
+              ))}
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="card-wrapper">
+              {test2.map((item, index) => (
+                <Card obj={item} key={index} />
+              ))}
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="card-wrapper">
+              {test3.map((item, index) => (
+                <Card obj={item} key={index} />
+              ))}
+            </div>
+          </SwiperSlide>
+          <div className="slider-controler">
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
+            <div className="swiper-pagination"></div>
+          </div>
+        </Swiper>
+      </div>
     </div>
   );
 };

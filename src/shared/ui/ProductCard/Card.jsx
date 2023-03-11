@@ -4,7 +4,7 @@ import { ReactComponent as Cart } from "shared/images/icons/cart2.svg";
 import { ReactComponent as FavoriteIcon } from "../../images/icons/heart.svg";
 
 // eslint-disable-next-line react/prop-types
-export const Card = ({ obj }) => {
+export const Card = ({ obj, hideCartButton = false }) => {
   // eslint-disable-next-line react/prop-types
   const { image, price, title } = obj;
   const [activeFavoriteIcon, setActiveFavoriteIcon] = React.useState(false);
@@ -21,10 +21,14 @@ export const Card = ({ obj }) => {
             stroke={activeFavoriteIcon ? "#" : "#343631"}
           />
         </button>
+
         <div className={classes.wrap}>
-          <button className={classes.cartButton}>
-            <Cart />
-          </button>
+          {!hideCartButton && (
+            <button className={classes.cartButton}>
+              <Cart />
+            </button>
+          )}
+
           <img src={image} />
         </div>
       </div>

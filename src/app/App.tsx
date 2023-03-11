@@ -10,7 +10,7 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/theme";
 import { TopHeader } from "widgets/Header/TopHeader/TopHeader";
 import { useAppDispatch } from './store/hooks';
-import { buyerAuthActions } from '../entities/Buyer';
+import { buyerAuthActions } from '../features/buyerAuth';
 
 const App = () => {
   const dispatch = useAppDispatch();
