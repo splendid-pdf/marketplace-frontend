@@ -142,7 +142,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           )}
         />
         <Button
-          disabled={!isValid}
+          // disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"
