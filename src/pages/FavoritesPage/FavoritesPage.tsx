@@ -71,7 +71,7 @@ const FavoritesPage = () => {
 
 
   return (
-    <div className={classes.FavoritesPage}>
+    <div className={`${classes.FavoritesPage} container`}>
       <div className={classes.FavoriteProducts}>
         <div className={classes.ProductsHeader}>
           <h2 className={classes.HeaderTitle}>Избранные товары</h2>
