@@ -9,7 +9,7 @@ export interface BuyerAuthSchema {
   authData?: BuyerAuth;
   isReg?: boolean;
   isAuth?: boolean;
-  error?: any;
+  error?: unknown;
   accessToken?: string;
   role?: string;
 }
