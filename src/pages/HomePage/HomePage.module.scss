@@ -1,11 +1,4 @@
 .HomePage {
-  width: 100%;
+  min-width: 1300px;
   overflow: hidden;
-}
-
-.wrapperTest {
-  display: flex;
-  column-gap: 20px;
-  flex-wrap: wrap;
-  margin: 20px;
 }

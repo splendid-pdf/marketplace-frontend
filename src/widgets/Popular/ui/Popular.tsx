@@ -18,23 +18,35 @@ export const Popular = () => {
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
             <Box gridColumn="span 6">
               <div>
-                <img src={p1} alt="" />
+                <a href="">
+                  <img className="popular-wrapper" src={p1} alt="" />
+                </a>
               </div>
             </Box>
             <Box gridColumn="span 3">
-              <img src={p2} />
+              <a href="">
+                <img className="popular-wrapper" src={p2} />
+              </a>
             </Box>
             <Box gridColumn="span 3">
-              <img src={p3} />
+              <a href="">
+                <img className="popular-wrapper" src={p3} />
+              </a>
             </Box>
             <Box gridColumn="span 3">
-              <img src={p4} />
+              <a href="">
+                <img className="popular-wrapper" src={p4} />
+              </a>
             </Box>
             <Box gridColumn="span 3">
-              <img src={p5} />
+              <a href="">
+                <img className="popular-wrapper" src={p5} />
+              </a>
             </Box>
             <Box gridColumn="span 6">
-              <img src={p6} />
+              <a href="">
+                <img className="popular-wrapper" src={p6} />
+              </a>
             </Box>
           </Box>
         </Box>

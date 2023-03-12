@@ -2,3 +2,6 @@
   height: 695px;
   margin-bottom: 80px;
 }
+.popular-wrapper {
+  cursor: pointer;
+}
