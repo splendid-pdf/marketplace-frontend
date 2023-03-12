@@ -95,9 +95,12 @@ export const Preferences = () => {
       <div className="preferences-container">
         <div className="titles">
           <h1>Вам может понравиться</h1>
+          <a className="watch-all" href="#">
+            Смотреть всё
+          </a>
         </div>
         <Box sx={{ width: 1 }}>
-          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={4}>
             <Box gridColumn="span 12">
               <div className="card-wrapper">
                 {test.map((item, index) => (
