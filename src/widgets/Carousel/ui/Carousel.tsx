@@ -105,6 +105,7 @@ export const Carousel = () => {
           </a>
         </div>
         <Swiper
+          effect={"fade"}
           slidesPerView={1}
           spaceBetween={20}
           speed={1500}
