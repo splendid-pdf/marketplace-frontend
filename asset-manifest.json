@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/marketplace-frontend/static/css/main.94c82695.css",
-    "main.js": "/marketplace-frontend/static/js/main.a62b3351.js",
+    "main.css": "/marketplace-frontend/static/css/main.84f918dd.css",
+    "main.js": "/marketplace-frontend/static/js/main.98d91b7d.js",
     "static/js/787.c23b093c.chunk.js": "/marketplace-frontend/static/js/787.c23b093c.chunk.js",
     "static/media/slider01.png": "/marketplace-frontend/static/media/slider01.72fac7eb6ebff26f9f0e.png",
     "static/media/slider02.png": "/marketplace-frontend/static/media/slider02.f371614525a37816c5f4.png",
@@ -73,12 +73,12 @@
     "static/media/delete.svg": "/marketplace-frontend/static/media/delete.a88b8728e7d24af160a025a64751e1c9.svg",
     "static/media/heart.svg": "/marketplace-frontend/static/media/heart.366633f0fbc8479d5111f017bf9f213f.svg",
     "static/media/closeIcon.svg": "/marketplace-frontend/static/media/closeIcon.b2756793802572e2535c383ca45ad118.svg",
-    "main.94c82695.css.map": "/marketplace-frontend/static/css/main.94c82695.css.map",
-    "main.a62b3351.js.map": "/marketplace-frontend/static/js/main.a62b3351.js.map",
+    "main.84f918dd.css.map": "/marketplace-frontend/static/css/main.84f918dd.css.map",
+    "main.98d91b7d.js.map": "/marketplace-frontend/static/js/main.98d91b7d.js.map",
     "787.c23b093c.chunk.js.map": "/marketplace-frontend/static/js/787.c23b093c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.94c82695.css",
-    "static/js/main.a62b3351.js"
+    "static/css/main.84f918dd.css",
+    "static/js/main.98d91b7d.js"
   ]
 }
