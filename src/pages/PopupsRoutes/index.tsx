@@ -8,6 +8,7 @@ import {
   ModalPutUpSale,
   ModalDeleteProducts,
   ModalDeleteOneProduct,
+  ModalCreateNewProductSeller,
 } from "../SellerProductPage/content/modalActions/modalActions";
 
 const popups = {
@@ -17,6 +18,7 @@ const popups = {
   [GET_ENUMS.popup.putUpSale]: ModalPutUpSale,
   [GET_ENUMS.popup.deleteProducts]: ModalDeleteProducts,
   [GET_ENUMS.popup.deleteOneProduct]: ModalDeleteOneProduct,
+  [GET_ENUMS.popup.createNewProductSeller]: ModalCreateNewProductSeller,
 };
 
 const GetParameterPopups = () => {

@@ -28,7 +28,11 @@ const ProductActions = () => {
         onSearch={onSearch}
         placeholder="Название товара или артикул"
       />
-      <ButtonMarketPlace className={classes.btn} text="Создать новый товар" />
+      <ButtonMarketPlace 
+        className={classes.btn} 
+        text="Создать новый товар"
+        to={`${path}?popup=createNewProductSeller`}
+      />
       <ButtonMarketPlace
         className={classes.btn}
         text="Снять с продажи"
