@@ -41,7 +41,10 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ item }) => {
         to={item.url}
         onMouseOver={openDropdown}
         onClick={handleClose}
-        style={{ zIndex: 2000, backgroundColor: "white" }}
+        style={{ 
+          // zIndex: 2000, 
+          backgroundColor: "white" 
+        }}
         className={classNames(location.pathname === `/${page?.url}` && classes.bold)}
       >
         {item.name}
