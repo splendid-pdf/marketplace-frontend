@@ -32,7 +32,7 @@ export const Modal: React.FC<ModalProps> = ({ children, isOpened, title }) => {
         },
       }}
       aria-labelledby="modal-modal-title"
-      sx={{ zIndex: 2000}}
+      // sx={{ zIndex: 2000}}
     >
       <Fade in={isOpened}>
         <Box className={classes.modal} >
