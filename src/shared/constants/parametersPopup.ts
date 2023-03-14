@@ -10,5 +10,6 @@ export const GET_ENUMS = {
     putUpSale: "putUpSale",
     deleteProducts: "deleteProducts",
     deleteOneProduct: "deleteOneProduct",
+    createNewProductSeller: "createNewProductSeller",
   },
 };

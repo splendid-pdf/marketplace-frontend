@@ -1,8 +1,9 @@
 import React from "react";
 import classes from "./modalActions.module.scss";
-import { Button } from "@mui/material";
+import { Button} from "@mui/material";
 import { Modal } from "shared/ui/Modal/Modal";
 import { useLocation, useNavigate } from "react-router-dom";
+import InputDropdownMenu from "shared/ui/InputDropdownMenu/InputDropdownMenu";
 
 interface ModalProps {
   isOpened: boolean;
@@ -75,6 +76,17 @@ export const ModalDeleteOneProduct: React.FC<ModalProps> = ({ isOpened }) => {
   return (
     <Modal isOpened={isOpened} title={title}>
       <ChildrenModal baseText={baseText} firstButtonName={firstButtonName} />
+    </Modal>
+  );
+};
+
+export const ModalCreateNewProductSeller: React.FC<ModalProps> = ({ isOpened }) => {
+  const title = "Создание нового товара";
+  return (
+    <Modal isOpened={isOpened} title={title}>
+      <div>
+        <InputDropdownMenu/>
+      </div>
     </Modal>
   );
 };
