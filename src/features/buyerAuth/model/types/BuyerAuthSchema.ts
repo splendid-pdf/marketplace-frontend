@@ -17,7 +17,6 @@ export interface BuyerAuthSchema {
 export interface BuyerRegResponse {
   id: string;
   error?: unknown;
-  role?: string;
 }
 
 export interface BuyerAuthResponse {

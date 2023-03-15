@@ -7,10 +7,12 @@ import {
 import { 
   LS_KEY_BUYER_ACCESS_TOKEN, 
   LS_KEY_BUYER_AUTH_DATA, 
+  LS_KEY_BUYER_IS_REG, 
   LS_KEY_ROLE 
 } from 'shared/constants/localStorage';
 import { loginBuyer } from './loginBuyer';
 import { registerBuyer } from './registerBuyer';
+import { setItemToLS } from 'shared/utils/setItemToLS';
 
 const initialState: BuyerAuthSchema = {
   id: undefined,
@@ -30,6 +32,10 @@ export const buyerAuthSlice = createSlice({
       state.id = action.payload.id;
       state.isReg = true;
       state.error = action.payload.error;
+      setItemToLS(LS_KEY_BUYER_IS_REG, 'true');
+    },
+    initRegData: (state) => {
+      state.isReg = localStorage.getItem(LS_KEY_BUYER_IS_REG) === 'true' ? true : false;
     },
     setAuthData: (state, action: PayloadAction<BuyerAuth>) => {
       state.isAuth = true;

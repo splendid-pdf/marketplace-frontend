@@ -14,6 +14,7 @@ import { BASE_URL } from "shared/constants/base_url";
 import { Modal } from "shared/ui/Modal/Modal";
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { buyerAuthActions } from '..';
+import { registerBuyer } from '../model/slice/registerBuyer';
 
 interface RegisterBuyerFormProps {
   isOpened: boolean;
@@ -54,7 +55,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
       // dispatch(registerBuyer({ email, password }));
 
       // TODO: remove this line when the backend is ready
-      dispatch(buyerAuthActions.setRegData({id: 'fake_id', role: 'buyer'}));
+      dispatch(registerBuyer({ email, password}));
       reset();
       navigate(`/${BASE_URL}?popup=login`);
     } catch (error) {
