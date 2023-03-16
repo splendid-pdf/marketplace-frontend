@@ -1,6 +1,6 @@
 import { Product } from "shared/api/types";
 import React from "react";
-import { ReactComponent as EditIcon } from "../../../../shared/images/icons/edit.svg";
+import { ReactComponent as SendIcon } from "../../../../shared/images/icons/send.svg";
 import { ReactComponent as DeleteIcon } from "../../../../shared/images/icons/delete.svg";
 import classes from "./ProductTable.module.scss";
 import Checkbox from "@mui/material/Checkbox";
@@ -41,7 +41,7 @@ export const ProductTable = ({ products }: Props) => {
           </div>
           <div className={classes.HeaderCell} style={{ width: "6rem" }}>
             Тип
-            <button className={classes.SortType}></button>
+            <button></button>
           </div>
           <div className={classes.HeaderCell} style={{ width: "8rem" }}>
             Дата создания
@@ -81,13 +81,13 @@ export const ProductTable = ({ products }: Props) => {
               {product.dateTime}
             </div>
             <div className={classes.ButtonsCell} style={{ width: "5rem" }}>
+
+              <button className={classes.Button}>
+                <SendIcon />
+              </button>
               <Link className={classes.Button} to={`?popup=deleteOneProduct`}>
                 <DeleteIcon />
               </Link>
-
-              <button className={classes.Button}>
-                <EditIcon />
-              </button>
             </div>
           </div>
         ))}
