@@ -7,7 +7,6 @@ import {
   LS_KEY_BUYER_ACCESS_TOKEN, 
   LS_KEY_BUYER_AUTH_DATA, 
   LS_KEY_BUYER_ID, 
-  LS_KEY_BUYER_IS_REG, 
   LS_KEY_ROLE 
 } from 'shared/constants/localStorage';
 import { loginBuyer } from './loginBuyer';
@@ -33,7 +32,7 @@ export const buyerAuthSlice = createSlice({
       setItemToLS(LS_KEY_BUYER_ID, action.payload);
     },
     initRegData: (state) => {
-      state.isReg = localStorage.getItem(LS_KEY_BUYER_ID) != '' ? true : false;
+      state.isReg = localStorage.getItem(LS_KEY_BUYER_ID) != null ? true : false;
     },
     setAuthData: (state, action: PayloadAction<BuyerAuth>) => {
       state.isAuth = true;
