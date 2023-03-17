@@ -1,5 +1,6 @@
-import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-import { buyerAuthReducer } from '../../features/buyerAuth';
+import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
+import { buyerAuthReducer } from "../../features/buyerAuth";
+import { sellerProductsReducer } from "pages/SellerProductPage/model/slice/sellerProductsSlice";
 
 /**
  * @description Redux store
@@ -7,6 +8,7 @@ import { buyerAuthReducer } from '../../features/buyerAuth';
 export const store = configureStore({
   reducer: {
     buyerAuth: buyerAuthReducer,
+    sellerProducts: sellerProductsReducer,
   },
 });
 
@@ -20,4 +22,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
-

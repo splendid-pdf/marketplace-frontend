@@ -48,34 +48,38 @@ export const ProductTable = ({ products }: Props) => {
       </div>
       <div className={classes.TableBody}>
         {products.map((product) => (
-          <div key={product.id} className={classes.BodyRow}>
+          <div key={product.externalId} className={classes.BodyRow}>
             <Checkbox style={{ padding: 0 }} />
             <div style={{ width: "4rem" }}>
-              <img className={classes.ContentRowImage} src={product.img} alt={product.title} />
+              <img
+                className={classes.ContentRowImage}
+                src={product.productImages}
+                alt={product.name}
+              />
             </div>
             <div className={classes.BodyCell} style={{ width: "10rem" }}>
-              {product.title}
+              {product.name}
             </div>
             <div className={classes.BodyCell} style={{ width: "5rem" }}>
-              {product.id}
+              {product.articleFromSeller}
             </div>
             <div className={classes.BodyCell} style={{ width: "5rem" }}>
               {product.price}
             </div>
             <div className={classes.BodyCell} style={{ width: "6rem" }}>
-              {product.stock}
+              {product.count}
             </div>
             <div className={classes.BodyCell} style={{ width: "6rem" }}>
-              {product.sale ? "есть" : "нет"}
+              {product.isVisible ? "есть" : "нет"}
             </div>
             <div className={classes.BodyCell} style={{ width: "6rem" }}>
-              {product.category.name}
+              {product.type.name}
             </div>
             <div className={classes.BodyCell} style={{ width: "6rem" }}>
               {product.type.name}
             </div>
             <div className={classes.BodyCell} style={{ width: "7rem" }}>
-              {product.dateTime}
+              {product.creationDate}
             </div>
             <div className={classes.ButtonsCell} style={{ width: "5rem" }}>
               <Link className={classes.Button} to={`?popup=deleteOneProduct`}>
