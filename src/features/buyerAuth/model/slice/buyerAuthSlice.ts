@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { 
   BuyerAuth, 
   BuyerAuthSchema,
-  BuyerRegResponse, 
 } from '../types/BuyerAuthSchema';
 import { 
   LS_KEY_BUYER_ACCESS_TOKEN, 
   LS_KEY_BUYER_AUTH_DATA, 
+  LS_KEY_BUYER_ID, 
   LS_KEY_BUYER_IS_REG, 
   LS_KEY_ROLE 
 } from 'shared/constants/localStorage';
@@ -28,14 +28,12 @@ export const buyerAuthSlice = createSlice({
   name: 'buyerAuth',
   initialState,
   reducers: {
-    setRegData: (state, action: PayloadAction<BuyerRegResponse>) => {
-      state.id = action.payload.id;
+    setRegData: (state, action: PayloadAction<string>) => {
       state.isReg = true;
-      state.error = action.payload.error;
-      setItemToLS(LS_KEY_BUYER_IS_REG, 'true');
+      setItemToLS(LS_KEY_BUYER_ID, action.payload);
     },
     initRegData: (state) => {
-      state.isReg = localStorage.getItem(LS_KEY_BUYER_IS_REG) === 'true' ? true : false;
+      state.isReg = localStorage.getItem(LS_KEY_BUYER_ID) != '' ? true : false;
     },
     setAuthData: (state, action: PayloadAction<BuyerAuth>) => {
       state.isAuth = true;
@@ -57,13 +55,16 @@ export const buyerAuthSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(registerBuyer.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(registerBuyer.fulfilled, (state) => {
         state.loading = false;
         state.isReg = true;
       })
       .addCase(registerBuyer.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.errorOnRegister = action.payload as string;
       })
       .addCase(loginBuyer.pending, (state) => {
         state.loading = true;
@@ -74,7 +75,7 @@ export const buyerAuthSlice = createSlice({
       })
       .addCase(loginBuyer.rejected, (state, action) => {
         state.isAuth = false;
-        state.error = action.payload;
+        state.errorOnLogin = action.payload as string;
       })
   }
 });
