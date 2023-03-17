@@ -1,14 +1,21 @@
 export type Product = {
-  img: string;
-  id: number;
-  title: string;
-  price: number;
-  stock: number;
-  sale: boolean;
+  productImages?: string;
+  externalId?: number;
+  id?: number;
+  img?: string;
+  title?: string;
+  stock?: number;
+  dateTime?: string;
+  name?: string;
+  price?: number;
+  articleFromSeller?: string;
+  sale?: boolean;
+  count?: number;
+  isVisible?: true;
   category: Category;
   type: Type;
-  dateTime: string;
-}
+  creationDate?: string;
+};
 
 export type Category = {
   id: number;
