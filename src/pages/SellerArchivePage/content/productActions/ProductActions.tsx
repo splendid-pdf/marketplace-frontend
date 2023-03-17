@@ -4,7 +4,6 @@ import { useState } from "react";
 import InputSearch from "shared/ui/InputSearch/InputSearch";
 import classes from "./ProductActions.module.scss";
 import { ButtonMarketPlace } from "shared/ui/Button/ButtonMarketPlace";
-import { ModalDeleteProducts, ModalPutUpSale, ModalStopSale } from "../modalActions/modalActions";
 import { useLocation } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
 
@@ -31,18 +30,7 @@ const ProductActions = () => {
       />
       <ButtonMarketPlace 
         className={classes.btn} 
-        text="Создать новый товар"
-        to={`${path}?popup=createNewProductSeller`}
-      />
-      <ButtonMarketPlace
-        className={classes.btn}
-        text="Снять с продажи"
-        to={`${path}?popup=stopSale`}
-      />
-      <ButtonMarketPlace
-        className={classes.btn}
-        text="Выставить на продажу"
-        to={`${path}?popup=putUpSale`}
+        text="Вернуть в магазин"
       />
       <ButtonMarketPlace
         className={classes.btn}

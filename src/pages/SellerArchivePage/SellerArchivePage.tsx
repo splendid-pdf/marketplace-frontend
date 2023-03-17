@@ -1,7 +1,9 @@
+import Content from "./content/Content";
+
 export const SellerArchivePage = () => {
   return (
     <div>
-      <h1>Архив</h1>        
+      <Content/>       
     </div>
   );
 };
