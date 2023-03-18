@@ -36,10 +36,10 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
     const role = "buyer";
 
     // TODO: remove this line when the backend is ready
-    dispatch(buyerAuthActions.setAuthData({ email, password }));
+    // dispatch(buyerAuthActions.setAuthData({ email, password }));
 
     // TODO: uncomment this line when the backend is ready
-    // dispatch(loginBuyer({ email, password }));
+    dispatch(loginBuyer({ email, password }));
     navigate("marketplace-frontend");
   };
 
@@ -87,7 +87,6 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
         />
 
         <Button
-          // disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"

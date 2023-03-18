@@ -9,11 +9,9 @@ import {
   LS_KEY_EMAIL,
   LS_KEY_PASSWORD,
 } from "shared/constants/localStorage";
-import { API_REGISTER_BUYER_URL } from "shared/api/apiEndpoints";
 import { BASE_URL } from "shared/constants/base_url";
 import { Modal } from "shared/ui/Modal/Modal";
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import { buyerAuthActions } from '..';
 import { registerBuyer } from '../model/slice/registerBuyer';
 
 interface RegisterBuyerFormProps {
@@ -23,7 +21,7 @@ interface RegisterBuyerFormProps {
 export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { loading, error, isReg } = useAppSelector((state) => state.buyerAuth);
+  const error = useAppSelector(state => state.buyerAuth.errorOnRegister);
 
   const {
     watch,
@@ -51,10 +49,6 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
         setItemToLS(LS_KEY_EMAIL, email);
         setItemToLS(LS_KEY_PASSWORD, password);
       }
-      // TODO: uncomment this line when the backend is ready
-      // dispatch(registerBuyer({ email, password }));
-
-      // TODO: remove this line when the backend is ready
       dispatch(registerBuyer({ email, password}));
       reset();
       navigate(`/${BASE_URL}?popup=login`);
@@ -131,6 +125,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
             },
           })}
         />
+        { error && <p className={classes.error}>{ error }</p> }
         <Controller
           name="checkbox"
           control={control}
@@ -143,7 +138,6 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           )}
         />
         <Button
-          // disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"

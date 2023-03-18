@@ -16,6 +16,7 @@ const App = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(buyerAuthActions.initAuthData());
+    dispatch(buyerAuthActions.initRegData());
   }, [dispatch]);
 
   return (
