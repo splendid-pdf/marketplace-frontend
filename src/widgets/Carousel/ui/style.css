@@ -38,7 +38,7 @@
 }
 .card-wrapper {
   display: flex;
-  column-gap: 20px;
+  column-gap: 20px !important;
 }
 
 .container-carousel .swiper-button-next {
