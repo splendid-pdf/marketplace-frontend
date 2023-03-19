@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { 
   BuyerAuth, 
+  BuyerAuthResponse, 
   BuyerAuthSchema,
 } from '../types/BuyerAuthSchema';
 import { 
@@ -18,7 +19,7 @@ const initialState: BuyerAuthSchema = {
   loading: false,
   isReg: false,
   isAuth: false,
-  accessToken: undefined,
+  token: undefined,
   authData: undefined,
   role: undefined,
 };
@@ -34,17 +35,15 @@ export const buyerAuthSlice = createSlice({
     initRegData: (state) => {
       state.isReg = localStorage.getItem(LS_KEY_BUYER_ID) != null ? true : false;
     },
-    setAuthData: (state, action: PayloadAction<BuyerAuth>) => {
+    setAuthData: (state, action: PayloadAction<BuyerAuthResponse>) => {
       state.isAuth = true;
       state.role = 'buyer';
-      state.authData = action.payload;
       localStorage.setItem(LS_KEY_ROLE, 'buyer');
+      localStorage.setItem(LS_KEY_BUYER_ACCESS_TOKEN, action.payload.token);
     },
     initAuthData: (state) => {
-      const buyer = localStorage.getItem(LS_KEY_BUYER_AUTH_DATA);
-      if (buyer) {
-        state.authData = JSON.parse(buyer);
-      }      
+      const token = localStorage.getItem(LS_KEY_BUYER_ACCESS_TOKEN);
+      token ? state.isAuth = true : state.isAuth = false;    
     },
     logout: (state) => {
       state.authData = undefined;
@@ -70,7 +69,6 @@ export const buyerAuthSlice = createSlice({
       }) 
       .addCase(loginBuyer.fulfilled, (state) => {
         state.isAuth = true;
-        localStorage.setItem(LS_KEY_ROLE, 'buyer');
       })
       .addCase(loginBuyer.rejected, (state, action) => {
         state.isAuth = false;

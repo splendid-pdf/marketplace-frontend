@@ -17,19 +17,19 @@ export const loginBuyer = createAsyncThunk(
     try {
       const res: AxiosResponse = await axiosInstance.post(API_LOGIN_BUYER_URL,
         authData,
-        {
-          headers: {'Content-Type': 'application/json'},
-          withCredentials: true,
-        });
+        // {
+        //   headers: {'Content-Type': 'application/json'},
+        //   withCredentials: true,
+        // }
+      );
 
       if (!res.data) {
-        throw new Error(ErrorMessages.NOT_FOUND);
+        throw new Error(ErrorMessages.BAD_LOGIN_REQUEST);
       }
       const buyer = res.data;
-      dispatch(buyerAuthActions.setAuthData(buyer));
-      localStorage.setItem(LS_KEY_BUYER_AUTH_DATA, JSON.stringify(buyer));
+      dispatch(buyerAuthActions.setAuthData(buyer.id));
       localStorage.setItem(LS_KEY_ROLE, 'buyer');
-      localStorage.setItem(LS_KEY_BUYER_ACCESS_TOKEN, res.headers['x-access-token']);
+      localStorage.setItem(LS_KEY_BUYER_ACCESS_TOKEN, res.data.token);
       return res.data;
     } catch (error) {
       return rejectWithValue(error);
