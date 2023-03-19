@@ -11,7 +11,7 @@ export interface BuyerAuthSchema {
   isAuth?: boolean;
   errorOnRegister?: string;
   errorOnLogin?: string;
-  accessToken?: string;
+  token?: string;
   role?: string;
 }
 
@@ -22,6 +22,7 @@ export interface BuyerRegResponse {
 
 export interface BuyerAuthResponse {
   id: string;
+  email?: string;
+  token: string;
   error?: string;
-  accessToken?: string;
 }
