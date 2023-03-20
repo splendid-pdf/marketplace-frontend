@@ -31,19 +31,19 @@ export const Promo = () => {
           }}
           modules={[Pagination, Navigation]}
         >
-          <SwiperSlide className="qqq">
+          <SwiperSlide className="container-images">
             <img className="images" src={promo3} />
           </SwiperSlide>
-          <SwiperSlide className="qqq">
+          <SwiperSlide className="container-images">
             <img className="images" src={promo2} />
           </SwiperSlide>
-          <SwiperSlide className="qqq">
+          <SwiperSlide className="container-images">
             <img className="images" src={promo1} />
           </SwiperSlide>
-          <SwiperSlide className="qqq">
+          <SwiperSlide className="container-images">
             <img className="images" src={promo3} />
           </SwiperSlide>
-          <SwiperSlide className="qqq">
+          <SwiperSlide className="container-images">
             <img className="images" src={promo2} />
           </SwiperSlide>
           <div className="slider-controler">

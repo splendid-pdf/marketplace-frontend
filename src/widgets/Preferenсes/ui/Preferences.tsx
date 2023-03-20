@@ -100,7 +100,7 @@ export const Preferences = () => {
           </a>
         </div>
         <Box sx={{ width: 1 }}>
-          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={4}>
+          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={3.75}>
             <Box gridColumn="span 12">
               <div className="card-wrapper">
                 {test.map((item, index) => (

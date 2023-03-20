@@ -1,16 +1,16 @@
 .container-promo {
   height: 549px;
-  width: 2254px;
+  width: 2274px;
   margin-bottom: 80px;
   cursor: pointer;
 }
 .container-promo .swiper-wrapper {
   height: 460px;
-  width: 2254px;
+  width: 2274px;
   border-radius: 20px;
 }
 .container-promo .swiper-button-next {
-  right: 43.2%;
+  left: 1267px;
   color: #343631;
   z-index: 100;
   --swiper-navigation-top-offset: 96.5%;
@@ -18,7 +18,7 @@
 }
 
 .container-promo .swiper-button-prev {
-  left: 51.2%;
+  left: 1145px;
   color: #343631;
   z-index: 100;
   --swiper-navigation-top-offset: 96.5%;
@@ -29,15 +29,20 @@
   color: #f15513;
 }
 
-.container-promo .swiper-pagination {
-  font-size: 16px;
-  left: 25.7%;
-  margin-top: 20px;
-  width: 1280px;
-}
 .images {
   border-radius: 20px;
 }
 .promo-swiper {
   border-radius: 20px;
+}
+
+.container-promo .swiper-pagination {
+  font-size: 16px;
+  left: 0%;
+  margin-top: 20px;
+  width: 1280px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  column-gap: 5px;
 }

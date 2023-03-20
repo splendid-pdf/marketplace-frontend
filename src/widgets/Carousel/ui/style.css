@@ -2,6 +2,7 @@
   height: 543px;
   width: 1280px;
   margin-bottom: 80px;
+  cursor: pointer;
 }
 
 .titles {
@@ -42,7 +43,7 @@
 }
 
 .container-carousel .swiper-button-next {
-  right: 0%;
+  right: 0px;
   color: #343631;
   z-index: 100;
   --swiper-navigation-top-offset: 96.5%;
@@ -50,7 +51,7 @@
 }
 
 .container-carousel .swiper-button-prev {
-  left: 90%;
+  left: 1145px;
   color: #343631;
   z-index: 100;
   --swiper-navigation-top-offset: 96.5%;
@@ -63,7 +64,11 @@
 
 .container-carousel .swiper-pagination {
   font-size: 16px;
-  left: 45%;
+  left: 0%;
   margin-top: 20px;
   width: 1280px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  column-gap: 5px;
 }
