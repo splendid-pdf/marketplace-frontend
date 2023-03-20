@@ -15,7 +15,7 @@ export const Popular = () => {
           <h1>Популярные категории</h1>
         </div>
         <Box sx={{ width: 1 }}>
-          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2.5}>
             <Box gridColumn="span 6">
               <div>
                 <a href="">
