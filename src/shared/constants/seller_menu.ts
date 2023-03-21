@@ -73,4 +73,24 @@ export const menuItemsSeller: TItems[] = [
       },
     ],
   },
+  {
+    name: "Аналитика",
+    url: `${BASE_URL}/home-seller/orders` /*УРЛЫ ПОМЕНЯТЬ*/,
+    links: OrdersLinks,
+  },
+  {
+    name: "Карта складов",
+    url: `${BASE_URL}/home-seller/orders` /*УРЛЫ ПОМЕНЯТЬ*/,
+    links: OrdersLinks,
+  },
+  {
+    name: "Продвижение",
+    url: `${BASE_URL}/home-seller/orders` /*УРЛЫ ПОМЕНЯТЬ*/,
+    links: OrdersLinks,
+  },
+  {
+    name: "Акции маркетплейса",
+    url: `${BASE_URL}/home-seller/orders` /*УРЛЫ ПОМЕНЯТЬ*/,
+    links: OrdersLinks,
+  },
 ];

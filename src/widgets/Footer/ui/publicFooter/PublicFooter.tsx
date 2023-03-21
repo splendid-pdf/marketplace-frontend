@@ -65,7 +65,7 @@ export const PublicFooter: React.FC = () => {
           <div className={classes.FooterLinks}>
             <div>
               <LinkMUI
-                to={`/${BASE_URL}/auth-seller`}
+                to={`/${BASE_URL}/home-seller`}
                 underline="none"
                 component={Link}
                 onClick={() => setItemToLS(LS_KEY_ROLE, "seller")}
