@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
 
 const AuthSellerPage = () => {
-  const isAuth = true; // для перехода в селлера поменять на false также в компоненте SellerBasePage поменять на false
+  const isAuth = false; // для перехода в селлера поменять на false также в компоненте SellerBasePage поменять на false
   if (isAuth) {
     return <Navigate to={`/${BASE_URL}/home-seller`} />;
   }
