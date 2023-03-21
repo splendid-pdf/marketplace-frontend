@@ -115,7 +115,7 @@ export const RegisterSellerForm = () => {
           variant="contained"
           className={classes.buttonSubmit}
         >
-          Подтвердить
+          Зарегистрироваться
         </Button>
         <Controller
           name="checkbox"
