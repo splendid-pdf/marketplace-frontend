@@ -8,8 +8,8 @@ import { ReactComponent as DeliveryIcon } from "../../../../shared/images/icons/
 import { ReactComponent as PersonIcon } from "../../../../shared/images/icons/person.svg";
 import { ReactComponent as FavoriteIcon } from "../../../../shared/images/icons/favorite.svg";
 import { ReactComponent as CartIcon } from "../../../../shared/images/icons/cart.svg";
-import { getBuyerIsAuth } from '../../../../features/buyerAuth/model/selectors/getBuyerIsAuth';
-import { useSelector } from 'react-redux';
+import { getBuyerIsAuth } from "../../../../features/buyerAuth/model/selectors/getBuyerIsAuth";
+import { useSelector } from "react-redux";
 
 export const NavBar = () => {
   const baseUrl = BASE_URL;
@@ -21,18 +21,16 @@ export const NavBar = () => {
         <Link to={`/${baseUrl}/delivery`} className={classes.link}>
           <IconWithText icon={<DeliveryIcon />} text={"Доставка"} />
         </Link>
-        { !isBuyerAuth && <Link
-          to={`?popup=login`}
-          className={classes.link}
-        >
-          <IconWithText icon={<PersonIcon />} text={"Войти"} />
-        </Link>
-        }
-        { isBuyerAuth && 
-        <Link to={`/${baseUrl}/buyer/account`} className={classes.link}>
-          <IconWithText icon={<PersonIcon />} text={"Профиль"} />
-        </Link>
-        }
+        {!isBuyerAuth && (
+          <Link to={`?popup=login`} className={classes.link}>
+            <IconWithText icon={<PersonIcon />} text={"Войти"} />
+          </Link>
+        )}
+        {isBuyerAuth && (
+          <Link to={`/${baseUrl}/buyer/account`} className={classes.link}>
+            <IconWithText icon={<PersonIcon />} text={"Профиль"} />
+          </Link>
+        )}
         <Link to={`/${baseUrl}/favorites`} className={classes.link}>
           <IconWithText icon={<FavoriteIcon />} text={"Избранное"} />
         </Link>

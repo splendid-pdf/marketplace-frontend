@@ -29,7 +29,7 @@ export const AuthSellerForm = () => {
   return (
     <div className={classes.root}>
       <Typography variant="h5" className={classes.typography}>
-        Войти
+        Вход
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
@@ -80,14 +80,29 @@ export const AuthSellerForm = () => {
           variant="contained"
           className={classes.buttonSubmit}
         >
-          Подтвердить
+          Войти
+        </Button>
+        <Button
+          to={`/${BASE_URL}/register-seller`}
+          component={Link}
+          // disabled={!isValid}
+          type="submit"
+          size="large"
+          variant="contained"
+          className={classes.buttonSubmitRegister}
+        >
+          Регистрация
         </Button>
       </form>
       <div className={classes.linkContainer}>
         <LinkMUI to={`#`} underline="none" component={Link}>
           Забыли пароль?
         </LinkMUI>
-        <LinkMUI to={`/${BASE_URL}/register-seller`} underline="none" component={Link}>
+        <LinkMUI
+          to={`/${BASE_URL}/register-seller`}
+          underline="none"
+          component={Link}
+        >
           Создать аккаунт?
         </LinkMUI>
       </div>
