@@ -5,7 +5,7 @@ import classes from "./SellerBasePage.module.scss";
 const SellerBasePage = () => {
   const isAuth = true; // для перехода в cеллера поменять на false также в компоненте AuthSellerPage поменять на false
   if (!isAuth) {
-    return <Navigate to={`/${BASE_URL}/auth-seller`} replace={true} />;
+    return <Navigate to={`/${BASE_URL}/home-seller`} replace={true} />;
   }
   return (
     <div className={"content" + " " + "container"}>

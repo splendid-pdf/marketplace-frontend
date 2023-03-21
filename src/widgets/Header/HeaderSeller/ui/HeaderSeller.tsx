@@ -6,8 +6,12 @@ import { ReactComponent as Logo } from "shared/images/icons/logo.svg";
 import { IconWithText } from "shared/ui/IconWithText/IconWithText";
 import { ReactComponent as PersonIcon } from "shared/images/icons/person.svg";
 import { NavBarSeller } from "widgets/Header/NavBarSeller";
+import { useLocation } from "react-router-dom";
 
 export const HeaderSeller = () => {
+  const location = useLocation();
+  console.log(location);
+
   return (
     <div className={classes.headerSeller}>
       <div className={classes.headerSeller__wrapper + " " + "container"}>
@@ -35,9 +39,12 @@ export const HeaderSeller = () => {
               </Box>
             </Toolbar>
           </AppBar>
-          <div className={classes.headerSeller__nav}>
-            <NavBarSeller />
-          </div>
+          {location.pathname !== "/marketplace-frontend/auth-seller" &&
+          location.pathname !== "/marketplace-frontend/register-seller" ? (
+            <div className={classes.headerSeller__nav}>
+              <NavBarSeller />
+            </div>
+            ) : null}
         </Box>
       </div>
     </div>
