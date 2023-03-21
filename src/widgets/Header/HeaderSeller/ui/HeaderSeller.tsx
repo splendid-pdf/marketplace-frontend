@@ -42,8 +42,8 @@ export const HeaderSeller = () => {
           {location.pathname !== "/marketplace-frontend/auth-seller" &&
           location.pathname !== "/marketplace-frontend/register-seller" ? (
             <div className={classes.headerSeller__nav}>
-                <NavBarSeller />
-              </div>
+              <NavBarSeller />
+            </div>
             ) : null}
         </Box>
       </div>
