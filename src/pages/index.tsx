@@ -22,11 +22,19 @@ import { SellerCompletedOrdersPage } from "./SellerCompletedOrdersPage/SellerCom
 import { SellerBaseOrdersPage } from "./SellerBaseOrdersPage/SellerBaseOrdersPage";
 import { SellerBaseProductPage } from "./SellerBaseProductPage/SellerBaseProductPage";
 import BuyerAccountPage from "./BuyerAccountPage/BuyerAccountPage";
+import SellerAccountPage from "./SellerAccountPage/SellerAccountPage";
 import { BuyerProfilePage } from "./BuyerAccountPage/BuyerProfilePage";
+import { SellerProfilePage } from "./SellerAccountPage/SellerProfilePage";
 import { BuyerOrdersPage } from "./BuyerAccountPage/BuyerOrdersPage";
 import { BuyerFeedbackPage } from "./BuyerAccountPage/BuyerFeedbackPage";
 import { BuyerSettingsPage } from "./BuyerAccountPage/BuyerSettingsPage";
-import { BaseMyOrdersPage, BaseMyReturnOrdersPage } from "./BuyerAccountPage/BuyerOrdersPage/pages";
+import { SellerShopsPage } from "./SellerAccountPage/SellerShopsPage";
+import { SellerAccessesPage } from "./SellerAccountPage/SellerAccessesPage";
+import { SellerNotificationsPage } from "./SellerAccountPage/SellerNotificationsPage";
+import {
+  BaseMyOrdersPage,
+  BaseMyReturnOrdersPage,
+} from "./BuyerAccountPage/BuyerOrdersPage/pages";
 import {
   ActiveOrdersPage,
   ArchiveOrdersPage,
@@ -45,7 +53,10 @@ const Routing: React.FC = () => {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path={`/${baseUrl}`} element={<HomePage />} />
-        <Route path={`/${baseUrl}/buyer/account/`} element={<BuyerAccountPage />}>
+        <Route
+          path={`/${baseUrl}/buyer/account/`}
+          element={<BuyerAccountPage />}
+        >
           <Route index element={<BuyerProfilePage />} />
           <Route path="details" element={<BuyerProfilePage />} />
           <Route path="orders" element={<BuyerOrdersPage />}>
@@ -64,11 +75,26 @@ const Routing: React.FC = () => {
           <Route path="settings" element={<BuyerSettingsPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
         </Route>
+
+        <Route
+          path={`/${baseUrl}/seller/account/`}
+          element={<SellerAccountPage />}
+        >
+          <Route index element={<SellerProfilePage />} />
+          <Route path="details" element={<SellerProfilePage />} />
+          <Route path="shops" element={<SellerShopsPage />} />
+          <Route path="accesses" element={<SellerAccessesPage />} />
+          <Route path="notifications" element={<SellerNotificationsPage />} />
+        </Route>
+
         <Route path={`/${baseUrl}/delivery`} element={<DeliveryPage />} />
         <Route path={`/${baseUrl}/favorites`} element={<FavoritesPage />} />
         <Route path={`/${baseUrl}/cart`} element={<CartPage />} />
         <Route path={`/${baseUrl}/auth-seller`} element={<AuthSellerPage />} />
-        <Route path={`/${baseUrl}/register-seller`} element={<RegisterSellerPage />} />
+        <Route
+          path={`/${baseUrl}/register-seller`}
+          element={<RegisterSellerPage />}
+        />
         <Route path={`/${baseUrl}/home-seller`} element={<SellerBasePage />}>
           <Route index element={<SellerHomePage />} />
 

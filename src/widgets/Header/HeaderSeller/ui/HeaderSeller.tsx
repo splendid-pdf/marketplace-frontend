@@ -44,7 +44,7 @@ export const HeaderSeller = () => {
             <div className={classes.headerSeller__nav}>
               <NavBarSeller />
             </div>
-            ) : null}
+          ) : null}
         </Box>
       </div>
     </div>
