@@ -30,7 +30,7 @@ export const HeaderSeller = () => {
               </Typography>
               <Box>
                 <Link
-                  to="#"
+                  to={`/${BASE_URL}/seller/account`}
                   // onClick={() => setItemToLS(LS_KEY_ROLE, "buyer")}
                   className={classes.link}
                 >
