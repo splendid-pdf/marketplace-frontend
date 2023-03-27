@@ -1,4 +1,3 @@
-import { BuyerProfileCard } from "entities/BuyerProfile";
 import { Typography } from "@mui/material";
 import classes from "./SellerShopsPage.module.scss";
 
@@ -15,7 +14,6 @@ const SellerShopsPage = () => {
       >
         Список магазинов
       </Typography>
-      <BuyerProfileCard />
     </div>
   );
 };

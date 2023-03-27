@@ -1,4 +1,3 @@
-import { BuyerProfileCard } from "entities/BuyerProfile";
 import { Typography } from "@mui/material";
 import classes from "./SellerNotificationsPage.module.scss";
 
@@ -15,7 +14,6 @@ const SellerNotificationsPage = () => {
       >
         Список событий
       </Typography>
-      <BuyerProfileCard />
     </div>
   );
 };

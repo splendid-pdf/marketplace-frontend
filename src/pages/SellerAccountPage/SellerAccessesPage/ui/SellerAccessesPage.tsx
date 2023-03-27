@@ -1,4 +1,3 @@
-import { BuyerProfileCard } from "entities/BuyerProfile";
 import { Typography } from "@mui/material";
 import classes from "./SellerAccessesPage.module.scss";
 
@@ -15,7 +14,6 @@ const SellerAccessesPage = () => {
       >
         Список аккаунтов
       </Typography>
-      <BuyerProfileCard />
     </div>
   );
 };
