@@ -10,7 +10,11 @@ export const TopHeader = () => {
   if (
     location.pathname !== "/marketplace-frontend/auth-seller" &&
     location.pathname !== "/marketplace-frontend/register-seller" &&
-    location.pathname !== "/marketplace-frontend/seller/account"
+    location.pathname !== "/marketplace-frontend/seller/account" &&
+    location.pathname !== "/marketplace-frontend/seller/account/details" &&
+    location.pathname !== "/marketplace-frontend/seller/account/shops" &&
+    location.pathname !== "/marketplace-frontend/seller/account/accesses" &&
+    location.pathname !== "/marketplace-frontend/seller/account/notifications"
   ) {
     return (
       <div className={classes.topHeader}>
