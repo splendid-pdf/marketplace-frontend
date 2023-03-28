@@ -44,6 +44,8 @@ import {
   ReturnOrdersPage,
   ReturnProcessingPage,
 } from "./BuyerAccountPage/BuyerOrdersPage/pages/BaseMyReturnOrdersPage/pages";
+import { 
+  SellerCreateNewProductPage } from "./SellerCreateNewProductPage/SellerCreateNewProductPage";
 
 const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
@@ -107,6 +109,9 @@ const Routing: React.FC = () => {
               path="recommendations"
               element={<SellerRecommendationsPage />}
             />
+            <Route 
+              path="create-new-product" 
+              element={<SellerCreateNewProductPage/>} />
           </Route>
 
           <Route path="orders" element={<SellerBaseOrdersPage />}>

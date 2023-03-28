@@ -1,0 +1,24 @@
+.boxBtn {
+  margin-bottom: 60px;
+}
+
+.inputDropContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.textContainer {
+  display: flex;
+  column-gap: 236px;
+  margin-top: 40px;
+}
+
+.textContainer span {
+  font-size: 22px;
+  font-weight: 600 !important;
+  color: #343136 !important;
+  font-family: Manrope, sans-serif;
+}

@@ -95,12 +95,14 @@ const SellerHomePage: React.FC = () => {
             </IconButton>
           </div>
           <div className={classes.headerContentSeller__balanceNumder}>0</div>
-          <ButtonMarketPlace
-            text="Вывести"
-            variant={ButtonVariant.contained}
-            className={classes.headerContentSeller__greyBtn}
-            textColor={TextColorVarian.white}
-          />
+          <div className={classes.boxBtn}>
+            <ButtonMarketPlace
+              text="Вывести"
+              variant={ButtonVariant.contained}
+              className={classes.headerContentSeller__greyBtn}
+              textColor={TextColorVarian.white}
+            />
+          </div>
         </div>
 
         <div className={classNames(
