@@ -37,7 +37,6 @@ export const buyerAuthSlice = createSlice({
     },
     setAuthData: (state, action: PayloadAction<BuyerAuthResponse>) => {
       state.isAuth = true;
-      state.role = 'buyer';
       localStorage.setItem(LS_KEY_ROLE, 'buyer');
       localStorage.setItem(LS_KEY_BUYER_ACCESS_TOKEN, action.payload.token);
     },
@@ -69,6 +68,7 @@ export const buyerAuthSlice = createSlice({
       }) 
       .addCase(loginBuyer.fulfilled, (state) => {
         state.isAuth = true;
+        state.loading = false;
       })
       .addCase(loginBuyer.rejected, (state, action) => {
         state.isAuth = false;
