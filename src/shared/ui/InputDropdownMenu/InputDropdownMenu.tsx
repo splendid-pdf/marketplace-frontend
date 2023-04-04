@@ -2,6 +2,7 @@ import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from "@mui/mate
 import { FC, useState } from "react";
 import classes from "./InputDropdownMenu.module.scss";
 import "./InputDropdownMenu.css"// создала для изменения стиля рамки выпад. меню, так как нужно лезть внутрь компонентра муи
+import { ChangeHandler } from "react-hook-form";
 
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
@@ -26,16 +27,30 @@ export enum SizeInputVarianDropMenu {
   inputBigMain = "inputBigMain",
 }
 
+type TRegister = {
+  onChange: ChangeHandler;
+  onBlur: ChangeHandler;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: React.Ref<any>;
+  name: string;
+};
+
 type TInputDropdownMenuProps = {
   values: string[];
   onSave?: (name: string) => void;
   width?:SizeInputVarianDropMenu;
+  register?:TRegister;
+  resetField?: (name:string) => void
 }
+
 const InputDropdownMenu: FC<TInputDropdownMenuProps> = ({
   values,
   onSave,
-  width = SizeInputVarianDropMenu.inputSmallMain
+  width = SizeInputVarianDropMenu.inputSmallMain,
+  register,
+  resetField,
 }) => {
+
   const [name, setName] = useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -58,7 +73,9 @@ const InputDropdownMenu: FC<TInputDropdownMenuProps> = ({
         <Select className={classes.inputMain}
           value={name}
           onChange={handleChange}
+          // onChange={() => resetField(register.name)}
           MenuProps={MenuProps}
+          {...register}
         >
           {values.map((item) => (
             <MenuItem
