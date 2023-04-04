@@ -5,7 +5,6 @@ import { axiosInstance } from 'shared/api/axiosInstance';
 import { ErrorMessages } from 'shared/constants/errorMessages';
 import { 
   LS_KEY_BUYER_ACCESS_TOKEN, 
-  LS_KEY_BUYER_AUTH_DATA, 
   LS_KEY_ROLE 
 } from 'shared/constants/localStorage';
 import { BuyerAuth } from '../types/BuyerAuthSchema';
@@ -17,10 +16,6 @@ export const loginBuyer = createAsyncThunk(
     try {
       const res: AxiosResponse = await axiosInstance.post(API_LOGIN_BUYER_URL,
         authData,
-        // {
-        //   headers: {'Content-Type': 'application/json'},
-        //   withCredentials: true,
-        // }
       );
 
       if (!res.data) {
