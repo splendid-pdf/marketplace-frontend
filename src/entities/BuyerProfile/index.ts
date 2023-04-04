@@ -23,4 +23,3 @@ export {
 
 export { getBuyerProfileData } from './model/selectors/getBuyerProfileData';
 export { getBuyerProfileIsLoading } from './model/selectors/getBuyerProfileIsLoading';
-export { getBuyerProfileForm } from './model/selectors/getBuyerProfileForm';

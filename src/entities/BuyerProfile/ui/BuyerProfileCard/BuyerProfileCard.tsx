@@ -14,29 +14,31 @@ import {
   TextField, 
   Typography 
 } from '@mui/material';
-import { useAppDispatch } from 'app/store/hooks';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useForm } from 'react-hook-form';
 import {
   updateBuyerProfileData 
 } from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getBuyerProfileForm } from '../../model/selectors/getBuyerProfileForm';
 import { useParams } from 'react-router-dom';
+import { 
+  LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID 
+} from '../../../../shared/constants/localStorage';
+import { 
+  fetchBuyerProfileData 
+} from '../../model/services/fetchBuyerProfileData/fetchBuyerProfileData';
+import { getBuyerProfileData } from '../../model/selectors/getBuyerProfileData';
+import { axiosInstance } from '../../../../shared/api/axiosInstance';
+import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
+import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
 
-
-interface BuyerProfileCardProps {
-  error?: string;
-  isLoading?: boolean;
-}
-
-export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
-  const {
-    isLoading,
-  } = props;
-  const data = useSelector(getBuyerProfileForm);
-  const { id } = useParams<{ id: string }>();
-
+export const BuyerProfileCard = () => {
+  const isLoading = useAppSelector(getBuyerProfileIsLoading);
+  const data = useAppSelector(getBuyerProfileData);
+  // const readonly = useAppSelector(getBuyerProfileIsLoading);
+  
+  const id = localStorage.getItem(LS_KEY_BUYER_ID) || '';
 
   const dispatch = useAppDispatch();
   const [readonly, setReadonly] = useState(true);
@@ -52,26 +54,33 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
       email: data?.email,      
       phone: data?.phone,
       city: data?.location?.city,
-      address: data?.location?.street,
+      deliveryAddress: data?.location?.deliveryAddress,
     },
     mode: "onSubmit",
   });
+
+  useEffect(() => {
+      dispatch(fetchBuyerProfileData(id));
+  }, [dispatch, id]);
 
   const changeCity = () => {
     console.log(`City has been changed`);
   }
 
   const onEdit = () => {
+    console.log(`email is ${data?.email}`);
     setReadonly(false);
+    dispatch(buyerProfileActions.setReadonly(false));
   };
 
   const onCancelEdit = () => {
     setReadonly(true);
+    // dispatch(buyerProfileActions.setReadonly(true))
   };
 
   const onSave = useCallback(() => {
-    // dispatch(updateBuyerProfileData());
     setReadonly(true);
+    // dispatch(buyerProfileActions.setReadonly(true));
   }, [dispatch]);
 
   const onSubmit = (newData: BuyerProfile) => {
@@ -91,7 +100,7 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
     );
   }
 
-  return (
+  else return (
     <div className={`${classes.BuyerProfileCard}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <Avatar
@@ -126,6 +135,7 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
           className={classes.field}
           placeholder="Имя"
           defaultValue={data?.firstName}
+          aria-invalid={errors.firstName ? "true" : "false"}
           error={Boolean(errors.firstName?.message)}
           helperText={errors.firstName?.message}
           size="small"
@@ -142,6 +152,7 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
           className={classes.field}
           placeholder="Фамилия"
           defaultValue={data?.lastName}
+          aria-invalid={errors.lastName ? "true" : "false"}
           error={Boolean(errors.lastName?.message)}
           helperText={errors.lastName?.message}
           size="small"
@@ -168,6 +179,7 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
           className={classes.field}
           placeholder="Адрес электронной почты"
           defaultValue={data?.email}
+          aria-invalid={errors.email ? "true" : "false"}
           error={Boolean(errors.email?.message)}
           helperText={errors.email?.message}
           size="small"
@@ -184,6 +196,7 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
           className={classes.field}
           placeholder="Номер телефона"
           defaultValue={data?.phone}
+          aria-invalid={errors.phone ? "true" : "false"}
           error={Boolean(errors.phone?.message)}
           helperText={errors.phone?.message}
           size="small"
@@ -191,7 +204,8 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
           {...register("phone", {
             required: "Укажите телефон",
             pattern: {
-              value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i,
+              // value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i,
+              value: /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/i,
               message: "Неверный номер телефона",
             },
           })}
@@ -234,12 +248,13 @@ export const BuyerProfileCard = (props: BuyerProfileCardProps) => {
         <TextField
           className={classes.field}
           placeholder="Адрес"
-          defaultValue={data?.location?.street}
-          error={Boolean(errors.address?.message)}
-          helperText={errors.address?.message}
+          defaultValue={data?.location?.deliveryAddress}
+          aria-invalid={errors.deliveryAddress ? "true" : "false"}
+          error={Boolean(errors.deliveryAddress?.message)}
+          helperText={errors.deliveryAddress?.message}
           size="small"
           disabled={readonly}
-          {...register("address", {
+          {...register("deliveryAddress", {
             required: "Укажите адрес",
             minLength: {
               value: 5,

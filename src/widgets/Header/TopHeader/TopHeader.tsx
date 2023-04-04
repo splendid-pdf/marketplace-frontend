@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 export const TopHeader = () => {
   const location = useLocation();
-  console.log(location);
 
   if (
     location.pathname !== "/marketplace-frontend/auth-seller" &&

@@ -1,6 +1,7 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import { buyerAuthReducer } from "../../features/buyerAuth";
 import { sellerProductsReducer } from "pages/SellerProductPage/model/slice/sellerProductsSlice";
+import { buyerProfileReducer } from '../../entities/BuyerProfile';
 
 /**
  * @description Redux store
@@ -8,6 +9,7 @@ import { sellerProductsReducer } from "pages/SellerProductPage/model/slice/selle
 export const store = configureStore({
   reducer: {
     buyerAuth: buyerAuthReducer,
+    buyerProfile: buyerProfileReducer,
     sellerProducts: sellerProductsReducer,
   },
 });

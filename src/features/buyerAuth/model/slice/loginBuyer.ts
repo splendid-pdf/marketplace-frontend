@@ -9,6 +9,7 @@ import {
 } from 'shared/constants/localStorage';
 import { BuyerAuth } from '../types/BuyerAuthSchema';
 import { buyerAuthActions } from './buyerAuthSlice';
+import { buyerProfileActions, fetchBuyerProfileData } from '../../../../entities/BuyerProfile';
 
 export const loginBuyer = createAsyncThunk(
   'buyerAuth/login',
