@@ -33,6 +33,7 @@ interface IButtonMarketPlaceProps {
   textColor?:TextColorVarian;
   className?: string;
   to?: string;
+  disable?: boolean;
 }
 
 export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
@@ -43,6 +44,7 @@ export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
   textColor = TextColorVarian.black,
   className,
   to,
+  disable = false,
 }) => {
   return (
     <Button
@@ -58,6 +60,7 @@ export const ButtonMarketPlace: FC<IButtonMarketPlaceProps> = ({
       endIcon={icon}
       component={Link}
       to={`/${to}` || ""}
+      disabled={disable}
     >
       {text}
     </Button>

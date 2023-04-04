@@ -10,6 +10,13 @@
     305px 305px 305px 305px
     200px 344px 276px;
 
+  // grid-template-columns: 305px 305px 305px 305px;
+  // grid-template-rows: 200px 344px 276px;
+  // grid-template-areas:
+  //   "balance rating salesDay salesWeek"
+  //   "statistics statistics orders orders"
+  //   "reviews reviews list list";
+
   &__mainCard {
     border: 1px solid #ececec;
     border-radius: 10px;
@@ -96,7 +103,6 @@
 
   &__greyBtn {
     background-color: #a3a3a3 !important;
-    margin-left: 26px;
 
     &:hover {
       background-color: #8f8f8f !important;
@@ -138,4 +144,8 @@
   &__list {
     grid-area: list;
   }
+}
+
+.boxBtn {
+  padding-left: 26px !important;
 }

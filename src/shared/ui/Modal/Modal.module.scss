@@ -3,10 +3,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 414px;
   background-color: white;
+}
+
+.popularPadding {
   padding: 40px 30px 0;
+}
+
+.differentPadding {
+  padding: 45px 60px 0;
+}
+
+.popularSize {
+  width: 414px;
+}
+
+.differentSize {
+  width: 790px;
+}
+
+.popularBorderRadius {
   border-radius: 10px;
+}
+
+.differentBorderRadius {
+  border-radius: 20px;
 }
 
 .iconClose {
@@ -16,7 +37,14 @@
   top: 32px;
 }
 
-.typography {
+.popularStyleText {
   font-size: 32px !important;
   width: 90%;
+}
+
+.differentStyleText {
+  font-size: 36px !important;
+  font-weight: 600 !important;
+  font-family: Manrope, sans-serif !important;
+  color: #343136 !important;
 }

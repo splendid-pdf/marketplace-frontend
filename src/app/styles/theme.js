@@ -6,6 +6,9 @@ export const theme = createTheme({
     primary: {
       main: "#F15513",
     },
+    // secondary: {
+    //   main: "#A3A3A3",
+    // }
     secondary: grey, //  TODO: Поставить второй цвет от дизайнеров и Разобраться, как его можно использовать
   },
   typography: {
