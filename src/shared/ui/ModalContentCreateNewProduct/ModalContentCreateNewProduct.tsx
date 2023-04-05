@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { ButtonMarketPlace } from "../Button/ButtonMarketPlace";
 import InputDropdownMenu from "../InputDropdownMenu/InputDropdownMenu";
 import classes from "./ModalContentCreateNewProduct.module.scss";
-import { BASE_URL } from "shared/constants/base_url";
 import axios from "axios";
+import { BASE_URL } from "shared/constants/base_url";
+import { API_CATEGORIES_PRODUCT_URL, API_TYPES_PRODUCT_URL } from "shared/api/apiEndpoints";
 
 export const ModalContentCreateNewProduct = () => {
   const [categories, setCategories] = useState([]);
@@ -14,12 +15,8 @@ export const ModalContentCreateNewProduct = () => {
   useEffect(() => {
     async function fetchAllRoomsAndTypes() {
       try {
-        const { data: dataCategories } = await axios.get(
-          "https://d5dgfhb917mq6267t8v5.apigw.yandexcloud.net/public/api/v1/rooms",
-        );
-        const { data: dataTypes } = await axios.get(
-          "https://d5dgfhb917mq6267t8v5.apigw.yandexcloud.net/public/api/v1/types",
-        );
+        const { data: dataCategories } = await axios.get(API_CATEGORIES_PRODUCT_URL);
+        const { data: dataTypes } = await axios.get(API_TYPES_PRODUCT_URL);
         setCategories(dataCategories);
         setTypes(dataTypes);
       } catch (error) {
@@ -31,11 +28,7 @@ export const ModalContentCreateNewProduct = () => {
 
   const fetchTypesByRoom = async (categoryID: string) => {
     try {
-      const { data } = await axios.get(
-        // eslint-disable-next-line max-len
-        `https://d5dgfhb917mq6267t8v5.apigw.yandexcloud.net/public/api/v1/rooms/${categoryID}/types`,
-      );
-
+      const { data } = await axios.get(`${API_CATEGORIES_PRODUCT_URL}/${categoryID}/types`);
       setTypes(data);
     } catch (error) {
       console.log(error);
