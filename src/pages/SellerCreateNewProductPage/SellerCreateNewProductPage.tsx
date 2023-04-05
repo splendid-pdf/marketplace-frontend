@@ -106,14 +106,10 @@ export const SellerCreateNewProductPage = () => {
           <TextFieldMarketPlace
             text="Введите название бренда"
             variant={TextFieldVariant.bigTextField}
-            error={Boolean(errors.nameBrand?.message)}
-            helperText={errors.nameBrand?.message}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
             resetField={resetField}
-            register={register("nameBrand", {
-              required: "Обязательное поле для ввода!",
-            })}
+            register={register("nameBrand")}
           />
         </div>
 
@@ -126,39 +122,36 @@ export const SellerCreateNewProductPage = () => {
               <div className={classes.containerInputMiniTitle}>Ширина, см</div>
               <TextFieldMarketPlace
                 text="0"
+                type="number"
                 variant={TextFieldVariant.smallTextField}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 //@ts-ignore
                 resetField={resetField}
-                register={register("productWidth", {
-                  required: "Обязательное поле для ввода!",
-                })}
+                register={register("productWidth")}
               />
             </div>
             <div>
               <div className={classes.containerInputMiniTitle}>Высота, см</div>
               <TextFieldMarketPlace
                 text="0"
+                type="number"
                 variant={TextFieldVariant.smallTextField}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 //@ts-ignore
                 resetField={resetField}
-                register={register("productHeight", {
-                  required: "Обязательное поле для ввода!",
-                })}
+                register={register("productHeight")}
               />
             </div>
             <div>
               <div className={classes.containerInputMiniTitle}>Глубина, см</div>
               <TextFieldMarketPlace
                 text="0"
+                type="number"
                 variant={TextFieldVariant.smallTextField}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 //@ts-ignore
                 resetField={resetField}
-                register={register("productDepth", {
-                  required: "Обязательное поле для ввода!",
-                })}
+                register={register("productDepth")}
               />
             </div>
           </div>
@@ -170,13 +163,12 @@ export const SellerCreateNewProductPage = () => {
             <div className={classes.containerInputMiniTitle}>Глубина, см</div>
             <TextFieldMarketPlace
               text="0"
+              type="number"
               variant={TextFieldVariant.smallTextField}
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               //@ts-ignore
               resetField={resetField}
-              register={register("productWeight", {
-                required: "Обязательное поле для ввода!",
-              })}
+              register={register("productWeight")}
             />
           </div>
         </div>
@@ -253,15 +245,13 @@ export const SellerCreateNewProductPage = () => {
               width: "630px",
               "& textarea": {
                 height: 298,
-                paddingRight: "40px",
-                marginLeft: "10px",
+                paddingRight: "10px",
+                marginLeft: "5px",
                 fontSize: "16px",
                 fontFamily: "Montserrat, sans-serif",
               },
             }}
-            {...register("productText", {
-              required: "Обязательное поле для ввода!",
-            })}
+            {...register("productText")}
           />
           <WordCount control={control} />
         </div>
