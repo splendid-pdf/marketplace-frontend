@@ -1,12 +1,11 @@
 import { Spinner } from 'shared/ui/Spinner/Spinner';
 import classes from './BuyerProfileCard.module.scss';
-import { BuyerProfile } from '../../model/buyerProfile.types';
+import { BuyerProfile, Gender } from '../../model/buyerProfile.types';
 import { 
   Avatar, 
   Button, 
   ButtonBase, 
   FormControlLabel, 
-  InputLabel, 
   MenuItem, 
   Radio, 
   RadioGroup, 
@@ -20,23 +19,18 @@ import {
   updateBuyerProfileData 
 } from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
 import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { 
-  LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID 
-} from '../../../../shared/constants/localStorage';
+import { LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
 import { 
   fetchBuyerProfileData 
 } from '../../model/services/fetchBuyerProfileData/fetchBuyerProfileData';
 import { getBuyerProfileData } from '../../model/selectors/getBuyerProfileData';
-import { axiosInstance } from '../../../../shared/api/axiosInstance';
 import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
 
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
-  const data = useAppSelector(getBuyerProfileData);
-  // const readonly = useAppSelector(getBuyerProfileIsLoading);
+  const data = useAppSelector(getBuyerProfileData) || {};
+  const error = useAppSelector(state => state.buyerProfile.errorOnProfile);
   
   const id = localStorage.getItem(LS_KEY_BUYER_ID) || '';
 
@@ -55,6 +49,8 @@ export const BuyerProfileCard = () => {
       phone: data?.phone,
       city: data?.location?.city,
       deliveryAddress: data?.location?.deliveryAddress,
+      sex: data?.sex,
+      photoUrl: data?.photoUrl,
     },
     mode: "onSubmit",
   });
@@ -83,13 +79,36 @@ export const BuyerProfileCard = () => {
     // dispatch(buyerProfileActions.setReadonly(true));
   }, [dispatch]);
 
-  const onSubmit = (newData: BuyerProfile) => {
-    const { firstName, lastName, email, phone } = newData;
-    console.log(
-      `Новые данные пользователя: 
-      ${firstName}, ${lastName}, ${email}, ${phone}`
-    );
-    dispatch(updateBuyerProfileData({externalId: id, buyer: newData}));
+  const onSubmit = async (newData: 
+    { city: string | undefined; 
+      deliveryAddress: string | undefined; 
+      firstName: string | undefined; 
+      lastName: string | undefined; 
+      email:  string | undefined; 
+      phone: string | undefined; 
+      sex: Gender | undefined; 
+      photoUrl: string | undefined; 
+    }) => {
+    const location = {
+      city: newData.city,
+      deliveryAddress: newData.deliveryAddress,
+    }
+    const { firstName, lastName, email, phone, sex, photoUrl } = newData;
+
+    const updatedProfile: BuyerProfile = {
+      ...newData,
+      location,
+    }
+    try {
+      console.log(
+        `Новые данные пользователя: 
+        ${firstName}, ${lastName}, ${email}, ${phone}, 
+        ${sex}, ${location.city}, ${location.deliveryAddress}`
+      );
+      dispatch(updateBuyerProfileData({externalId: id, buyer: updatedProfile}));
+    } catch (error) {
+      console.error(error);
+    }   
   };
 
   if (isLoading) {
@@ -213,7 +232,7 @@ export const BuyerProfileCard = () => {
         <RadioGroup
           aria-labelledby="gender-radio-buttons-group-label"
           defaultValue="male"
-          name="radio-buttons-group"
+          {...register("sex")}
           sx={{
             display: 'flex',
             flexDirection: 'row',
@@ -279,7 +298,6 @@ export const BuyerProfileCard = () => {
                 type="submit"
                 size="large"
                 variant="contained"
-                onClick={onSave}
               >
                 Сохранить
               </Button>
@@ -294,6 +312,7 @@ export const BuyerProfileCard = () => {
           )}
         </div>
       </form>
+      {error && (<div className="error">{error}</div>)}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { BuyerProfile, BuyerProfileSchema } from '../buyerProfile.types';
 const initialState: BuyerProfileSchema = {
   isLoading: false,
   readonly: true,
-  error: undefined,
+  errorOnProfile: undefined,
   data: undefined,
 };
 
@@ -46,7 +46,7 @@ export const buyerProfileSlice = createSlice({
       })
       .addCase(fetchBuyerProfileData.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message;
+        state.errorOnProfile = action.error.message;
       })
       .addCase(updateBuyerProfileData.pending, (state) => {
         state.isLoading = true;
@@ -57,7 +57,7 @@ export const buyerProfileSlice = createSlice({
       })
       .addCase(updateBuyerProfileData.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message;
+        state.errorOnProfile = action.error.message;
       });
   }
 });

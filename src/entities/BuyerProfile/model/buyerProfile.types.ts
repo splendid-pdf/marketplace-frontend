@@ -34,7 +34,7 @@ export interface ApiBuyerSchema {
 export interface BuyerProfileSchema {
   data?: BuyerProfile;
   isLoading?: boolean;
-  error?: unknown;
+  errorOnProfile?: string;
   readonly?: boolean;
 }
 
