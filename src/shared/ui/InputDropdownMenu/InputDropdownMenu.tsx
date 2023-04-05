@@ -1,8 +1,7 @@
 import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { FC, useState } from "react";
+import { FC } from "react";
 import classes from "./InputDropdownMenu.module.scss";
-import "./InputDropdownMenu.css"// создала для изменения стиля рамки выпад. меню, так как нужно лезть внутрь компонентра муи
-import { ChangeHandler } from "react-hook-form";
+import "./InputDropdownMenu.css"; // создала для изменения стиля рамки выпад. меню, так как нужно лезть внутрь компонентра муи
 
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
@@ -14,10 +13,10 @@ const MenuProps = {
       boxShadow: "none",
       border: "1px solid #A3A3A3",
       marginTop: "10px",
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,// добавляю для появления scroll
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP, // добавляю для появления scroll
       width: 250,
-    }
-  }
+    },
+  },
 };
 
 export enum SizeInputVarianDropMenu {
@@ -27,69 +26,55 @@ export enum SizeInputVarianDropMenu {
   inputBigMain = "inputBigMain",
 }
 
-type TRegister = {
-  onChange: ChangeHandler;
-  onBlur: ChangeHandler;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ref: React.Ref<any>;
+type TValues = {
   name: string;
+  id: string;
 };
 
 type TInputDropdownMenuProps = {
-  values: string[];
+  values: TValues[];
   onSave?: (name: string) => void;
-  width?:SizeInputVarianDropMenu;
-  register?:TRegister;
-  resetField?: (name:string) => void
-}
+  width?: SizeInputVarianDropMenu;
+  selected?: string;
+};
 
 const InputDropdownMenu: FC<TInputDropdownMenuProps> = ({
+  selected,
   values,
   onSave,
   width = SizeInputVarianDropMenu.inputSmallMain,
-  register,
-  resetField,
 }) => {
-
-  const [name, setName] = useState('');
-
   const handleChange = (event: SelectChangeEvent) => {
-    setName(event.target.value as string);
-    if(onSave){
-      onSave(event.target.value as string)
+    if (onSave) {
+      onSave(event.target.value as string);
     }
   };
-        
-  return(
+
+  return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl 
+      <FormControl
         fullWidth
         className={
           width === SizeInputVarianDropMenu.inputSmallMain
-            ?
-            classes.inputSmallMain
-            :
-            classes.inputBigMain}>
-        <Select className={classes.inputMain}
-          value={name}
+            ? classes.inputSmallMain
+            : classes.inputBigMain
+        }
+      >
+        <Select
+          className={classes.inputMain}
+          value={selected}
           onChange={handleChange}
-          // onChange={() => resetField(register.name)}
           MenuProps={MenuProps}
-          {...register}
         >
           {values.map((item) => (
-            <MenuItem
-              className={classes.dropdownMenu}
-              key={item}
-              value={item}
-            >
-              {item}
+            <MenuItem className={classes.dropdownMenu} key={item.id} value={item.id}>
+              {item.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
     </Box>
-  )
+  );
 };
 
 export default InputDropdownMenu;

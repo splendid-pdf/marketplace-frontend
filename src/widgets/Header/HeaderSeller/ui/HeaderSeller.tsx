@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 
 export const HeaderSeller = () => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <div className={classes.headerSeller}>
