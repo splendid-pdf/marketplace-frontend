@@ -26,11 +26,12 @@ import {
 import { getBuyerProfileData } from '../../model/selectors/getBuyerProfileData';
 import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
+import { getBuyerProfileError } from '../../model/selectors/getBuyerProfileError';
 
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
   const data = useAppSelector(getBuyerProfileData) || {};
-  const error = useAppSelector(state => state.buyerProfile.errorOnProfile);
+  const error = useAppSelector(getBuyerProfileError);
   
   const id = localStorage.getItem(LS_KEY_BUYER_ID) || '';
 
@@ -52,32 +53,35 @@ export const BuyerProfileCard = () => {
       sex: data?.sex,
       photoUrl: data?.photoUrl,
     },
-    mode: "onSubmit",
+    mode: "onChange",
   });
+
+  const [image, setImage] = useState('');
+
+  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0];
+      setImage(URL.createObjectURL(img));
+    }
+  };
 
   useEffect(() => {
       dispatch(fetchBuyerProfileData(id));
+      console.log(`city is ${data?.location?.city}`);
   }, [dispatch, id]);
 
-  const changeCity = () => {
-    console.log(`City has been changed`);
-  }
-
   const onEdit = () => {
-    console.log(`email is ${data?.email}`);
     setReadonly(false);
     dispatch(buyerProfileActions.setReadonly(false));
   };
 
-  const onCancelEdit = () => {
-    setReadonly(true);
-    // dispatch(buyerProfileActions.setReadonly(true))
+  const addPhoto = () => {
+    const url = `http://51.250.102.12:9001/public/api/v1/files?fileType=PHOTO`;
   };
 
-  const onSave = useCallback(() => {
+  const onCancelEdit = () => {
     setReadonly(true);
-    // dispatch(buyerProfileActions.setReadonly(true));
-  }, [dispatch]);
+  };
 
   const onSubmit = async (newData: 
     { city: string | undefined; 
@@ -94,7 +98,7 @@ export const BuyerProfileCard = () => {
       deliveryAddress: newData.deliveryAddress,
     }
     const { firstName, lastName, email, phone, sex, photoUrl } = newData;
-
+    console.dir(location);
     const updatedProfile: BuyerProfile = {
       ...newData,
       location,
@@ -122,14 +126,18 @@ export const BuyerProfileCard = () => {
   else return (
     <div className={`${classes.BuyerProfileCard}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <Avatar
-          sx={{
-            alignSelf: 'left',
-            width: '160px', 
-            height: '160px' 
-          }}
-        />
-        <ButtonBase 
+        {/* <Avatar>
+          <label htmlFor="avatar">Upload avatar</label>
+          <input
+            {...register('photoUrl')}
+            className="file-upload-field"
+            type="file"
+            src={data?.photoUrl}
+            onChange={onImageChange}
+            />
+          <img src={image || ''} width="200px" height="200px" />
+        </Avatar> */}
+        {/* <ButtonBase 
           sx={{
             width: '160px',
             alignSelf: 'left',
@@ -137,9 +145,29 @@ export const BuyerProfileCard = () => {
             marginTop: 0.5,
             fontSize: '16px',
           }}
+          onClick={addPhoto}
         >
           Изменить фото
-        </ButtonBase> 
+        </ButtonBase>  */}
+        <div>
+          <Avatar
+            sx={{
+              width: '200px',
+              height: '200px',
+              alignSelf: 'left',
+            }}
+          >
+            <img src={image || ''} width="200px" height="200px"/>
+          </Avatar>  
+          <label htmlFor="photoUrl">Изменить фото</label>
+          <input
+            {...register('photoUrl')}
+            className="file-upload-field"
+            type="file"
+            onChange={onImageChange}           
+          />     
+          
+        </div>
         <Typography
           sx={{
             fontFamily: 'Manrope, sans-serif',
@@ -160,7 +188,7 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("firstName", {
-            required: "Укажите имя",
+            // required: "Укажите имя",
             minLength: {
               value: 2,
               message: "Минимальная длина имени 2 символа",
@@ -177,7 +205,7 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("lastName", {
-            required: "Укажите фамилию",
+            // required: "Укажите фамилию",
             minLength: {
               value: 2,
               message: "Минимальная длина фамилии 2 символа",
@@ -204,7 +232,7 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("email", {
-            required: "Укажите e-mail",
+            // required: "Укажите e-mail",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               message: "Неверный e-mail",
@@ -213,7 +241,7 @@ export const BuyerProfileCard = () => {
         /> 
         <TextField
           className={classes.field}
-          placeholder="Номер телефона"
+          placeholder="+71234567890"
           defaultValue={data?.phone}
           aria-invalid={errors.phone ? "true" : "false"}
           error={Boolean(errors.phone?.message)}
@@ -221,17 +249,16 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("phone", {
-            required: "Укажите телефон",
+            // required: "Укажите телефон",
             pattern: {
-              // value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i,
-              value: /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/i,
+              value: /(?:\(?\+\d{2}\)?\s*)?\d+(?:[ -]*\d+)*$/i,
               message: "Неверный номер телефона",
             },
           })}
         />
         <RadioGroup
           aria-labelledby="gender-radio-buttons-group-label"
-          defaultValue="male"
+          defaultValue={data?.sex}
           {...register("sex")}
           sx={{
             display: 'flex',
@@ -240,7 +267,7 @@ export const BuyerProfileCard = () => {
         >
           <FormControlLabel value="MALE" control={<Radio />} label="Мужской" />
           <FormControlLabel value="FEMALE" control={<Radio />} label="Женский" />
-          <FormControlLabel value="NOT_INDICATED" control={<Radio />} label="Не указан" />
+          <FormControlLabel value="NONE" control={<Radio />} label="Не указан" />
         </RadioGroup>
         <Typography
           sx={{
@@ -256,13 +283,16 @@ export const BuyerProfileCard = () => {
           className={classes.field}
           labelId="city-select-label"
           id="city-select"
-          defaultValue="Санкт-Петербург"
+          defaultValue={data?.location?.city}
+          aria-invalid={errors.city ? "true" : "false"}
+          error={Boolean(errors.city?.message)}
           label="Город"
-          onChange={changeCity}
+          disabled={readonly}
+          {...register("city")}
         >
-          <MenuItem value="Санкт-Петербург">Санкт-Петербург</MenuItem>
-          <MenuItem value="Выборг">Выборг</MenuItem>
-          <MenuItem value="Петрозаводск">Петрозаводск</MenuItem>
+          <MenuItem value="Saint-Petersburg">Saint-Petersburg</MenuItem>
+          <MenuItem value="Vyborg">Vyborg</MenuItem>
+          <MenuItem value="Petrozavodsk">Petrozavodsk</MenuItem>
         </Select>
         <TextField
           className={classes.field}
@@ -274,7 +304,7 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("deliveryAddress", {
-            required: "Укажите адрес",
+            // required: "Укажите адрес",
             minLength: {
               value: 5,
               message: "Слишком короткий адрес",
