@@ -19,7 +19,7 @@ import {
   updateBuyerProfileData 
 } from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
 import { useCallback, useEffect, useState } from 'react';
-import { LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
+import { LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
 import { 
   fetchBuyerProfileData 
 } from '../../model/services/fetchBuyerProfileData/fetchBuyerProfileData';
@@ -27,6 +27,7 @@ import { getBuyerProfileData } from '../../model/selectors/getBuyerProfileData';
 import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
 import { getBuyerProfileError } from '../../model/selectors/getBuyerProfileError';
+import { axiosInstance } from 'shared/api/axiosInstance';
 
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
@@ -56,18 +57,27 @@ export const BuyerProfileCard = () => {
     mode: "onChange",
   });
 
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(data?.photoUrl || '');
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
       setImage(URL.createObjectURL(img));
+      console.log(`image is ${image}`);
+      addPhoto();
+    }
+    try {
+      dispatch(buyerProfileActions.setPhotoUrl(image));
+    } catch (error) {
+      console.error(error);
     }
   };
 
   useEffect(() => {
       dispatch(fetchBuyerProfileData(id));
       console.log(`city is ${data?.location?.city}`);
+      console.log(`image is ${data?.photoUrl}`);
+      console.log(`firstName is ${data?.firstName}`);
   }, [dispatch, id]);
 
   const onEdit = () => {
@@ -75,8 +85,26 @@ export const BuyerProfileCard = () => {
     dispatch(buyerProfileActions.setReadonly(false));
   };
 
-  const addPhoto = () => {
+  const addPhoto = async () => {
     const url = `http://51.250.102.12:9001/public/api/v1/files?fileType=PHOTO`;
+    // eslint-disable-next-line max-len
+    // const url = `https://d5dgfhb917mq6267t8v5.apigw.yandexcloud.net/public/api/v1/uploads?fileId=photo&fileType=PHOTO`;
+    try {
+      const response = await axiosInstance.post(url, image, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem(LS_KEY_BUYER_ACCESS_TOKEN)}`,
+        },
+      });
+
+      if (!response.data) {
+        throw new Error();
+      }
+      console.log(`response.data is ${response.data}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onCancelEdit = () => {
@@ -162,7 +190,6 @@ export const BuyerProfileCard = () => {
           <label htmlFor="photoUrl">Изменить фото</label>
           <input
             {...register('photoUrl')}
-            className="file-upload-field"
             type="file"
             onChange={onImageChange}           
           />     

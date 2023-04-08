@@ -18,6 +18,13 @@ export const buyerProfileSlice = createSlice({
       state.data = action.payload;
     },
 
+    setPhotoUrl: (state, action: PayloadAction<string>) => {
+      state.data = {
+        ...state.data,
+        photoUrl: action.payload,
+      };
+    },
+
     setReadonly: (state, action: PayloadAction<boolean>) => {
       console.log('setReadonly', action.payload);
       state.readonly = action.payload;
