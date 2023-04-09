@@ -5,20 +5,8 @@ export enum Gender {
 }
 
 export interface Location {
-  country?: string;
-  region?: string;
   city?: string;
-  postcode?: string;
-  street?: string;
-  houseNumber?: string;
-  apartNumber?: string;
-  latitude?: number,
-  longitude?: number
-}
-
-export interface Contact {
-  value?: string;
-  type?: string;
+  deliveryAddress?: string;
 }
 
 export interface BuyerCards {
@@ -27,26 +15,15 @@ export interface BuyerCards {
   additionalCard2?: string;
 }
 
-export interface NotificationSettings {
-  isAllowedToReceiveOnAddress?: boolean,
-  isAllowedToSendPromotionsAndMailingLists?: boolean,
-  isAllowedToSendPopularArticles?: boolean,
-}
-
 export interface BuyerProfile {
+  id?: string;
   firstName?: string;
-  middleName?: string;
   lastName?: string;
-  email?: string;
-  password?: string;
-  birthday?: string;
   phone?: string;
+  email?: string;
   sex?: Gender;
+  photoUrl?: string;
   location?: Location;
-  contacts?: Contact[];
-  avatar?: string;
-  notificationSettings?: NotificationSettings;
-  photoId?: string;
 }
 
 export interface ApiBuyerSchema {
@@ -56,9 +33,8 @@ export interface ApiBuyerSchema {
 
 export interface BuyerProfileSchema {
   data?: BuyerProfile;
-  form?: BuyerProfile;
   isLoading?: boolean;
-  error?: unknown;
+  errorOnProfile?: string;
   readonly?: boolean;
 }
 

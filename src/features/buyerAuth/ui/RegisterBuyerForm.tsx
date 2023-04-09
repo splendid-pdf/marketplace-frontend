@@ -28,7 +28,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
     control,
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
     reset,
   } = useForm({
     defaultValues: {
@@ -146,6 +146,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
           Подтвердить
         </Button>
       </form>
+      {error && <p className={classes.error}>{error}</p>}
     </Modal>
   );
 };

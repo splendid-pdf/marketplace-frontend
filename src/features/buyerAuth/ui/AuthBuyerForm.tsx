@@ -5,10 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { TextField, Button, Link as LinkMUI } from "@mui/material";
 import { getItemFromLS } from "shared/utils/getItemFromLS";
 import { LS_KEY_EMAIL, LS_KEY_PASSWORD } from "shared/constants/localStorage";
-import { useAppDispatch } from "app/store/hooks";
+import { useAppDispatch, useAppSelector } from "app/store/hooks";
 import { Modal } from "shared/ui/Modal/Modal";
 import { loginBuyer } from '../model/slice/loginBuyer';
-import { buyerAuthActions } from '../model/slice/buyerAuthSlice';
 import { BuyerAuth } from '../model/types/BuyerAuthSchema';
 
 interface AuthBuyerFormProps {
@@ -18,6 +17,7 @@ interface AuthBuyerFormProps {
 export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const error = useAppSelector(state => state.buyerAuth.errorOnLogin);
 
   const {
     register,
@@ -33,12 +33,6 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
 
   const onSubmit = (obj: BuyerAuth) => {
     const { email, password } = obj;
-    const role = "buyer";
-
-    // TODO: remove this line when the backend is ready
-    // dispatch(buyerAuthActions.setAuthData({ email, password }));
-
-    // TODO: uncomment this line when the backend is ready
     dispatch(loginBuyer({ email, password }));
     navigate("marketplace-frontend");
   };
@@ -103,6 +97,7 @@ export const AuthBuyerForm: React.FC<AuthBuyerFormProps> = ({ isOpened }) => {
           Создать аккаунт?
         </LinkMUI>
       </div>
+      {error && <div className={classes.error}>{error}</div>}
     </Modal>
   );
 };

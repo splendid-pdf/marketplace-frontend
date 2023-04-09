@@ -5,6 +5,7 @@ import { axiosInstance } from 'shared/api/axiosInstance';
 import { ErrorMessages } from 'shared/constants/errorMessages';
 import { 
   LS_KEY_BUYER_ACCESS_TOKEN, 
+  LS_KEY_BUYER_ID, 
   LS_KEY_ROLE 
 } from 'shared/constants/localStorage';
 import { BuyerAuth } from '../types/BuyerAuthSchema';
@@ -25,6 +26,7 @@ export const loginBuyer = createAsyncThunk(
       dispatch(buyerAuthActions.setAuthData(buyer.id));
       localStorage.setItem(LS_KEY_ROLE, 'buyer');
       localStorage.setItem(LS_KEY_BUYER_ACCESS_TOKEN, res.data.token);
+      localStorage.setItem(LS_KEY_BUYER_ID, res.data.id);
       return res.data;
     } catch (error) {
       return rejectWithValue(error);
