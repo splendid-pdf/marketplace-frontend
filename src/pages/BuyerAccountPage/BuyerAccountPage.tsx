@@ -2,9 +2,11 @@ import { Navigate, Outlet } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
 import classes from "./BuyerAccountPage.module.scss";
 import { BuyerSidebar } from "../../widgets/BuyerSidebar";
+import { useAppSelector } from '../../app/store/hooks';
+import { getBuyerIsAuth } from '../../features/buyerAuth/model/selectors/getBuyerIsAuth';
 
 const BuyerAccountPage = () => {
-  const isAuth = true; // для перехода в кабинет покупателя поменять значение на true, также в компоненте AuthBuyerPage поменять на true
+  const isAuth = useAppSelector(getBuyerIsAuth); 
   if (!isAuth) {
     return <Navigate to={`/${BASE_URL}/?popup=login`} replace={true} />;
   }

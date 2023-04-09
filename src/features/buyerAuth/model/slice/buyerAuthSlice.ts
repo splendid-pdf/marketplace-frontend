@@ -72,6 +72,7 @@ export const buyerAuthSlice = createSlice({
       })
       .addCase(loginBuyer.rejected, (state, action) => {
         state.isAuth = false;
+        state.loading = false;
         state.errorOnLogin = action.payload as string;
       })
   }

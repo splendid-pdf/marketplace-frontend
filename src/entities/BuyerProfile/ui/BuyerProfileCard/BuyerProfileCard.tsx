@@ -4,7 +4,6 @@ import { BuyerProfile, Gender } from '../../model/buyerProfile.types';
 import { 
   Avatar, 
   Button, 
-  ButtonBase, 
   FormControlLabel, 
   MenuItem, 
   Radio, 
@@ -18,7 +17,7 @@ import { useForm } from 'react-hook-form';
 import {
   updateBuyerProfileData 
 } from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
 import { 
   fetchBuyerProfileData 
@@ -63,7 +62,6 @@ export const BuyerProfileCard = () => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
       setImage(URL.createObjectURL(img));
-      console.log(`image is ${image}`);
       addPhoto();
     }
     try {
@@ -100,7 +98,6 @@ export const BuyerProfileCard = () => {
       if (!response.data) {
         throw new Error();
       }
-      console.log(`response.data is ${response.data}`);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -126,7 +123,6 @@ export const BuyerProfileCard = () => {
       deliveryAddress: newData.deliveryAddress,
     }
     const { firstName, lastName, email, phone, sex, photoUrl } = newData;
-    console.dir(location);
     const updatedProfile: BuyerProfile = {
       ...newData,
       location,
@@ -154,29 +150,6 @@ export const BuyerProfileCard = () => {
   else return (
     <div className={`${classes.BuyerProfileCard}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        {/* <Avatar>
-          <label htmlFor="avatar">Upload avatar</label>
-          <input
-            {...register('photoUrl')}
-            className="file-upload-field"
-            type="file"
-            src={data?.photoUrl}
-            onChange={onImageChange}
-            />
-          <img src={image || ''} width="200px" height="200px" />
-        </Avatar> */}
-        {/* <ButtonBase 
-          sx={{
-            width: '160px',
-            alignSelf: 'left',
-            textAlign: 'left',
-            marginTop: 0.5,
-            fontSize: '16px',
-          }}
-          onClick={addPhoto}
-        >
-          Изменить фото
-        </ButtonBase>  */}
         <div>
           <Avatar
             sx={{
@@ -192,8 +165,7 @@ export const BuyerProfileCard = () => {
             {...register('photoUrl')}
             type="file"
             onChange={onImageChange}           
-          />     
-          
+          />               
         </div>
         <Typography
           sx={{

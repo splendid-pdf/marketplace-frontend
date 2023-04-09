@@ -11,6 +11,7 @@ import { theme } from "./styles/theme";
 import { TopHeader } from "widgets/Header/TopHeader/TopHeader";
 import { useAppDispatch } from './store/hooks';
 import { buyerAuthActions } from '../features/buyerAuth';
+import AppRouter from './router/AppRouter';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +29,7 @@ const App = () => {
               <TopHeader />
               <Header />
               <Routing />
+              {/* <AppRouter /> */}
               <Footer />
             </Suspense>
           </BrowserRouter>
