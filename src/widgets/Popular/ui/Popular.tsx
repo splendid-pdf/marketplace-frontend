@@ -17,36 +17,46 @@ export const Popular = () => {
         <Box sx={{ width: 1 }}>
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2.5}>
             <Box gridColumn="span 6">
-              <div>
+              <div className="wrapper-image">
                 <a href="">
                   <img className="popular-wrapper" src={p1} alt="" />
                 </a>
               </div>
             </Box>
             <Box gridColumn="span 3">
-              <a href="">
-                <img className="popular-wrapper" src={p2} />
-              </a>
+              <div className="wrapper-image">
+                <a href="">
+                  <img className="popular-wrapper" src={p2} />
+                </a>
+              </div>
             </Box>
             <Box gridColumn="span 3">
-              <a href="">
-                <img className="popular-wrapper" src={p3} />
-              </a>
+              <div className="wrapper-image">
+                <a href="">
+                  <img className="popular-wrapper" src={p3} />
+                </a>
+              </div>
             </Box>
             <Box gridColumn="span 3">
-              <a href="">
-                <img className="popular-wrapper" src={p4} />
-              </a>
+              <div className="wrapper-image">
+                <a href="">
+                  <img className="popular-wrapper" src={p4} />
+                </a>
+              </div>
             </Box>
             <Box gridColumn="span 3">
-              <a href="">
-                <img className="popular-wrapper" src={p5} />
-              </a>
+              <div className="wrapper-image">
+                <a href="">
+                  <img className="popular-wrapper" src={p5} />
+                </a>
+              </div>
             </Box>
             <Box gridColumn="span 6">
-              <a href="">
-                <img className="popular-wrapper" src={p6} />
-              </a>
+              <div className="wrapper-image">
+                <a href="">
+                  <img className="popular-wrapper" src={p6} />
+                </a>
+              </div>
             </Box>
           </Box>
         </Box>
