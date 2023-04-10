@@ -49,6 +49,7 @@ export const buyerProfileSlice = createSlice({
       })
       .addCase(fetchBuyerProfileData.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.errorOnProfile = undefined;
         state.data = action.payload;
       })
       .addCase(fetchBuyerProfileData.rejected, (state, action) => {
@@ -60,6 +61,7 @@ export const buyerProfileSlice = createSlice({
       })
       .addCase(updateBuyerProfileData.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.errorOnProfile = undefined;
         state.data = action.payload;
       })
       .addCase(updateBuyerProfileData.rejected, (state, action) => {

@@ -17,7 +17,7 @@ import { useForm } from 'react-hook-form';
 import {
   updateBuyerProfileData 
 } from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
 import { 
   fetchBuyerProfileData 
@@ -27,16 +27,16 @@ import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
 import { getBuyerProfileError } from '../../model/selectors/getBuyerProfileError';
 import { axiosInstance } from 'shared/api/axiosInstance';
+import { SuccessMessages } from '../../../../shared/constants/successMessages';
 
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
   const data = useAppSelector(getBuyerProfileData) || {};
-  const error = useAppSelector(getBuyerProfileError);
-  
+  const error = useAppSelector(getBuyerProfileError);  
   const id = localStorage.getItem(LS_KEY_BUYER_ID) || '';
-
   const dispatch = useAppDispatch();
   const [readonly, setReadonly] = useState(true);
+  let message = '';
 
   const {
     register,
@@ -53,7 +53,7 @@ export const BuyerProfileCard = () => {
       sex: data?.sex,
       photoUrl: data?.photoUrl,
     },
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   const [image, setImage] = useState(data?.photoUrl || '');
@@ -61,7 +61,7 @@ export const BuyerProfileCard = () => {
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
-      setImage(URL.createObjectURL(img));
+      // setImage(URL.createObjectURL(img));
       addPhoto();
     }
     try {
@@ -73,14 +73,10 @@ export const BuyerProfileCard = () => {
 
   useEffect(() => {
       dispatch(fetchBuyerProfileData(id));
-      console.log(`city is ${data?.location?.city}`);
-      console.log(`image is ${data?.photoUrl}`);
-      console.log(`firstName is ${data?.firstName}`);
-  }, [dispatch, id]);
+  }, [id]);
 
   const onEdit = () => {
     setReadonly(false);
-    dispatch(buyerProfileActions.setReadonly(false));
   };
 
   const addPhoto = async () => {
@@ -117,23 +113,26 @@ export const BuyerProfileCard = () => {
       phone: string | undefined; 
       sex: Gender | undefined; 
       photoUrl: string | undefined; 
-    }) => {
+    }, e?: React.BaseSyntheticEvent) => {
+    e?.preventDefault();
     const location = {
-      city: newData.city,
+      city: newData.city || 'Saint-Petersburg',
       deliveryAddress: newData.deliveryAddress,
     }
     const { firstName, lastName, email, phone, sex, photoUrl } = newData;
     const updatedProfile: BuyerProfile = {
-      ...newData,
+      ...data,
+      firstName,
+      lastName,
+      email,
+      phone,
+      sex,
+      photoUrl: 'empty',
       location,
     }
     try {
-      console.log(
-        `Новые данные пользователя: 
-        ${firstName}, ${lastName}, ${email}, ${phone}, 
-        ${sex}, ${location.city}, ${location.deliveryAddress}`
-      );
       dispatch(updateBuyerProfileData({externalId: id, buyer: updatedProfile}));
+      message = SuccessMessages.SUCCESSFUL_PROFILE_UPDATE;
     } catch (error) {
       console.error(error);
     }   
@@ -149,7 +148,9 @@ export const BuyerProfileCard = () => {
 
   else return (
     <div className={`${classes.BuyerProfileCard}`}>
-      <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+      <form 
+        onSubmit={handleSubmit(onSubmit)} 
+        className={classes.form}>
         <div>
           <Avatar
             sx={{
@@ -180,14 +181,13 @@ export const BuyerProfileCard = () => {
         <TextField
           className={classes.field}
           placeholder="Имя"
-          defaultValue={data?.firstName}
+          defaultValue={data?.firstName} 
           aria-invalid={errors.firstName ? "true" : "false"}
           error={Boolean(errors.firstName?.message)}
           helperText={errors.firstName?.message}
           size="small"
           disabled={readonly}
           {...register("firstName", {
-            // required: "Укажите имя",
             minLength: {
               value: 2,
               message: "Минимальная длина имени 2 символа",
@@ -204,7 +204,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("lastName", {
-            // required: "Укажите фамилию",
             minLength: {
               value: 2,
               message: "Минимальная длина фамилии 2 символа",
@@ -231,7 +230,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("email", {
-            // required: "Укажите e-mail",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               message: "Неверный e-mail",
@@ -248,7 +246,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("phone", {
-            // required: "Укажите телефон",
             pattern: {
               value: /(?:\(?\+\d{2}\)?\s*)?\d+(?:[ -]*\d+)*$/i,
               message: "Неверный номер телефона",
@@ -282,7 +279,7 @@ export const BuyerProfileCard = () => {
           className={classes.field}
           labelId="city-select-label"
           id="city-select"
-          defaultValue={data?.location?.city}
+          defaultValue={data?.location?.city || 'Saint-Petersburg'}
           aria-invalid={errors.city ? "true" : "false"}
           error={Boolean(errors.city?.message)}
           label="Город"
@@ -303,7 +300,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("deliveryAddress", {
-            // required: "Укажите адрес",
             minLength: {
               value: 5,
               message: "Слишком короткий адрес",
@@ -341,7 +337,8 @@ export const BuyerProfileCard = () => {
           )}
         </div>
       </form>
-      {error && (<div className="error">{error}</div>)}
+      { error && (<div className="error">{error}</div>) }
+      { message && (<div className="message">{message}</div>) }
     </div>
   );
 };

@@ -44,9 +44,8 @@ import {
   ReturnOrdersPage,
   ReturnProcessingPage,
 } from "./BuyerAccountPage/BuyerOrdersPage/pages/BaseMyReturnOrdersPage/pages";
-import { RequireBuyerAuth } from '../app/router/RequireBuyerAuth';
-import { BuyerPrivateRoutes } from '../app/router/BuyerPrivateRoutes';
-import { SellerPrivateRoutes } from '../app/router/SellerPrivateRoutes';
+import { BuyerPrivateRoutes } from '../app/privateRoutes/BuyerPrivateRoutes';
+import { SellerPrivateRoutes } from '../app/privateRoutes/SellerPrivateRoutes';
 
 const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
