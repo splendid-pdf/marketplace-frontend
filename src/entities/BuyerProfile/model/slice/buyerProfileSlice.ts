@@ -29,7 +29,6 @@ export const buyerProfileSlice = createSlice({
 
     setReadonly: (state, action: PayloadAction<boolean>) => {
       state.readonly = action.payload;
-      console.log('setReadonly', state.readonly);
     },
 
     updateProfile: (state, action: PayloadAction<BuyerProfile>) => {
@@ -37,8 +36,6 @@ export const buyerProfileSlice = createSlice({
         ...state.data,
         ...action.payload,
       };
-      // state.readonly = true;
-      console.log('updateProfile', state.readonly);
     },
   },
   extraReducers: (builder) => {
@@ -59,7 +56,6 @@ export const buyerProfileSlice = createSlice({
       .addCase(updateBuyerProfileData.pending, (state) => {
         state.isLoading = true;
         state.successMessage = undefined;
-        console.log('updateBuyerProfileData.pending', state.readonly)
       })
       .addCase(updateBuyerProfileData.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -67,12 +63,10 @@ export const buyerProfileSlice = createSlice({
         state.data = action.payload;
         state.readonly = true;
         state.successMessage = SuccessMessages.SUCCESSFUL_PROFILE_UPDATE;
-        console.log('updateBuyerProfileData.fulfilled', state.readonly)
       })
       .addCase(updateBuyerProfileData.rejected, (state, action) => {
         state.isLoading = false;
         state.errorOnProfile = action.error.message;
-        console.log('updateBuyerProfileData.rejected', state.readonly)
       });
   }
 });

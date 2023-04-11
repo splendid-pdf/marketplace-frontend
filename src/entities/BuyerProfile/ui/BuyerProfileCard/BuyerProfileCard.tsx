@@ -27,8 +27,6 @@ import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
 import { getBuyerProfileError } from '../../model/selectors/getBuyerProfileError';
 import { axiosInstance } from 'shared/api/axiosInstance';
-import { SuccessMessages } from '../../../../shared/constants/successMessages';
-import { Diversity2Outlined } from '@mui/icons-material';
 
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
@@ -57,7 +55,7 @@ export const BuyerProfileCard = () => {
       sex: data?.sex,
       photoUrl: data?.photoUrl,
     },
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   useEffect(() => {
@@ -104,10 +102,6 @@ export const BuyerProfileCard = () => {
     dispatch(buyerProfileActions.setReadonly(false));
   };
 
-  const onSave = () => {
-    dispatch(buyerProfileActions.setReadonly(true));
-  }
-
   const onCancelEdit = () => {
     reset();
     dispatch(buyerProfileActions.setReadonly(true));
@@ -125,12 +119,29 @@ export const BuyerProfileCard = () => {
     }, e?: React.BaseSyntheticEvent) => {
     e?.preventDefault();
     const location = {
-      city: newData.city,
-      deliveryAddress: newData.deliveryAddress,
+      city: newData.city || data.location?.city,
+      deliveryAddress: newData.deliveryAddress || data.location?.deliveryAddress,
     }
-    const { firstName, lastName, email, phone, sex, photoUrl } = newData;
-    const updatedProfile: BuyerProfile = {
-      ...data,
+    let { firstName, lastName, email, phone, sex, photoUrl } = newData;
+    if (!firstName) {
+      firstName = data.firstName;
+    }
+    if (!lastName) {
+      lastName = data.lastName;
+    }
+    if (!email) {
+      email = data.email;
+    }
+    if (!phone) {
+      phone = data.phone;
+    }
+    if (!sex) {
+      sex = data.sex;
+    }
+    if (!photoUrl) {
+      photoUrl = data.photoUrl;
+    }
+    const updatedProfile: BuyerProfile = { 
       firstName,
       lastName,
       email,
@@ -173,7 +184,7 @@ export const BuyerProfileCard = () => {
           <input
             {...register('photoUrl')}
             type="file"
-            onChange={onImageChange}           
+            onChange={onImageChange}
           />               
         </div>
         <Typography
