@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { BuyerProfile } from '../../buyerProfile.types';
+import { BuyerProfile } from '../buyerProfile.types';
 import { axiosInstance } from 'shared/api/axiosInstance';
 import { LS_KEY_BUYER_ACCESS_TOKEN } from 'shared/constants/localStorage';
-import { buyerProfileActions } from '../../slice/buyerProfileSlice';
+import { buyerProfileActions } from '../slice/buyerProfileSlice';
+import { buyerAuthActions } from '../../../../features/buyerAuth';
 
 export const fetchBuyerProfileData = createAsyncThunk<
     BuyerProfile,
@@ -27,8 +27,12 @@ export const fetchBuyerProfileData = createAsyncThunk<
 
       dispatch(buyerProfileActions.setProfile(response.data));
       return response.data;
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      const statusCode = error.response.status;
+      if (statusCode === 401) {
+        dispatch(buyerAuthActions.logout());
+      }
+      return rejectWithValue(error.message);
     }
   },
 );

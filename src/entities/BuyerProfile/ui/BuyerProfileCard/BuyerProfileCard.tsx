@@ -16,18 +16,19 @@ import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useForm } from 'react-hook-form';
 import {
   updateBuyerProfileData 
-} from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
+} from '../../model/services/updateBuyerProfileData';
 import React, { useEffect, useState } from 'react';
 import { LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
 import { 
   fetchBuyerProfileData 
-} from '../../model/services/fetchBuyerProfileData/fetchBuyerProfileData';
+} from '../../model/services/fetchBuyerProfileData';
 import { getBuyerProfileData } from '../../model/selectors/getBuyerProfileData';
 import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
 import { getBuyerProfileError } from '../../model/selectors/getBuyerProfileError';
 import { axiosInstance } from 'shared/api/axiosInstance';
 import { SuccessMessages } from '../../../../shared/constants/successMessages';
+import { Diversity2Outlined } from '@mui/icons-material';
 
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
@@ -35,13 +36,16 @@ export const BuyerProfileCard = () => {
   const error = useAppSelector(getBuyerProfileError);  
   const id = localStorage.getItem(LS_KEY_BUYER_ID) || '';
   const dispatch = useAppDispatch();
-  const [readonly, setReadonly] = useState(true);
-  let message = '';
+  const readonly = useAppSelector(state => state.buyerProfile.readonly);
+  const message = useAppSelector(state => state.buyerProfile.successMessage);
+
+  const [image, setImage] = useState(data?.photoUrl || '');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       firstName: data?.firstName,
@@ -53,11 +57,14 @@ export const BuyerProfileCard = () => {
       sex: data?.sex,
       photoUrl: data?.photoUrl,
     },
-    mode: "onSubmit",
+    mode: "onChange",
   });
 
-  const [image, setImage] = useState(data?.photoUrl || '');
+  useEffect(() => {
+    dispatch(fetchBuyerProfileData(id));
+  }, [id, dispatch]);
 
+  // TODO: finish upload profile photo functionality when backend is ready
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
@@ -71,15 +78,8 @@ export const BuyerProfileCard = () => {
     }
   };
 
-  useEffect(() => {
-      dispatch(fetchBuyerProfileData(id));
-  }, [id]);
-
-  const onEdit = () => {
-    setReadonly(false);
-  };
-
   const addPhoto = async () => {
+    // TODO: change url to correct endpoint
     const url = `http://51.250.102.12:9001/public/api/v1/files?fileType=PHOTO`;
     // eslint-disable-next-line max-len
     // const url = `https://d5dgfhb917mq6267t8v5.apigw.yandexcloud.net/public/api/v1/uploads?fileId=photo&fileType=PHOTO`;
@@ -100,8 +100,17 @@ export const BuyerProfileCard = () => {
     }
   };
 
+  const onEdit = () => {
+    dispatch(buyerProfileActions.setReadonly(false));
+  };
+
+  const onSave = () => {
+    dispatch(buyerProfileActions.setReadonly(true));
+  }
+
   const onCancelEdit = () => {
-    setReadonly(true);
+    reset();
+    dispatch(buyerProfileActions.setReadonly(true));
   };
 
   const onSubmit = async (newData: 
@@ -116,7 +125,7 @@ export const BuyerProfileCard = () => {
     }, e?: React.BaseSyntheticEvent) => {
     e?.preventDefault();
     const location = {
-      city: newData.city || 'Saint-Petersburg',
+      city: newData.city,
       deliveryAddress: newData.deliveryAddress,
     }
     const { firstName, lastName, email, phone, sex, photoUrl } = newData;
@@ -127,12 +136,11 @@ export const BuyerProfileCard = () => {
       email,
       phone,
       sex,
-      photoUrl: 'empty',
+      photoUrl: '',
       location,
     }
     try {
       dispatch(updateBuyerProfileData({externalId: id, buyer: updatedProfile}));
-      message = SuccessMessages.SUCCESSFUL_PROFILE_UPDATE;
     } catch (error) {
       console.error(error);
     }   
@@ -310,9 +318,10 @@ export const BuyerProfileCard = () => {
           { readonly ? (
             <Button
               className={classes.button}
+              type="button"
               size="large"
               variant="contained"
-              onClick={onEdit}
+              onClick={handleSubmit(onEdit)}
             >
               Редактировать
             </Button>
@@ -323,22 +332,24 @@ export const BuyerProfileCard = () => {
                 type="submit"
                 size="large"
                 variant="contained"
+                onClick={handleSubmit(onSubmit)}
               >
                 Сохранить
               </Button>
               <Button
                 className={classes.button}
+                type="button"
                 variant="outlined"
-                onClick={onCancelEdit}
+                onClick={handleSubmit(onCancelEdit)}
               >
                 Отменить
               </Button>
             </>
           )}
         </div>
-      </form>
-      { error && (<div className="error">{error}</div>) }
-      { message && (<div className="message">{message}</div>) }
+        { error && (<div className="error">{ error }</div>) }
+        { message && (<div className="message">{ message }</div>) }
+      </form>      
     </div>
   );
 };

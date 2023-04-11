@@ -40,8 +40,7 @@ export const buyerAuthSlice = createSlice({
     },
     logout: (state) => {
       state.isAuth = false;
-      localStorage.removeItem(LS_KEY_BUYER_ID);
-      localStorage.removeItem(LS_KEY_BUYER_ACCESS_TOKEN);
+      localStorage.clear();
     },
   },
   extraReducers: (builder) => {

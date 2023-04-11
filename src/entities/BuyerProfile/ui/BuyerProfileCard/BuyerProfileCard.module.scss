@@ -26,11 +26,12 @@
 .error {
   color: #f00;
   font-size: 12px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .message {
-  color: #00f;
-  font-size: 12px;
-  margin-top: 5px;
+  color: var(--color-orange);
+  font-size: 14px;
+  margin-top: 15px;
+
 }
