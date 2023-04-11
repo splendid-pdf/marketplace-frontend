@@ -4,4 +4,13 @@
 }
 .popular-wrapper {
   cursor: pointer;
+  transition: 0.5s;
+}
+.popular-wrapper:hover {
+  transform: scale(1.02);
+  overflow: hidden;
+}
+.wrapper-image{
+	overflow: hidden;
+	border-radius: 20px;
 }

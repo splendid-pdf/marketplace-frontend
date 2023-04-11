@@ -46,6 +46,8 @@ import {
 } from "./BuyerAccountPage/BuyerOrdersPage/pages/BaseMyReturnOrdersPage/pages";
 import { BuyerPrivateRoutes } from '../app/privateRoutes/BuyerPrivateRoutes';
 import { SellerPrivateRoutes } from '../app/privateRoutes/SellerPrivateRoutes';
+import { 
+  SellerCreateNewProductPage } from "./SellerCreateNewProductPage/SellerCreateNewProductPage";
 
 const Routing: React.FC = () => {
   const baseUrl = BASE_URL;
@@ -104,6 +106,9 @@ const Routing: React.FC = () => {
                 path="recommendations"
                 element={<SellerRecommendationsPage />}
               />
+              <Route 
+                path="create-new-product" 
+                element={<SellerCreateNewProductPage/>} />
             </Route>
 
             <Route path="orders" element={<SellerBaseOrdersPage />}>

@@ -1,3 +1,18 @@
+.inputSmallMain {
+  width: 320px !important;
+  height: 46px;
+}
+
+.inputBigMain {
+  width: 630px !important;
+  height: 46px;
+}
+
 .dropdownMenu {
   z-index: 13001;
+}
+
+.selectRoot {
+  border-radius: 20px;
+  margin-top: 30px;
 }

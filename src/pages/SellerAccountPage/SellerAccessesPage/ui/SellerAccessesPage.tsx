@@ -1,14 +1,8 @@
 import classes from "./SellerAccessesPage.module.scss";
 import { useAppDispatch } from "app/store/hooks";
 import { useCallback, useState } from "react";
-import {
-  Avatar,
-  Button,
-  ButtonBase,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { ReactComponent as Logoload } from "../../../../shared/images/icons/logoload.svg";
+import { Avatar, Button, ButtonBase, TextField, Typography } from "@mui/material";
+import { ReactComponent as Logoload } from "shared/images/icons/logoload.svg";
 
 const SellerAccessesPage = () => {
   const dispatch = useAppDispatch();
@@ -47,19 +41,10 @@ const SellerAccessesPage = () => {
       >
         Название
       </Typography>
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите название"
-      />
+      <TextField className={classes.field} size="small" placeholder="Введите название" />
       <div className={`${classes.SellerProfileButtons}`}>
         {readonly ? (
-          <Button
-            className={classes.button}
-            size="large"
-            variant="contained"
-            onClick={onEdit}
-          >
+          <Button className={classes.button} size="large" variant="contained" onClick={onEdit}>
             Редактировать
           </Button>
         ) : (
@@ -73,11 +58,7 @@ const SellerAccessesPage = () => {
             >
               Сохранить
             </Button>
-            <Button
-              className={classes.button}
-              variant="outlined"
-              onClick={onCancelEdit}
-            >
+            <Button className={classes.button} variant="outlined" onClick={onCancelEdit}>
               Удалить
             </Button>
           </>
@@ -102,11 +83,7 @@ const SellerAccessesPage = () => {
       >
         Название
       </Typography>
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите название"
-      />
+      <TextField className={classes.field} size="small" placeholder="Введите название" />
       <Typography
         sx={{
           fontFamily: "Manrope, sans-serif",
@@ -117,11 +94,7 @@ const SellerAccessesPage = () => {
       >
         Адрес склада
       </Typography>
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите адрес"
-      />
+      <TextField className={classes.field} size="small" placeholder="Введите адрес" />
       <Typography
         sx={{
           fontFamily: "Manrope, sans-serif",
@@ -132,11 +105,7 @@ const SellerAccessesPage = () => {
       >
         Лого
       </Typography>
-      <Button
-        className={classes.button_small}
-        variant="outlined"
-        onClick={onCancelEdit}
-      >
+      <Button className={classes.button_small} variant="outlined" onClick={onCancelEdit}>
         <Logoload />
       </Button>
       <Typography
@@ -159,16 +128,8 @@ const SellerAccessesPage = () => {
       >
         Логин / Пароль
       </Typography>
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите логин"
-      />
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите пароль"
-      />
+      <TextField className={classes.field} size="small" placeholder="Введите логин" />
+      <TextField className={classes.field} size="small" placeholder="Введите пароль" />
       <Typography
         sx={{
           fontFamily: "Manrope, sans-serif",
@@ -179,24 +140,11 @@ const SellerAccessesPage = () => {
       >
         Имя / Телефон
       </Typography>
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите имя"
-      />
-      <TextField
-        className={classes.field}
-        size="small"
-        placeholder="Введите телефон"
-      />
+      <TextField className={classes.field} size="small" placeholder="Введите имя" />
+      <TextField className={classes.field} size="small" placeholder="Введите телефон" />
       <div className={`${classes.SellerProfileButtons}`}>
         {readonly ? (
-          <Button
-            className={classes.button}
-            size="large"
-            variant="contained"
-            onClick={onEdit}
-          >
+          <Button className={classes.button} size="large" variant="contained" onClick={onEdit}>
             Редактировать
           </Button>
         ) : (
@@ -210,11 +158,7 @@ const SellerAccessesPage = () => {
             >
               Сохранить
             </Button>
-            <Button
-              className={classes.button}
-              variant="outlined"
-              onClick={onCancelEdit}
-            >
+            <Button className={classes.button} variant="outlined" onClick={onCancelEdit}>
               Удалить
             </Button>
           </>
