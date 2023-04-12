@@ -3,6 +3,7 @@ import {
   Avatar,
   Button,
   ButtonBase,
+  Input,
   TextField,
   Typography,
 } from "@mui/material";
@@ -12,6 +13,20 @@ import { BASE_URL } from "shared/constants/base_url";
 import { NavLink } from "react-router-dom";
 
 export const SellerProfileCard = () => {
+
+  const [image, setImage] = useState<string | ArrayBuffer | null>('');
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // когда пользователь выбирает файл в диалоговом окне, браузер сохраняет список выбранных файлов в свойстве files (хранит коллекцию)
+    const file = event.target.files?.[0]; // список выбранных файлов из инпута( для получения первого выбранного файла)
+    if (!file) return;//Если файл не выбран, мы выходим из обработчика
+    const reader = new FileReader();//создаем объект FileReader и исп-ем его для чтения содержимого файла
+    reader.readAsDataURL(file);// используется для чтения содержимого файла  и считывает файл и преобраз его содержимое в строку в формате base64
+    reader.onload = () => { //Событие onload вызывается, когда чтение файла завершено и содержимое файла готово для использования.
+      setImage(reader.result);
+    };
+  };
+
   const setActive = ({ isActive }: { isActive: boolean }) =>
     isActive ? classes.activeLink : classes.baseLink;
 
@@ -51,7 +66,7 @@ export const SellerProfileCard = () => {
       >
         Личные данные
       </Typography>
-      <Avatar
+      {/* <Avatar
         sx={{
           alignSelf: "left",
           width: "160px",
@@ -68,7 +83,41 @@ export const SellerProfileCard = () => {
         }}
       >
         Изменить фото
-      </ButtonBase>
+      </ButtonBase> */}
+
+      <div>
+        <input
+          style={{ display: 'none' }}
+          id="upload-photo"
+          name="upload-photo"
+          type="file" // говорим , что input принимает файлы
+          accept="image/*"
+          onChange={handleImageUpload}
+      />
+        <Avatar
+          alt="uploaded"
+          src={image?.toString()}
+          sx={{
+            alignSelf: "left",
+            width: "160px",
+            height: "160px",
+          }} />
+        <label htmlFor="upload-photo">
+          <ButtonBase
+            sx={{
+          width: "160px",
+          alignSelf: "left",
+          textAlign: "left",
+          marginTop: "10px",
+          fontSize: "16px",
+        }}
+            component="span"
+      >
+            Изменить фото
+          </ButtonBase>
+        </label>
+      </div>
+
       <Typography
         sx={{
           fontFamily: "Manrope, sans-serif",
