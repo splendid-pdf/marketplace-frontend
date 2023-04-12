@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getBuyerProfileData } from '../../selectors/getBuyerProfileData';
 import { 
   ApiBuyerSchema,
   BuyerProfile 
-} from '../../buyerProfile.types';
+} from '../buyerProfile.types';
 import { axiosInstance } from 'shared/api/axiosInstance';
 import { LS_KEY_BUYER_ACCESS_TOKEN } from 'shared/constants/localStorage';
+import { buyerAuthActions } from 'features/buyerAuth';
 
 
 export const updateBuyerProfileData = createAsyncThunk(
@@ -27,9 +28,12 @@ export const updateBuyerProfileData = createAsyncThunk(
       }
 
       return response.data;
-    } catch (error) {
-      console.error(error);
-      return rejectWithValue({error: 'Server error'});
+    } catch (error: any) {
+      const statusCode = error.response.status;
+      if (statusCode === 401) {
+        dispatch(buyerAuthActions.logout());
+      }
+      return rejectWithValue(error.message);
     }
   },
 );

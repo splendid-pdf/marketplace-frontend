@@ -11,12 +11,20 @@ import { theme } from "./styles/theme";
 import { TopHeader } from "widgets/Header/TopHeader/TopHeader";
 import { useAppDispatch } from './store/hooks';
 import { buyerAuthActions } from '../features/buyerAuth';
+import { LS_KEY_BUYER_ACCESS_TOKEN } from '../shared/constants/localStorage';
+import { isTokenValid } from '../features/buyerAuth/utils/tokenValidation';
 
 const App = () => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
-    dispatch(buyerAuthActions.initAuthData());
-    dispatch(buyerAuthActions.initRegData());
+    const tokenValid = isTokenValid(localStorage.getItem(LS_KEY_BUYER_ACCESS_TOKEN) || '');
+    if (tokenValid) {
+      dispatch(buyerAuthActions.initAuthData());
+    } else {
+      localStorage.removeItem(LS_KEY_BUYER_ACCESS_TOKEN);
+      dispatch(buyerAuthActions.logout());
+    }
   }, [dispatch]);
 
   return (

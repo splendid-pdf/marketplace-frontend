@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
 import { API_LOGIN_BUYER_URL } from 'shared/api/apiEndpoints';
@@ -28,8 +29,12 @@ export const loginBuyer = createAsyncThunk(
       localStorage.setItem(LS_KEY_BUYER_ACCESS_TOKEN, res.data.token);
       localStorage.setItem(LS_KEY_BUYER_ID, res.data.id);
       return res.data;
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );

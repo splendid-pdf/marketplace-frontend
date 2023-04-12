@@ -13,14 +13,13 @@ import {
 import { loginBuyer } from './loginBuyer';
 import { registerBuyer } from './registerBuyer';
 import { setItemToLS } from 'shared/utils/setItemToLS';
+import { isTokenValid } from '../../utils/tokenValidation';
+import { Navigate } from 'react-router-dom';
 
 const initialState: BuyerAuthSchema = {
   id: undefined,
   loading: false,
-  isReg: false,
   isAuth: false,
-  token: undefined,
-  authData: undefined,
   role: undefined,
 };
 
@@ -29,11 +28,7 @@ export const buyerAuthSlice = createSlice({
   initialState,
   reducers: {
     setRegData: (state, action: PayloadAction<string>) => {
-      state.isReg = true;
       setItemToLS(LS_KEY_BUYER_ID, action.payload);
-    },
-    initRegData: (state) => {
-      state.isReg = localStorage.getItem(LS_KEY_BUYER_ID) != null ? true : false;
     },
     setAuthData: (state, action: PayloadAction<BuyerAuthResponse>) => {
       state.isAuth = true;
@@ -42,12 +37,11 @@ export const buyerAuthSlice = createSlice({
     },
     initAuthData: (state) => {
       const token = localStorage.getItem(LS_KEY_BUYER_ACCESS_TOKEN);
-      token ? state.isAuth = true : state.isAuth = false;    
+      (token && isTokenValid(token)) ? state.isAuth = true : state.isAuth = false;    
     },
     logout: (state) => {
-      state.authData = undefined;
-      localStorage.removeItem(LS_KEY_BUYER_AUTH_DATA);
-      localStorage.removeItem(LS_KEY_BUYER_ACCESS_TOKEN);
+      state.isAuth = false;
+      localStorage.clear();
     },
   },
   extraReducers: (builder) => {
@@ -61,7 +55,7 @@ export const buyerAuthSlice = createSlice({
       })
       .addCase(registerBuyer.rejected, (state, action) => {
         state.loading = false;
-        state.errorOnRegister = action.payload as string;
+        state.errorOnRegister = action.error.message as string;
       })
       .addCase(loginBuyer.pending, (state) => {
         state.loading = true;
@@ -72,7 +66,8 @@ export const buyerAuthSlice = createSlice({
       })
       .addCase(loginBuyer.rejected, (state, action) => {
         state.isAuth = false;
-        state.errorOnLogin = action.payload as string;
+        state.loading = false;
+        state.errorOnLogin = action.error.message as string;
       })
   }
 });

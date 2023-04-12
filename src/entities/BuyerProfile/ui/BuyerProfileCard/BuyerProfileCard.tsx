@@ -4,7 +4,6 @@ import { BuyerProfile, Gender } from '../../model/buyerProfile.types';
 import { 
   Avatar, 
   Button, 
-  ButtonBase, 
   FormControlLabel, 
   MenuItem, 
   Radio, 
@@ -17,12 +16,12 @@ import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useForm } from 'react-hook-form';
 import {
   updateBuyerProfileData 
-} from '../../model/services/updateBuyerProfileData/updateBuyerProfileData';
-import { useCallback, useEffect, useState } from 'react';
+} from '../../model/services/updateBuyerProfileData';
+import React, { useEffect, useState } from 'react';
 import { LS_KEY_BUYER_ACCESS_TOKEN, LS_KEY_BUYER_ID } from 'shared/constants/localStorage';
 import { 
   fetchBuyerProfileData 
-} from '../../model/services/fetchBuyerProfileData/fetchBuyerProfileData';
+} from '../../model/services/fetchBuyerProfileData';
 import { getBuyerProfileData } from '../../model/selectors/getBuyerProfileData';
 import { buyerProfileActions } from '../../model/slice/buyerProfileSlice';
 import { getBuyerProfileIsLoading } from '../../model/selectors/getBuyerProfileIsLoading';
@@ -32,17 +31,19 @@ import { axiosInstance } from 'shared/api/axiosInstance';
 export const BuyerProfileCard = () => {
   const isLoading = useAppSelector(getBuyerProfileIsLoading);
   const data = useAppSelector(getBuyerProfileData) || {};
-  const error = useAppSelector(getBuyerProfileError);
-  
+  const error = useAppSelector(getBuyerProfileError);  
   const id = localStorage.getItem(LS_KEY_BUYER_ID) || '';
-
   const dispatch = useAppDispatch();
-  const [readonly, setReadonly] = useState(true);
+  const readonly = useAppSelector(state => state.buyerProfile.readonly);
+  const message = useAppSelector(state => state.buyerProfile.successMessage);
+
+  const [image, setImage] = useState(data?.photoUrl || '');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       firstName: data?.firstName,
@@ -54,16 +55,18 @@ export const BuyerProfileCard = () => {
       sex: data?.sex,
       photoUrl: data?.photoUrl,
     },
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
-  const [image, setImage] = useState(data?.photoUrl || '');
+  useEffect(() => {
+    dispatch(fetchBuyerProfileData(id));
+  }, [id, dispatch]);
 
+  // TODO: finish upload profile photo functionality when backend is ready
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
-      setImage(URL.createObjectURL(img));
-      console.log(`image is ${image}`);
+      // setImage(URL.createObjectURL(img));
       addPhoto();
     }
     try {
@@ -73,19 +76,8 @@ export const BuyerProfileCard = () => {
     }
   };
 
-  useEffect(() => {
-      dispatch(fetchBuyerProfileData(id));
-      console.log(`city is ${data?.location?.city}`);
-      console.log(`image is ${data?.photoUrl}`);
-      console.log(`firstName is ${data?.firstName}`);
-  }, [dispatch, id]);
-
-  const onEdit = () => {
-    setReadonly(false);
-    dispatch(buyerProfileActions.setReadonly(false));
-  };
-
   const addPhoto = async () => {
+    // TODO: change url to correct endpoint
     const url = `http://51.250.102.12:9001/public/api/v1/files?fileType=PHOTO`;
     // eslint-disable-next-line max-len
     // const url = `https://d5dgfhb917mq6267t8v5.apigw.yandexcloud.net/public/api/v1/uploads?fileId=photo&fileType=PHOTO`;
@@ -100,15 +92,19 @@ export const BuyerProfileCard = () => {
       if (!response.data) {
         throw new Error();
       }
-      console.log(`response.data is ${response.data}`);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   };
 
+  const onEdit = () => {
+    dispatch(buyerProfileActions.setReadonly(false));
+  };
+
   const onCancelEdit = () => {
-    setReadonly(true);
+    reset();
+    dispatch(buyerProfileActions.setReadonly(true));
   };
 
   const onSubmit = async (newData: 
@@ -120,23 +116,41 @@ export const BuyerProfileCard = () => {
       phone: string | undefined; 
       sex: Gender | undefined; 
       photoUrl: string | undefined; 
-    }) => {
+    }, e?: React.BaseSyntheticEvent) => {
+    e?.preventDefault();
     const location = {
-      city: newData.city,
-      deliveryAddress: newData.deliveryAddress,
+      city: newData.city || data.location?.city,
+      deliveryAddress: newData.deliveryAddress || data.location?.deliveryAddress,
     }
-    const { firstName, lastName, email, phone, sex, photoUrl } = newData;
-    console.dir(location);
-    const updatedProfile: BuyerProfile = {
-      ...newData,
+    let { firstName, lastName, email, phone, sex, photoUrl } = newData;
+    if (!firstName) {
+      firstName = data.firstName;
+    }
+    if (!lastName) {
+      lastName = data.lastName;
+    }
+    if (!email) {
+      email = data.email;
+    }
+    if (!phone) {
+      phone = data.phone;
+    }
+    if (!sex) {
+      sex = data.sex;
+    }
+    if (!photoUrl) {
+      photoUrl = data.photoUrl;
+    }
+    const updatedProfile: BuyerProfile = { 
+      firstName,
+      lastName,
+      email,
+      phone,
+      sex,
+      photoUrl: '',
       location,
     }
     try {
-      console.log(
-        `Новые данные пользователя: 
-        ${firstName}, ${lastName}, ${email}, ${phone}, 
-        ${sex}, ${location.city}, ${location.deliveryAddress}`
-      );
       dispatch(updateBuyerProfileData({externalId: id, buyer: updatedProfile}));
     } catch (error) {
       console.error(error);
@@ -153,30 +167,9 @@ export const BuyerProfileCard = () => {
 
   else return (
     <div className={`${classes.BuyerProfileCard}`}>
-      <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        {/* <Avatar>
-          <label htmlFor="avatar">Upload avatar</label>
-          <input
-            {...register('photoUrl')}
-            className="file-upload-field"
-            type="file"
-            src={data?.photoUrl}
-            onChange={onImageChange}
-            />
-          <img src={image || ''} width="200px" height="200px" />
-        </Avatar> */}
-        {/* <ButtonBase 
-          sx={{
-            width: '160px',
-            alignSelf: 'left',
-            textAlign: 'left',
-            marginTop: 0.5,
-            fontSize: '16px',
-          }}
-          onClick={addPhoto}
-        >
-          Изменить фото
-        </ButtonBase>  */}
+      <form 
+        onSubmit={handleSubmit(onSubmit)} 
+        className={classes.form}>
         <div>
           <Avatar
             sx={{
@@ -191,9 +184,8 @@ export const BuyerProfileCard = () => {
           <input
             {...register('photoUrl')}
             type="file"
-            onChange={onImageChange}           
-          />     
-          
+            onChange={onImageChange}
+          />               
         </div>
         <Typography
           sx={{
@@ -208,14 +200,13 @@ export const BuyerProfileCard = () => {
         <TextField
           className={classes.field}
           placeholder="Имя"
-          defaultValue={data?.firstName}
+          defaultValue={data?.firstName} 
           aria-invalid={errors.firstName ? "true" : "false"}
           error={Boolean(errors.firstName?.message)}
           helperText={errors.firstName?.message}
           size="small"
           disabled={readonly}
           {...register("firstName", {
-            // required: "Укажите имя",
             minLength: {
               value: 2,
               message: "Минимальная длина имени 2 символа",
@@ -232,7 +223,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("lastName", {
-            // required: "Укажите фамилию",
             minLength: {
               value: 2,
               message: "Минимальная длина фамилии 2 символа",
@@ -259,7 +249,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("email", {
-            // required: "Укажите e-mail",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               message: "Неверный e-mail",
@@ -276,7 +265,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("phone", {
-            // required: "Укажите телефон",
             pattern: {
               value: /(?:\(?\+\d{2}\)?\s*)?\d+(?:[ -]*\d+)*$/i,
               message: "Неверный номер телефона",
@@ -310,7 +298,7 @@ export const BuyerProfileCard = () => {
           className={classes.field}
           labelId="city-select-label"
           id="city-select"
-          defaultValue={data?.location?.city}
+          defaultValue={data?.location?.city || 'Saint-Petersburg'}
           aria-invalid={errors.city ? "true" : "false"}
           error={Boolean(errors.city?.message)}
           label="Город"
@@ -331,7 +319,6 @@ export const BuyerProfileCard = () => {
           size="small"
           disabled={readonly}
           {...register("deliveryAddress", {
-            // required: "Укажите адрес",
             minLength: {
               value: 5,
               message: "Слишком короткий адрес",
@@ -342,9 +329,10 @@ export const BuyerProfileCard = () => {
           { readonly ? (
             <Button
               className={classes.button}
+              type="button"
               size="large"
               variant="contained"
-              onClick={onEdit}
+              onClick={handleSubmit(onEdit)}
             >
               Редактировать
             </Button>
@@ -355,21 +343,24 @@ export const BuyerProfileCard = () => {
                 type="submit"
                 size="large"
                 variant="contained"
+                onClick={handleSubmit(onSubmit)}
               >
                 Сохранить
               </Button>
               <Button
                 className={classes.button}
+                type="button"
                 variant="outlined"
-                onClick={onCancelEdit}
+                onClick={handleSubmit(onCancelEdit)}
               >
                 Отменить
               </Button>
             </>
           )}
         </div>
-      </form>
-      {error && (<div className="error">{error}</div>)}
+        { error && (<div className="error">{ error }</div>) }
+        { message && (<div className="message">{ message }</div>) }
+      </form>      
     </div>
   );
 };

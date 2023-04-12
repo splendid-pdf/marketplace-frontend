@@ -11,11 +11,11 @@ export {
 
 export {
   fetchBuyerProfileData,
-} from './model/services/fetchBuyerProfileData/fetchBuyerProfileData';
+} from './model/services/fetchBuyerProfileData';
 
 export {
   updateBuyerProfileData,
-} from './model/services/updateBuyerProfileData/updateBuyerProfileData';
+} from './model/services/updateBuyerProfileData';
 
 export {
   BuyerProfileCard,

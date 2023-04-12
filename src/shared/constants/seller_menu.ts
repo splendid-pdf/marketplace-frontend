@@ -49,7 +49,7 @@ export const menuItemsSeller: TItems[] = [
         url: `${BASE_URL}/home-seller/product/questions`,
       },
       {
-        name: "Рукомендации",
+        name: "Рекомендации",
         url: `${BASE_URL}/home-seller/product/recommendations`,
       },
     ],

@@ -35,6 +35,7 @@ export interface BuyerProfileSchema {
   data?: BuyerProfile;
   isLoading?: boolean;
   errorOnProfile?: string;
+  successMessage?: string;
   readonly?: boolean;
 }
 

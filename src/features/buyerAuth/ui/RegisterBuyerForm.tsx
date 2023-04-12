@@ -44,6 +44,7 @@ export const RegisterBuyerForm: React.FC<RegisterBuyerFormProps> = ({ isOpened }
   //@ts-ignore
   const onSubmit = async (obj) => {
     const { email, password, checkbox } = obj;
+    localStorage.clear();
     try {
       if (checkbox) {
         setItemToLS(LS_KEY_EMAIL, email);
