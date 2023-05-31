@@ -9,7 +9,7 @@ import { ReactComponent as FavoriteIcon } from "shared/images/icons/favorite.svg
 import { ReactComponent as CartIcon } from "shared/images/icons/cart.svg";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useEffect } from 'react';
-import { isTokenValid } from 'features/buyerAuth/utils/tokenValidation';
+import { isTokenValid } from 'features/utils/tokenValidation';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { buyerAuthActions } from '../../../../features/buyerAuth';
 

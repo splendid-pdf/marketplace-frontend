@@ -6,6 +6,8 @@ import { Button, MenuItem, Select, TextField } from "@mui/material";
 import { colorArray } from "shared/constants/colorCreateNewProduct";
 import { materialArray } from "shared/constants/materialsCreateNewProduct";
 import { TextFieldMarketPlace, TextFieldVariant } from "shared/ui/TextField/TextFieldMarketPlace";
+import { ButtonMarketPlace, ButtonVariant } from "shared/ui/Button/ButtonMarketPlace";
+import { BASE_URL } from "shared/constants/base_url";
 
 export interface Prod {
   nameProduct: string;
@@ -78,6 +80,29 @@ export const SellerCreateNewProductPage = () => {
 
   const onSubmit = (obj: Prod) => {
     console.log(obj);
+
+    const formData = {
+        // "name": "комоды",
+        // "description": "какое-то описание товара by eseo.a",
+        // "articleFromSeller": "28835672-4402-4aed-87b4-9717df31086f",
+        // "brand": {obj.nameBrand},
+        // "price": 100000,
+        // "count": 10,
+        // "typeId": "28835672-4402-4aed-87b4-9717df31086f",
+        // "characteristics": [
+        //   {
+        //     "value": "108",
+        //     "name": "Объем",
+        //     "valueType": "LONG"
+        //   }
+        // ],
+        // "images": [
+        //   {
+        //     "isMain": true,
+        //     "url": "instagram eseo.a"
+        //   }
+        // ]
+    };
   };
 
   return (
@@ -300,9 +325,19 @@ export const SellerCreateNewProductPage = () => {
         </div>
 
         <div className={classes.boxBtn}>
-          <Button type="submit" size="large" variant="contained">
+          <Button
+            type="submit"
+            size="large"
+            variant="contained"
+            className={classes.btnStyle}>
             Добавить товар
           </Button>
+          <ButtonMarketPlace
+            text="Отменить"
+            variant={ButtonVariant.outlined}
+            className={classes.btnStyle}
+            to= {`${BASE_URL}/home-seller/product`}
+          />
         </div>
       </form>
     </>

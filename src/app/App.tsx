@@ -12,7 +12,7 @@ import { TopHeader } from "widgets/Header/TopHeader/TopHeader";
 import { useAppDispatch } from './store/hooks';
 import { buyerAuthActions } from '../features/buyerAuth';
 import { LS_KEY_BUYER_ACCESS_TOKEN } from '../shared/constants/localStorage';
-import { isTokenValid } from '../features/buyerAuth/utils/tokenValidation';
+import { isTokenValid } from '../features/utils/tokenValidation';
 
 const App = () => {
   const dispatch = useAppDispatch();

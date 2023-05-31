@@ -67,7 +67,7 @@ const InputDropdownMenu: FC<TInputDropdownMenuProps> = ({
           MenuProps={MenuProps}
         >
           {values.map((item) => (
-            <MenuItem className={classes.dropdownMenu} key={item.id} value={item.id}>
+            <MenuItem  className={classes.dropdownMenu} key={item.id} value={item.id}>
               {item.name}
             </MenuItem>
           ))}
