@@ -1,12 +1,13 @@
-import React from "react";
 import classes from "./AuthSellerForm.module.scss";
 import { useForm } from "react-hook-form";
-
 import { Typography, TextField, Button, Link as LinkMUI } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "shared/constants/base_url";
+import { useAppDispatch } from "app/store/hooks";
+import { loginSeller } from "../model/slice/loginSeller";
 
 export const AuthSellerForm = () => {
+
   const {
     register,
     handleSubmit,
@@ -19,11 +20,15 @@ export const AuthSellerForm = () => {
     mode: "onSubmit",
   });
 
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   //eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const onSubmit = (obj) => {
     const { email, password } = obj;
-    console.log({ email, password });
+    dispatch(loginSeller({ email, password }));
+    navigate(`/${BASE_URL}/home-seller/`);
   };
 
   return (

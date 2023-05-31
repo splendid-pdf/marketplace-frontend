@@ -13,7 +13,7 @@ import {
 import { loginBuyer } from './loginBuyer';
 import { registerBuyer } from './registerBuyer';
 import { setItemToLS } from 'shared/utils/setItemToLS';
-import { isTokenValid } from '../../utils/tokenValidation';
+import { isTokenValid } from '../../../utils/tokenValidation';
 import { Navigate } from 'react-router-dom';
 
 const initialState: BuyerAuthSchema = {

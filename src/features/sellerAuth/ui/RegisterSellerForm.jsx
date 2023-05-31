@@ -3,6 +3,8 @@ import classes from "./RegisterSellerForm.module.scss";
 import { Controller, useForm } from "react-hook-form";
 
 import { Typography, TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
+import { registerSeller } from "../model/slice/registerSeller";
+import { useAppDispatch } from "app/store/hooks";
 
 export const RegisterSellerForm = () => {
   const {
@@ -20,13 +22,20 @@ export const RegisterSellerForm = () => {
     },
     mode: "onSubmit",
   });
+  const dispatch = useAppDispatch();
 
-  //eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
-  const onSubmit = (obj) => {
-    const { email, password, checkbox } = obj;
-    console.log({ email, password, checkbox });
+  const onSubmit = async (obj) => {
+    const { email, password} = obj;
+    try {
+      dispatch(registerSeller({ email, password}));
+      navigate(`/${BASE_URL}/auth-seller`);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <div className={classes.root}>
       <Typography variant="h5" className={classes.typography}>

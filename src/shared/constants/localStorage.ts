@@ -15,3 +15,4 @@ export const LS_KEY_BUYER_IS_REG = 'marketplace_buyer_is_reg';
 export const LS_KEY_BUYER_IS_AUTH = 'marketplace_buyer_is_auth';
 
 export const LS_KEY_SELLER_ACCESS_TOKEN = 'marketplace_seller_access_token';
+export const LS_KEY_SELLER_ID = 'marketplace_seller_id';

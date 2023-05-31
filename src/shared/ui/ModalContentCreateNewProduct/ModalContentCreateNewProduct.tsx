@@ -57,7 +57,7 @@ export const ModalContentCreateNewProduct = () => {
       </div>
       <div className={classes.boxBtn}>
         <ButtonMarketPlace
-          disable={!selectedTypeID || !selectedCategoryID}
+          // disable={!selectedTypeID || !selectedCategoryID}// закоментила пока! потомучто back то работает, то не работает
           // eslint-disable-next-line max-len
           to={`${BASE_URL}/home-seller/product/create-new-product?type=${selectedTypeID}`}
           text="Продолжить"

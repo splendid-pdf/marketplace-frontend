@@ -1,6 +1,5 @@
 .title {
   font-size: 36px;
-
   // font-family: 'Manrope, sans-serif' !important;
   font-weight: 500;
   color: #343136;
@@ -52,10 +51,14 @@
 
 .boxBtn {
   margin-bottom: 80px;
+  display: flex;
+  column-gap: 20px;
 }
 
 .btnStyle {
+  size: 16px !important;
   font-weight: 600 !important;
+  padding: 12px 24px !important;
 }
 
 .inputBigMain {
