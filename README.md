@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# Click & Buy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Click & Buy is a marketplace for the buyers and sellers of furniture. It is a React-based SPA that fetches data from REST APIs hosted on a Sprinboot server. The app provides registration and authentication services for the buyers and sellers based on Oath2. The buyers and sellers have there personal cabinets where they can change their profile data. Information about the products is fetched from the server and rendered dynamically. The server currently is switched off and only the home page works.
 
-## Available Scripts
+This app was developed as a group pet proejct by a team of junior frontend and backedn developers, UX/UI designers and project managers from the Junior IT Club.
 
-In the project directory, you can run:
+## Features
+- E-commerce SPA with registration, authentication and login
 
-### `npm start`
+## Stack
+- Typescript
+- React
+- Redux
+- React-hook-form
+- axios
+- Material UI
+- SCSS
+- Swiper
+- Stylelint, Eslint
+- Git, husky
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Functionality
+The screenshots below show some of the implemented features.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The home page of the app:
+![Main screen](./screenshots/screenshot_main.png)
 
-### `npm test`
+The campaigns and special offers section:
+![Campaigns screen](./screenshots/screenshot_campaigns.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The login screen of the app:
+![Login screen](./screenshots/screenshot_login.png)
 
-### `npm run build`
+The favorites of the buyer:
+![Favorites](./screenshots//screenshot_favorites.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The buyer's cabinet with the profile data:
+![Buyer's profile](./screenshots/screenshot_profile.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The seller's cabinet with a list of the seller's products:
+![Seller's product list](./screenshots/screenshot_seller_products.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The page with the seller's statistical information:
+![Seller's statistics](./screenshots/screenshot_seller_stats.png)
