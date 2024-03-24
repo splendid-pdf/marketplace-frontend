@@ -33,7 +33,11 @@ export const updateBuyerProfileData = createAsyncThunk(
       if (statusCode === 401) {
         dispatch(buyerAuthActions.logout());
       }
-      return rejectWithValue(error.message);
+      if (error.response && error.response.message) {
+        return rejectWithValue(error.response.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   },
 );
